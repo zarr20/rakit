@@ -4,18 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rakit - Developer Tools Logo</title>
-    
-    <!-- Menggunakan font Inter yang sangat lekat dengan identitas Dev Tools modern -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap" rel="stylesheet">
+
     <style>
-        /* --- TEMA & VARIABEL WARNA --- */
         :root[data-theme="light"] {
             --bg-color: #F7F7F7;
             --shape-color: #111111;
-            --lime-color: #84cc16; /* Lime sedikit lebih gelap untuk kontras di background terang */
+            --lime-color: #84cc16;
             --border-color: #E5E5E5;
             --text-btn: #111111;
         }
@@ -23,9 +20,13 @@
         :root[data-theme="dark"] {
             --bg-color: #0A0A0A;
             --shape-color: #FFFFFF;
-            --lime-color: #a3e635; /* Neon lime terang untuk dark mode */
+            --lime-color: #a3e635;
             --border-color: #333333;
             --text-btn: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
@@ -42,7 +43,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- TOMBOL TOGGLE TEMA (Sangat Kaku/Tajam) --- */
         .theme-toggle {
             position: absolute;
             top: 32px;
@@ -57,7 +57,7 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             cursor: pointer;
-            border-radius: 0; /* WAJIB KAKU, TANPA ROUNDED */
+            border-radius: 0;
             transition: all 0.2s ease;
         }
 
@@ -71,10 +71,14 @@
             transform: scale(0.95);
         }
 
-        /* --- CONTAINER LOGO --- */
         .logo-container {
             cursor: pointer;
             padding: 40px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.2s ease;
         }
 
         .logo-container:active {
@@ -89,7 +93,6 @@
             overflow: visible;
         }
 
-        /* --- STYLING ELEMEN SVG --- */
         .l-block {
             fill: var(--shape-color);
             transition: fill 0.3s ease;
@@ -97,48 +100,57 @@
 
         .core-square {
             fill: var(--lime-color);
-            transform-origin: 60px 60px; /* Titik tengah dari logo mark */
+            transform-origin: 60px 60px;
             transition: fill 0.3s ease;
         }
 
         .wordmark {
             font-family: 'Inter', sans-serif;
-            font-weight: 800;
-            font-size: 64px;
+            font-weight: 700;
+            font-size: 60px;
             fill: var(--lime-color);
-            letter-spacing: -0.06em;
+            letter-spacing: -0.065em;
             transition: fill 0.3s ease;
         }
 
-        /* --- KELAS ANIMASI: MERAKIT --- */
-        
-        /* 1. L-Blocks Slide In */
-        .anim-slide-tl { animation: slideTL 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        .anim-slide-tr { animation: slideTR 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        .anim-slide-bl { animation: slideBL 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        .anim-slide-br { animation: slideBR 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .anim-slide-tl {
+            animation: slideTL 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .anim-slide-tr {
+            animation: slideTR 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .anim-slide-bl {
+            animation: slideBL 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .anim-slide-br {
+            animation: slideBR 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
 
         @keyframes slideTL {
             0% { transform: translate(-50px, -50px); opacity: 0; }
             100% { transform: translate(0, 0); opacity: 1; }
         }
+
         @keyframes slideTR {
             0% { transform: translate(50px, -50px); opacity: 0; }
             100% { transform: translate(0, 0); opacity: 1; }
         }
+
         @keyframes slideBL {
             0% { transform: translate(-50px, 50px); opacity: 0; }
             100% { transform: translate(0, 0); opacity: 1; }
         }
+
         @keyframes slideBR {
             0% { transform: translate(50px, 50px); opacity: 0; }
             100% { transform: translate(0, 0); opacity: 1; }
         }
 
-        /* 2. Core Block Pop In */
         .anim-pop-core {
-            animation: popCore 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            animation-delay: 0.4s;
+            animation: popCore 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
             opacity: 0;
             transform: scale(0);
         }
@@ -148,20 +160,22 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* 3. Wordmark Wipe-in (Efek terminal reveal yang tajam) */
         .anim-text-reveal {
-            animation: wipeIn 0.7s cubic-bezier(0.7, 0, 0.3, 1) forwards;
-            animation-delay: 0.6s;
-            /* Menggunakan clip-path polygon untuk memotong/reveal teks secara kaku dan tegas */
+            animation: wipeIn 0.7s cubic-bezier(0.7, 0, 0.3, 1) 0.6s forwards;
             clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
         }
 
         @keyframes wipeIn {
-            0% { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); transform: translateX(-15px); }
-            100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: translateX(0); }
+            0% {
+                clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+                transform: translateX(-15px);
+            }
+            100% {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                transform: translateX(0);
+            }
         }
 
-        /* Petunjuk Interaksi */
         .hint {
             position: absolute;
             bottom: 32px;
@@ -171,87 +185,86 @@
             letter-spacing: 2px;
             text-transform: uppercase;
         }
+
+        @media (max-width: 480px) {
+            .logo-container {
+                padding: 24px;
+            }
+
+            .theme-toggle {
+                top: 20px;
+                right: 20px;
+                padding: 9px 12px;
+                font-size: 10px;
+            }
+
+            .hint {
+                bottom: 24px;
+                font-size: 10px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 <body>
-
-    <!-- Tombol Toggle Tema -->
     <button class="theme-toggle" id="themeBtn">LIGHT MODE</button>
 
     <div class="logo-container" id="logoContainer" title="Klik untuk mengulang animasi">
-        <svg viewBox="0 0 340 120">
-            
-            <!-- GROUP 1: LOGO MARK (Komponen Merakit) -->
+        <svg viewBox="0 0 340 120" role="img" aria-label="rakit developer tools logo">
             <g id="logo-mark">
-                <!-- Core (Kotak Hijau di tengah)
-                     Tanpa rx/ry, pastikan sudut siku tajam. Koordinat presisi di tengah. -->
-                <rect class="core-square anim-pop-core" x="48" y="48" width="24" height="24" />
+                <rect class="core-square anim-pop-core" x="48" y="48" width="24" height="24"/>
 
-                <!-- 4 L-Blocks (Digambar menggunakan polygon memastikan tidak ada kelengkungan pada ujung/sudut) -->
-                
-                <!-- Kiri Atas -->
-                <polygon class="l-block anim-slide-tl" points="24,24 56,24 56,40 40,40 40,56 24,56" />
-                
-                <!-- Kanan Atas -->
-                <polygon class="l-block anim-slide-tr" points="64,24 96,24 96,56 80,56 80,40 64,40" />
-                
-                <!-- Kiri Bawah -->
-                <polygon class="l-block anim-slide-bl" points="24,64 40,64 40,80 56,80 56,96 24,96" />
-                
-                <!-- Kanan Bawah -->
-                <polygon class="l-block anim-slide-br" points="80,64 96,64 96,96 64,96 64,80 80,80" />
+                <polygon class="l-block anim-slide-tl" points="24,24 56,24 56,40 40,40 40,56 24,56"/>
+                <polygon class="l-block anim-slide-tr" points="64,24 96,24 96,56 80,56 80,40 64,40"/>
+                <polygon class="l-block anim-slide-bl" points="24,64 40,64 40,80 56,80 56,96 24,96"/>
+                <polygon class="l-block anim-slide-br" points="80,64 96,64 96,96 64,96 64,80 80,80"/>
             </g>
 
-            <!-- GROUP 2: WORDMARK -->
             <g id="wordmark-group">
-                <!-- Teks "rakit" rata bawah agar sejajar rapi dengan dasar logo mark -->
-                <text x="125" y="93" class="wordmark anim-text-reveal">rakit</text>
+                <text x="120" y="80" class="wordmark anim-text-reveal">rakit</text>
             </g>
-
         </svg>
     </div>
-    
+
     <div class="hint">Click to Rebuild</div>
 
     <script>
-        // --- 1. LOGIC UNTUK REPLAY ANIMASI ---
         const container = document.getElementById('logoContainer');
-        
-        container.addEventListener('click', () => {
-            // Kumpulkan semua elemen yang memiliki kelas animasi
-            const elements = [
-                { el: document.querySelector('.anim-slide-tl'), cls: 'anim-slide-tl' },
-                { el: document.querySelector('.anim-slide-tr'), cls: 'anim-slide-tr' },
-                { el: document.querySelector('.anim-slide-bl'), cls: 'anim-slide-bl' },
-                { el: document.querySelector('.anim-slide-br'), cls: 'anim-slide-br' },
-                { el: document.querySelector('.core-square'), cls: 'anim-pop-core' },
-                { el: document.querySelector('.wordmark'), cls: 'anim-text-reveal' }
-            ];
+        const themeBtn = document.getElementById('themeBtn');
+        const rootElement = document.documentElement;
 
-            // Hapus kelas animasi untuk mereset
-            elements.forEach(item => item.el.classList.remove(item.cls));
-            
-            // Trigger reflow browser agar reset animasi diproses
+        const animations = [
+            ['.anim-slide-tl', 'anim-slide-tl'],
+            ['.anim-slide-tr', 'anim-slide-tr'],
+            ['.anim-slide-bl', 'anim-slide-bl'],
+            ['.anim-slide-br', 'anim-slide-br'],
+            ['.core-square', 'anim-pop-core'],
+            ['.wordmark', 'anim-text-reveal']
+        ];
+
+        container.addEventListener('click', () => {
+            animations.forEach(([selector, cls]) => {
+                document.querySelector(selector).classList.remove(cls);
+            });
+
             void container.offsetWidth;
 
-            // Tambahkan kembali kelas animasi
-            elements.forEach(item => item.el.classList.add(item.cls));
+            animations.forEach(([selector, cls]) => {
+                document.querySelector(selector).classList.add(cls);
+            });
         });
 
-        // --- 2. LOGIC UNTUK TOGGLE LIGHT/DARK MODE ---
-        const themeBtn = document.getElementById('themeBtn');
-        const rootElement = document.documentElement; // Elemen <html>
-
         themeBtn.addEventListener('click', () => {
-            const currentTheme = rootElement.getAttribute('data-theme');
-            
-            if (currentTheme === 'dark') {
-                rootElement.setAttribute('data-theme', 'light');
-                themeBtn.textContent = 'DARK MODE';
-            } else {
-                rootElement.setAttribute('data-theme', 'dark');
-                themeBtn.textContent = 'LIGHT MODE';
-            }
+            const isDark = rootElement.dataset.theme === 'dark';
+            rootElement.dataset.theme = isDark ? 'light' : 'dark';
+            themeBtn.textContent = isDark ? 'DARK MODE' : 'LIGHT MODE';
         });
     </script>
 </body>
