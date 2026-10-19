@@ -1,27 +1,35 @@
+
 <!DOCTYPE html>
 <html lang="id" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rakit-*</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#0A0A0A">
+    <title>rakit-* — Developer Tools</title>
+    <meta name="description" content="rakit — Modular tools for modern developers.">
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@500,700,900&display=swap" rel="stylesheet">
+
     <style>
-        :root[data-theme="light"] {
-            --bg: #F7F7F7;
-            --shape: #111111;
-            --lime: #84CC16;
-            --border: #E5E5E5;
-            --button-text: #111111;
+        :root {
+            color-scheme: dark;
+            --bg: #0A0A0A;
+            --fg: #F5F5F5;
+            --muted: #737373;
+            --lime: #B7F34A;
+            --border: #292929;
+            --button-hover: #171717;
         }
 
-        :root[data-theme="dark"] {
-            --bg: #0A0A0A;
-            --shape: #FFFFFF;
-            --lime: #A3E635;
-            --border: #333333;
-            --button-text: #FFFFFF;
+        :root[data-theme="light"] {
+            color-scheme: light;
+            --bg: #F7F7F5;
+            --fg: #111111;
+            --muted: #737373;
+            --lime: #84CC16;
+            --border: #E5E5E5;
+            --button-hover: #EDEDE9;
         }
 
         * {
@@ -35,209 +43,324 @@
             place-items: center;
             overflow: hidden;
             background: var(--bg);
-            font-family: 'Space Grotesk', sans-serif;
+            color: var(--fg);
+            font-family: 'Satoshi', sans-serif;
             -webkit-font-smoothing: antialiased;
-            transition: background-color 0.3s ease;
+            transition: background-color 250ms ease, color 250ms ease;
+        }
+
+        button {
+            font: inherit;
         }
 
         .theme-toggle {
             position: fixed;
-            top: 32px;
-            right: 32px;
-            padding: 10px 16px;
+            top: 28px;
+            right: 28px;
+            padding: 11px 15px;
             border: 1px solid var(--border);
-            border-radius: 0;
+            border-radius: 8px;
             background: transparent;
-            color: var(--button-text);
-            font: 800 11px 'Inter', sans-serif;
-            letter-spacing: 1px;
+            color: var(--fg);
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: .08em;
             cursor: pointer;
-            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+            transition: background 180ms ease, border-color 180ms ease;
         }
 
         .theme-toggle:hover {
-            background: var(--shape);
-            color: var(--bg);
-            border-color: var(--shape);
+            background: var(--button-hover);
+        }
+
+        .theme-toggle:focus-visible,
+        .logo-container:focus-visible {
+            outline: 2px solid var(--lime);
+            outline-offset: 6px;
+        }
+
+        .stage {
+            display: grid;
+            justify-items: center;
+            gap: 30px;
+            width: 100%;
+            padding: 24px;
         }
 
         .logo-container {
-            width: min(100%, 560px);
-            padding: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 17px;
+            width: fit-content;
+            max-width: 100%;
+            padding: 10px;
             cursor: pointer;
             -webkit-tap-highlight-color: transparent;
+            user-select: none;
         }
 
         .logo-container:active {
-            transform: scale(0.99);
+            transform: scale(.985);
         }
 
-        svg {
+        .logo-mark {
             display: block;
-            width: 100%;
+            flex: 0 0 auto;
+            width: clamp(64px, 13vw, 88px);
             height: auto;
             overflow: visible;
         }
 
-        .l-block {
-            fill: var(--shape);
-            transition: fill 0.3s ease;
+        .module {
+            fill: var(--fg);
+            transform-box: view-box;
+            transform-origin: center;
         }
 
-        .core-square {
+        .core {
             fill: var(--lime);
             transform-box: view-box;
-            transform-origin: 60px 60px;
-            transition: fill 0.3s ease;
+            transform-origin: 50px 50px;
         }
 
         .wordmark {
-            fill: var(--lime);
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 60px;
+            display: flex;
+            align-items: baseline;
+            white-space: nowrap;
+            font-size: clamp(43px, 9vw, 68px);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.075em;
+        }
+
+        .wordmark-name {
+            color: var(--fg);
+        }
+
+        .wordmark-symbol {
+            color: var(--lime);
+            letter-spacing: -0.09em;
+        }
+
+        .tagline {
+            margin: 0;
+            color: var(--muted);
+            font-size: 10px;
             font-weight: 700;
-            letter-spacing: 1.5px;
-            transition: fill 0.3s ease;
+            letter-spacing: .24em;
+            text-align: center;
+            text-transform: uppercase;
         }
 
         .hint {
             position: fixed;
-            bottom: 32px;
-            color: var(--border);
+            bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--muted);
             font-size: 10px;
             font-weight: 700;
-            letter-spacing: 2px;
+            letter-spacing: .12em;
             text-transform: uppercase;
             user-select: none;
         }
 
+        .hint-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--lime);
+        }
+
+        /* Logo reveal animation */
+
+        .logo-container.is-animating .module {
+            animation: module-reveal 650ms cubic-bezier(.16, 1, .3, 1) both;
+        }
+
+        .logo-container.is-animating .module:nth-child(1) {
+            --x: -22px;
+            --y: -22px;
+            animation-delay: 0ms;
+        }
+
+        .logo-container.is-animating .module:nth-child(2) {
+            --x: 22px;
+            --y: -22px;
+            animation-delay: 70ms;
+        }
+
+        .logo-container.is-animating .module:nth-child(3) {
+            --x: -22px;
+            --y: 22px;
+            animation-delay: 140ms;
+        }
+
+        .logo-container.is-animating .module:nth-child(4) {
+            --x: 22px;
+            --y: 22px;
+            animation-delay: 210ms;
+        }
+
+        .logo-container.is-animating .core {
+            animation: core-reveal 420ms cubic-bezier(.16, 1, .3, 1) 300ms both;
+        }
+
+        .logo-container.is-animating .wordmark {
+            animation: wordmark-reveal 650ms cubic-bezier(.7, 0, .3, 1) 420ms both;
+        }
+
+        @keyframes module-reveal {
+            from {
+                opacity: 0;
+                transform: translate(var(--x), var(--y));
+            }
+            to {
+                opacity: 1;
+                transform: translate(0, 0);
+            }
+        }
+
+        @keyframes core-reveal {
+            from {
+                opacity: 0;
+                transform: scale(0);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes wordmark-reveal {
+            from {
+                opacity: 0;
+                clip-path: inset(0 100% 0 0);
+                transform: translateX(-10px);
+            }
+            to {
+                opacity: 1;
+                clip-path: inset(0);
+                transform: translateX(0);
+            }
+        }
+
         @media (max-width: 480px) {
+            .stage {
+                gap: 24px;
+                padding: 18px;
+            }
+
             .logo-container {
-                padding: 20px;
+                gap: 12px;
+            }
+
+            .logo-mark {
+                width: 58px;
+            }
+
+            .wordmark {
+                font-size: clamp(38px, 10vw, 48px);
             }
 
             .theme-toggle {
-                top: 20px;
-                right: 20px;
-                padding: 9px 12px;
+                top: 18px;
+                right: 18px;
+                padding: 9px 11px;
                 font-size: 10px;
             }
 
             .hint {
-                bottom: 24px;
+                bottom: 22px;
                 font-size: 9px;
             }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                transition-duration: 0.01ms !important;
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+                scroll-behavior: auto !important;
             }
         }
     </style>
 </head>
 <body>
-    <button class="theme-toggle" id="themeBtn" type="button">LIGHT MODE</button>
+    <button class="theme-toggle" id="themeBtn" type="button" aria-label="Ganti tema">
+        LIGHT MODE
+    </button>
 
-    <div class="logo-container" id="logoContainer" title="Klik untuk mengulang animasi">
-        <svg id="logoSvg" viewBox="0 0 340 120" role="img" aria-label="Rakit">
-            <g id="logoMark">
-                <polygon id="blockTL" class="l-block" points="24,24 56,24 56,40 40,40 40,56 24,56"/>
-                <polygon id="blockTR" class="l-block" points="64,24 96,24 96,56 80,56 80,40 64,40"/>
-                <polygon id="blockBL" class="l-block" points="24,64 40,64 40,80 56,80 56,96 24,96"/>
-                <polygon id="blockBR" class="l-block" points="80,64 96,64 96,96 64,96 64,80 80,80"/>
-                <rect id="core" class="core-square" x="48" y="48" width="24" height="24"/>
-            </g>
+    <main class="stage">
+        <div class="logo-container" id="logoContainer" role="button" tabindex="0"
+             aria-label="rakit logo, klik untuk mengulang animasi"
+             title="Klik untuk mengulang animasi">
 
-            <text id="wordmark" class="wordmark" x="120" y="80">Rakit</text>
-        </svg>
+            <svg class="logo-mark" viewBox="0 0 100 100" role="img" aria-label="Rakit modular mark">
+                <g class="module">
+                    <path d="M10 10H40V25H25V40H10Z"/>
+                </g>
+                <g class="module">
+                    <path d="M60 10H90V40H75V25H60Z"/>
+                </g>
+                <g class="module">
+                    <path d="M10 60H25V75H40V90H10Z"/>
+                </g>
+                <g class="module">
+                    <path d="M75 60H90V90H60V75H75Z"/>
+                </g>
+                <rect class="core" x="38" y="38" width="24" height="24"/>
+            </svg>
+
+            <div class="wordmark" aria-label="rakit star">
+                <span class="wordmark-name">rakit</span><span class="wordmark-symbol">-*</span>
+            </div>
+        </div>
+    </main>
+
+    <div class="hint">
+        <span class="hint-dot"></span>
+        <span>Click to rebuild</span>
     </div>
 
-    <div class="hint">Click to Rebuild</div>
-
     <script>
+        const root = document.documentElement;
         const container = document.getElementById('logoContainer');
         const themeBtn = document.getElementById('themeBtn');
-        const root = document.documentElement;
-
-        const blocks = [
-            { id: 'blockTL', x: -50, y: -50 },
-            { id: 'blockTR', x: 50, y: -50 },
-            { id: 'blockBL', x: -50, y: 50 },
-            { id: 'blockBR', x: 50, y: 50 }
-        ];
-
-        const mark = document.getElementById('logoMark');
-        const wordmark = document.getElementById('wordmark');
-        const core = document.getElementById('core');
-
-        // Pusatkan mark dan wordmark berdasarkan bounding box aktual.
-        function centerLogo() {
-            const markBox = mark.getBBox();
-            const textBox = wordmark.getBBox();
-            const centerY = markBox.y + markBox.height / 2;
-            const textCenterY = textBox.y + textBox.height / 2;
-            wordmark.setAttribute('y', Number(wordmark.getAttribute('y')) + centerY - textCenterY);
-        }
-
-        // Tunggu font selesai dimuat agar pengukuran teks akurat.
-        document.fonts.ready.then(centerLogo);
+        const themeColor = document.querySelector('meta[name="theme-color"]');
+        const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
         function playAnimation() {
-            blocks.forEach(({ id, x, y }, index) => {
-                const el = document.getElementById(id);
-                el.getAnimations().forEach(animation => animation.cancel());
-                el.style.opacity = '0';
-                el.style.transform = `translate(${x}px, ${y}px)`;
+            container.classList.remove('is-animating');
 
-                el.animate([
-                    { transform: `translate(${x}px, ${y}px)`, opacity: 0 },
-                    { transform: 'translate(0, 0)', opacity: 1 }
-                ], {
-                    duration: 600,
-                    delay: index * 70,
-                    easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
-                    fill: 'forwards'
-                });
-            });
+            if (motionQuery.matches) return;
 
-            core.getAnimations().forEach(animation => animation.cancel());
-            core.style.opacity = '0';
-            core.style.transform = 'scale(0)';
+            // Memastikan animasi dimulai ulang setiap kali dipicu.
+            void container.offsetWidth;
+            container.classList.add('is-animating');
+        }
 
-            core.animate([
-                { transform: 'scale(0)', opacity: 0 },
-                { transform: 'scale(1)', opacity: 1 }
-            ], {
-                duration: 400,
-                delay: 400,
-                easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
-                fill: 'forwards'
-            });
-
-            wordmark.getAnimations().forEach(animation => animation.cancel());
-            wordmark.style.opacity = '1';
-            wordmark.style.clipPath = 'inset(0 100% 0 0)';
-            wordmark.style.transform = 'translateX(-15px)';
-
-            wordmark.animate([
-                { clipPath: 'inset(0 100% 0 0)', transform: 'translateX(-15px)' },
-                { clipPath: 'inset(0 0 0 0)', transform: 'translateX(0)' }
-            ], {
-                duration: 700,
-                delay: 650,
-                easing: 'cubic-bezier(0.7, 0, 0.3, 1)',
-                fill: 'forwards'
-            });
+        function toggleTheme() {
+            const isDark = root.dataset.theme === 'dark';
+            root.dataset.theme = isDark ? 'light' : 'dark';
+            themeBtn.textContent = isDark ? 'DARK MODE' : 'LIGHT MODE';
+            themeColor.content = isDark ? '#F7F7F5' : '#0A0A0A';
         }
 
         container.addEventListener('click', playAnimation);
 
-        themeBtn.addEventListener('click', () => {
-            const isDark = root.dataset.theme === 'dark';
-            root.dataset.theme = isDark ? 'light' : 'dark';
-            themeBtn.textContent = isDark ? 'DARK MODE' : 'LIGHT MODE';
+        container.addEventListener('keydown', event => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                playAnimation();
+            }
         });
+
+        themeBtn.addEventListener('click', toggleTheme);
 
         playAnimation();
     </script>
