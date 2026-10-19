@@ -1,368 +1,755 @@
-
 <!DOCTYPE html>
 <html lang="id" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0A0A0A">
-    <title>rakit-* — Developer Tools</title>
-    <meta name="description" content="rakit — Modular tools for modern developers.">
-    <link rel="preconnect" href="https://api.fontshare.com">
-    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@500,700,900&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#090A0E">
+    <title>rakit. — Modular Developer Ecosystem</title>
+    <meta name="description" content="Modular developer tools and primitives for modern engineering workflows.">
+
+    <!-- Fonts: Space Grotesk & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
             color-scheme: dark;
-            --bg: #0A0A0A;
-            --fg: #F5F5F5;
-            --muted: #737373;
+            --bg: #090A0E;
+            --surface-card: rgba(16, 18, 25, 0.72);
+            --surface-hover: rgba(255, 255, 255, 0.05);
+            --fg: #F4F4F6;
+            --fg-secondary: #94A3B8;
+            --muted: #64748B;
             --lime: #B7F34A;
-            --border: #292929;
-            --button-hover: #171717;
+            --lime-glow: rgba(183, 243, 74, 0.38);
+            --lime-subtle: rgba(183, 243, 74, 0.12);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.22);
+            --grid-line: rgba(255, 255, 255, 0.035);
+            --font-display: 'Space Grotesk', system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --block-primary: #FFFFFF;
         }
 
         :root[data-theme="light"] {
             color-scheme: light;
-            --bg: #F7F7F5;
-            --fg: #111111;
-            --muted: #737373;
-            --lime: #84CC16;
-            --border: #E5E5E5;
-            --button-hover: #EDEDE9;
+            --bg: #F8F9FA;
+            --surface-card: rgba(255, 255, 255, 0.9);
+            --surface-hover: rgba(0, 0, 0, 0.04);
+            --fg: #0B0F19;
+            --fg-secondary: #4B5563;
+            --muted: #9CA3AF;
+            --lime: #65A30D;
+            --lime-glow: rgba(101, 163, 13, 0.28);
+            --lime-subtle: rgba(101, 163, 13, 0.14);
+            --border: rgba(0, 0, 0, 0.09);
+            --border-hover: rgba(0, 0, 0, 0.25);
+            --grid-line: rgba(0, 0, 0, 0.045);
+            --block-primary: #111827;
         }
 
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
-            margin: 0;
             min-height: 100svh;
-            display: grid;
-            place-items: center;
-            overflow: hidden;
-            background: var(--bg);
+            background-color: var(--bg);
             color: var(--fg);
-            font-family: 'Satoshi', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            transition: background-color 250ms ease, color 250ms ease;
+            font-family: var(--font-display);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+            overflow-x: hidden;
+            transition: background-color 240ms ease, color 240ms ease;
+            padding: 90px 20px 48px;
         }
 
-        button {
-            font: inherit;
-        }
-
-        .theme-toggle {
+        /* Matrix Grid Backdrop */
+        .grid-backdrop {
             position: fixed;
-            top: 28px;
-            right: 28px;
-            padding: 11px 15px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            background: transparent;
-            color: var(--fg);
-            font-size: 11px;
-            font-weight: 900;
-            letter-spacing: .08em;
-            cursor: pointer;
-            transition: background 180ms ease, border-color 180ms ease;
+            inset: 0;
+            background-image: 
+                linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+            z-index: 0;
+            mask-image: radial-gradient(circle at center 35%, black 45%, transparent 85%);
+            -webkit-mask-image: radial-gradient(circle at center 35%, black 45%, transparent 85%);
         }
 
-        .theme-toggle:hover {
-            background: var(--button-hover);
+        .ambient-glow {
+            position: fixed;
+            width: 540px;
+            height: 540px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--lime-glow) 0%, transparent 68%);
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(80px);
+            transform: translate(-50%, -50%);
+            opacity: 0.35;
+            transition: opacity 300ms ease;
         }
 
-        .theme-toggle:focus-visible,
-        .logo-container:focus-visible {
-            outline: 2px solid var(--lime);
-            outline-offset: 6px;
-        }
-
-        .stage {
-            display: grid;
-            justify-items: center;
-            gap: 30px;
-            width: 100%;
-            padding: 24px;
-        }
-
-        .logo-container {
+        /* Top Bar */
+        .top-bar {
+            position: fixed;
+            top: 20px;
+            left: 0;
+            right: 0;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 24px;
             display: flex;
             align-items: center;
+            justify-content: space-between;
+            z-index: 30;
+            pointer-events: none;
+        }
+
+        .top-bar > * {
+            pointer-events: auto;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            font-family: var(--font-mono);
+            font-size: 11.5px;
+            font-weight: 500;
+            color: var(--fg-secondary);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--lime);
+            box-shadow: 0 0 10px var(--lime);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(0.7); opacity: 0.55; }
+        }
+
+        .theme-btn {
+            display: inline-flex;
+            align-items: center;
             justify-content: center;
-            gap: 17px;
-            width: fit-content;
-            max-width: 100%;
-            padding: 10px;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--surface-card);
+            color: var(--fg);
             cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            transition: all 180ms ease;
+        }
+
+        .theme-btn:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-1px);
+        }
+
+        .theme-btn svg {
+            width: 17px;
+            height: 17px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        /* Container & Stage */
+        .stage {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 740px;
+            width: 100%;
+            gap: 32px;
+        }
+
+        /* Brand Unit Box */
+        .brand-unit {
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            padding: 16px 28px;
+            border-radius: 16px;
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.45);
+            cursor: pointer;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 180ms ease, 
+                        box-shadow 180ms ease;
+            outline: none;
             user-select: none;
         }
 
-        .logo-container:active {
-            transform: scale(.985);
+        .brand-unit:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
         }
 
-        .logo-mark {
-            display: block;
-            flex: 0 0 auto;
-            width: clamp(64px, 13vw, 88px);
+        .brand-unit:active {
+            transform: scale(0.985);
+        }
+
+        .brand-unit:focus-visible {
+            outline: 2px solid var(--lime);
+            outline-offset: 4px;
+        }
+
+        /* Matrix SVG Mark */
+        .logo-matrix-svg {
+            width: clamp(52px, 8vw, 68px);
             height: auto;
+            display: block;
+            flex-shrink: 0;
             overflow: visible;
         }
 
-        .module {
-            fill: var(--fg);
-            transform-box: view-box;
+        .grid-guide {
+            stroke: var(--border);
+            stroke-width: 0.7;
+            stroke-dasharray: 2 2;
+        }
+
+        .m-block {
+            transform-box: fill-box;
             transform-origin: center;
+            transition: fill 250ms ease;
         }
 
-        .core {
+        .m-block.primary {
+            fill: var(--block-primary);
+        }
+
+        .m-block.accent {
             fill: var(--lime);
-            transform-box: view-box;
-            transform-origin: 50px 50px;
+            filter: drop-shadow(0 0 10px var(--lime-glow));
         }
 
+        /* Natural, Tight Wordmark with Lime Dot */
         .wordmark {
+            font-family: var(--font-display);
+            font-size: clamp(44px, 8.5vw, 68px);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.04em; /* Tight & natural letter spacing */
             display: flex;
             align-items: baseline;
-            white-space: nowrap;
-            font-size: clamp(43px, 9vw, 68px);
-            font-weight: 900;
-            line-height: 1;
-            letter-spacing: -0.075em;
         }
 
         .wordmark-name {
             color: var(--fg);
         }
 
-        .wordmark-symbol {
+        .wordmark-dot {
             color: var(--lime);
-            letter-spacing: -0.09em;
+            margin-left: 1px;
+            transition: color 240ms ease;
+            filter: drop-shadow(0 0 14px var(--lime-glow));
+        }
+
+        /* Rebuild Snap Animations */
+        .brand-unit.is-animating .m-block {
+            animation: snap-block 480ms cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .brand-unit.is-animating .m-b1 { --dx: -20px; --dy: -20px; animation-delay: 0ms; }
+        .brand-unit.is-animating .m-b2 { --dx: 0px;   --dy: -24px; animation-delay: 30ms; }
+        .brand-unit.is-animating .m-b3 { --dx: 20px;  --dy: -20px; animation-delay: 60ms; }
+        .brand-unit.is-animating .m-b4 { --dx: -24px; --dy: 0px;   animation-delay: 80ms; }
+        .brand-unit.is-animating .m-b5 { --dx: 22px;  --dy: 0px;   animation-delay: 100ms; }
+        .brand-unit.is-animating .m-b6 { --dx: 0px;   --dy: 0px;   animation-delay: 120ms; }
+        .brand-unit.is-animating .m-b7 { --dx: -20px; --dy: 20px;  animation-delay: 140ms; }
+        .brand-unit.is-animating .m-b8 { --dx: 20px;  --dy: 20px;  animation-delay: 160ms; }
+
+        .brand-unit.is-animating .wordmark-name {
+            animation: text-snap 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .brand-unit.is-animating .wordmark-dot {
+            animation: dot-pop 520ms cubic-bezier(0.34, 1.56, 0.64, 1) 120ms both;
+        }
+
+        @keyframes snap-block {
+            0% {
+                opacity: 0;
+                transform: translate(var(--dx), var(--dy)) scale(0.6);
+            }
+            70% {
+                transform: translate(0, 0) scale(1.08);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+        }
+
+        @keyframes text-snap {
+            0% { opacity: 0.4; transform: translateY(4px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes dot-pop {
+            0% { opacity: 0; transform: scale(0) translateY(10px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         .tagline {
-            margin: 0;
-            color: var(--muted);
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: .24em;
-            text-align: center;
-            text-transform: uppercase;
+            font-size: clamp(14px, 2.8vw, 16px);
+            color: var(--fg-secondary);
+            font-weight: 500;
+            line-height: 1.55;
+            max-width: 520px;
+            letter-spacing: -0.01em;
         }
 
-        .hint {
+        /* Ecosystem Package Cards */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            width: 100%;
+            margin-top: 4px;
+        }
+
+        .pkg-card {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: all 180ms ease;
+            position: relative;
+        }
+
+        .pkg-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+
+        .pkg-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .pkg-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 6px;
+            background: var(--lime-subtle);
+            color: var(--lime);
+            font-weight: 600;
+        }
+
+        .pkg-title {
+            font-family: var(--font-mono);
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--fg);
+            letter-spacing: -0.02em;
+        }
+
+        .pkg-desc {
+            font-size: 13px;
+            color: var(--fg-secondary);
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        /* CLI Snippet Inside Cards */
+        .pkg-cmd-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(0, 0, 0, 0.24);
+            border: 1px solid var(--border);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 150ms ease;
+        }
+
+        :root[data-theme="light"] .pkg-cmd-row {
+            background: rgba(0, 0, 0, 0.03);
+        }
+
+        .pkg-cmd-row:hover {
+            border-color: var(--lime);
+            background: var(--surface-hover);
+        }
+
+        .pkg-cmd-text {
+            color: var(--fg);
+            user-select: all;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .cmd-dollar {
+            color: var(--lime);
+            user-select: none;
+            font-weight: 700;
+        }
+
+        .copy-icon-btn {
+            background: none;
+            border: none;
+            color: var(--muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px;
+            transition: color 150ms ease;
+        }
+
+        .pkg-cmd-row:hover .copy-icon-btn {
+            color: var(--fg);
+        }
+
+        /* Bottom Action / Rebuild Tip */
+        .hint-bar {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--muted);
+            user-select: none;
+            margin-top: 6px;
+        }
+
+        .kbd-pill {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            padding: 2px 7px;
+            border-radius: 4px;
+            color: var(--fg-secondary);
+            font-weight: 600;
+        }
+
+        /* Toast Feedback */
+        .toast {
             position: fixed;
-            bottom: 30px;
+            bottom: 24px;
+            background: var(--fg);
+            color: var(--bg);
+            padding: 9px 18px;
+            border-radius: 8px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 600;
             display: flex;
             align-items: center;
             gap: 8px;
-            color: var(--muted);
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-            user-select: none;
+            opacity: 0;
+            transform: translateY(12px);
+            pointer-events: none;
+            transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 100;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .hint-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--lime);
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* Logo reveal animation */
-
-        .logo-container.is-animating .module {
-            animation: module-reveal 650ms cubic-bezier(.16, 1, .3, 1) both;
-        }
-
-        .logo-container.is-animating .module:nth-child(1) {
-            --x: -22px;
-            --y: -22px;
-            animation-delay: 0ms;
-        }
-
-        .logo-container.is-animating .module:nth-child(2) {
-            --x: 22px;
-            --y: -22px;
-            animation-delay: 70ms;
-        }
-
-        .logo-container.is-animating .module:nth-child(3) {
-            --x: -22px;
-            --y: 22px;
-            animation-delay: 140ms;
-        }
-
-        .logo-container.is-animating .module:nth-child(4) {
-            --x: 22px;
-            --y: 22px;
-            animation-delay: 210ms;
-        }
-
-        .logo-container.is-animating .core {
-            animation: core-reveal 420ms cubic-bezier(.16, 1, .3, 1) 300ms both;
-        }
-
-        .logo-container.is-animating .wordmark {
-            animation: wordmark-reveal 650ms cubic-bezier(.7, 0, .3, 1) 420ms both;
-        }
-
-        @keyframes module-reveal {
-            from {
-                opacity: 0;
-                transform: translate(var(--x), var(--y));
+        @media (max-width: 680px) {
+            body {
+                padding-top: 76px;
             }
-            to {
-                opacity: 1;
-                transform: translate(0, 0);
+            .packages-grid {
+                grid-template-columns: 1fr;
             }
-        }
-
-        @keyframes core-reveal {
-            from {
-                opacity: 0;
-                transform: scale(0);
+            .brand-unit {
+                padding: 14px 22px;
+                gap: 16px;
             }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes wordmark-reveal {
-            from {
-                opacity: 0;
-                clip-path: inset(0 100% 0 0);
-                transform: translateX(-10px);
-            }
-            to {
-                opacity: 1;
-                clip-path: inset(0);
-                transform: translateX(0);
-            }
-        }
-
-        @media (max-width: 480px) {
             .stage {
-                gap: 24px;
-                padding: 18px;
-            }
-
-            .logo-container {
-                gap: 12px;
-            }
-
-            .logo-mark {
-                width: 58px;
-            }
-
-            .wordmark {
-                font-size: clamp(38px, 10vw, 48px);
-            }
-
-            .theme-toggle {
-                top: 18px;
-                right: 18px;
-                padding: 9px 11px;
-                font-size: 10px;
-            }
-
-            .hint {
-                bottom: 22px;
-                font-size: 9px;
+                gap: 26px;
             }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: .01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: .01ms !important;
-                scroll-behavior: auto !important;
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
 </head>
 <body>
-    <button class="theme-toggle" id="themeBtn" type="button" aria-label="Ganti tema">
-        LIGHT MODE
-    </button>
+    <div class="grid-backdrop"></div>
+    <div class="ambient-glow" id="ambientGlow"></div>
+
+    <!-- Navigation Header -->
+    <header class="top-bar">
+        <div class="status-badge">
+            <span class="status-dot"></span>
+            <span>npm registry • active</span>
+        </div>
+
+        <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle Theme">
+            <svg id="sunIcon" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg id="moonIcon" viewBox="0 0 24 24" style="display: none;">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+    </header>
 
     <main class="stage">
-        <div class="logo-container" id="logoContainer" role="button" tabindex="0"
-             aria-label="rakit logo, klik untuk mengulang animasi"
-             title="Klik untuk mengulang animasi">
+        <!-- Brand Identity Container (Click to trigger modular assembly) -->
+        <div class="brand-unit" id="brandUnit" role="button" tabindex="0" 
+             aria-label="rakit. brandmark" title="Klik atau tekan Spasi untuk merakit kembali">
+            
+            <!-- 5x5 Modular Matrix Logo (Geometric Abstract 'R' + Core Node) -->
+            <svg class="logo-matrix-svg" viewBox="0 0 100 100" role="img" aria-label="Modular Matrix Logo">
+                <g class="grid-guide">
+                    <line x1="20" y1="0" x2="20" y2="100"/>
+                    <line x1="40" y1="0" x2="40" y2="100"/>
+                    <line x1="60" y1="0" x2="60" y2="100"/>
+                    <line x1="80" y1="0" x2="80" y2="100"/>
+                    <line x1="0" y1="20" x2="100" y2="20"/>
+                    <line x1="0" y1="40" x2="100" y2="40"/>
+                    <line x1="0" y1="60" x2="100" y2="60"/>
+                    <line x1="0" y1="80" x2="100" y2="80"/>
+                </g>
 
-            <svg class="logo-mark" viewBox="0 0 100 100" role="img" aria-label="Rakit modular mark">
-                <g class="module">
-                    <path d="M10 10H40V25H25V40H10Z"/>
-                </g>
-                <g class="module">
-                    <path d="M60 10H90V40H75V25H60Z"/>
-                </g>
-                <g class="module">
-                    <path d="M10 60H25V75H40V90H10Z"/>
-                </g>
-                <g class="module">
-                    <path d="M75 60H90V90H60V75H75Z"/>
-                </g>
-                <rect class="core" x="38" y="38" width="24" height="24"/>
+                <!-- Left Column Spine -->
+                <rect class="m-block primary m-b1" x="20" y="20" width="16" height="16"/>
+                <rect class="m-block primary m-b4" x="20" y="40" width="16" height="16"/>
+                <rect class="m-block primary m-b7" x="20" y="60" width="16" height="16"/>
+
+                <!-- Header Bar -->
+                <rect class="m-block primary m-b2" x="40" y="20" width="16" height="16"/>
+                <rect class="m-block primary m-b3" x="60" y="20" width="16" height="16"/>
+
+                <!-- Core Lime Center Node -->
+                <rect class="m-block accent m-b6" x="40" y="40" width="16" height="16"/>
+
+                <!-- Outer Loop & Anchor Leg -->
+                <rect class="m-block primary m-b5" x="60" y="40" width="16" height="16"/>
+                <rect class="m-block primary m-b8" x="60" y="60" width="16" height="16"/>
             </svg>
 
-            <div class="wordmark" aria-label="rakit star">
-                <span class="wordmark-name">rakit</span><span class="wordmark-symbol">-*</span>
+            <!-- Tight, lowercase wordmark with distinctive lime dot -->
+            <div class="wordmark">
+                <span class="wordmark-name">rakit</span><span class="wordmark-dot">.</span>
             </div>
+        </div>
+
+        <p class="tagline">
+            Modular toolchains and lightweight primitives for modern web engineering. Composable, type-safe, and developer-first.
+        </p>
+
+        <!-- NPM Package Showcase Cards -->
+        <div class="packages-grid">
+            <!-- Package 1: rakit-ui -->
+            <div class="pkg-card">
+                <div class="pkg-header">
+                    <span class="pkg-title">@zarr20/rakit-ui</span>
+                    <span class="pkg-badge">npm</span>
+                </div>
+                <p class="pkg-desc">
+                    Minimalist UI primitives and component kits designed for fast, accessible web applications.
+                </p>
+                <div class="pkg-cmd-row" onclick="copySnippet('npm i @zarr20/rakit-ui')" title="Click to copy install command">
+                    <div class="pkg-cmd-text">
+                        <span class="cmd-dollar">$</span>
+                        <span>npm i @zarr20/rakit-ui</span>
+                    </div>
+                    <button class="copy-icon-btn" aria-label="Copy package command" type="button">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Package 2: rakit-routes -->
+            <div class="pkg-card">
+                <div class="pkg-header">
+                    <span class="pkg-title">@zarr20/rakit-routes</span>
+                    <span class="pkg-badge">npm</span>
+                </div>
+                <p class="pkg-desc">
+                    Lightweight, type-safe route manager and navigation utilities for modular architectures.
+                </p>
+                <div class="pkg-cmd-row" onclick="copySnippet('npm i @zarr20/rakit-routes')" title="Click to copy install command">
+                    <div class="pkg-cmd-text">
+                        <span class="cmd-dollar">$</span>
+                        <span>npm i @zarr20/rakit-routes</span>
+                    </div>
+                    <button class="copy-icon-btn" aria-label="Copy package command" type="button">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="hint-bar">
+            <span>Press</span>
+            <kbd class="kbd-pill">Space</kbd>
+            <span>or click brand to snap rebuild</span>
         </div>
     </main>
 
-    <div class="hint">
-        <span class="hint-dot"></span>
-        <span>Click to rebuild</span>
+    <!-- Global Toast Feedback -->
+    <div class="toast" id="toast">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span id="toastMsg">Command copied to clipboard</span>
     </div>
 
     <script>
         const root = document.documentElement;
-        const container = document.getElementById('logoContainer');
+        const brandUnit = document.getElementById('brandUnit');
         const themeBtn = document.getElementById('themeBtn');
-        const themeColor = document.querySelector('meta[name="theme-color"]');
+        const sunIcon = document.getElementById('sunIcon');
+        const moonIcon = document.getElementById('moonIcon');
+        const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+        const ambientGlow = document.getElementById('ambientGlow');
+        const toast = document.getElementById('toast');
+        const toastMsg = document.getElementById('toastMsg');
         const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-        function playAnimation() {
-            container.classList.remove('is-animating');
-
+        // Snap animation assembly
+        function triggerAssembly() {
+            brandUnit.classList.remove('is-animating');
             if (motionQuery.matches) return;
 
-            // Memastikan animasi dimulai ulang setiap kali dipicu.
-            void container.offsetWidth;
-            container.classList.add('is-animating');
+            void brandUnit.offsetWidth; // Force reflow
+            brandUnit.classList.add('is-animating');
         }
 
+        // Theme Toggle
         function toggleTheme() {
             const isDark = root.dataset.theme === 'dark';
-            root.dataset.theme = isDark ? 'light' : 'dark';
-            themeBtn.textContent = isDark ? 'DARK MODE' : 'LIGHT MODE';
-            themeColor.content = isDark ? '#F7F7F5' : '#0A0A0A';
+            const nextTheme = isDark ? 'light' : 'dark';
+            root.dataset.theme = nextTheme;
+
+            sunIcon.style.display = isDark ? 'none' : 'block';
+            moonIcon.style.display = isDark ? 'block' : 'none';
+            themeColorMeta.content = isDark ? '#F8F9FA' : '#090A0E';
         }
 
-        container.addEventListener('click', playAnimation);
+        // Mouse follower for ambient glow
+        let mouseX = window.innerWidth / 2;
+        let mouseY = 240;
+        let curX = mouseX;
+        let curY = mouseY;
 
-        container.addEventListener('keydown', event => {
-            if (event.key === 'Enter' || event.key === ' ') {
-                event.preventDefault();
-                playAnimation();
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateAmbient() {
+            curX += (mouseX - curX) * 0.08;
+            curY += (mouseY - curY) * 0.08;
+            ambientGlow.style.left = `${curX}px`;
+            ambientGlow.style.top = `${curY}px`;
+            requestAnimationFrame(animateAmbient);
+        }
+        animateAmbient();
+
+        // Copy CLI helper
+        function copySnippet(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+
+            try {
+                document.execCommand('copy');
+                toastMsg.textContent = `Copied: ${text}`;
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2200);
+            } catch (err) {
+                console.error('Failed to copy', err);
+            } finally {
+                document.body.removeChild(textarea);
+            }
+        }
+
+        // Events
+        brandUnit.addEventListener('click', triggerAssembly);
+        themeBtn.addEventListener('click', toggleTheme);
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === ' ' || e.key === 'Enter') {
+                if (document.activeElement === brandUnit || document.activeElement === document.body) {
+                    e.preventDefault();
+                    triggerAssembly();
+                }
             }
         });
 
-        themeBtn.addEventListener('click', toggleTheme);
-
-        playAnimation();
+        // Run on load
+        triggerAssembly();
     </script>
 </body>
 </html>
