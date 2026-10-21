@@ -11,7 +11,7 @@
   "dependencies": {
     "@codesandbox/sandpack-react": "^2.20.0",
     "@zarr20/rakit-routes": "file:./packages/zarr20-rakit-routes-1.1.5.tgz",
-    "@zarr20/rakit-ui": "file:./packages/zarr20-rakit-ui-1.0.0.tgz",
+    "@zarr20/rakit-ui": "file:./packages/zarr20-rakit-ui-1.1.0.tgz",
     "clsx": "^2.1.1",
     "lucide-react": "^1.54.0",
     "react": "^19.0.0",
