@@ -79,7 +79,7 @@ export default function PlaygroundPage() {
                 </Badge>
               </div>
               <p className="text-slate-600 dark:text-slate-400 text-sm mt-0.5">
-                Coba, edit, dan bagikan contoh komponen @zarr20/rakit-ui dan rakit-routes secara real-time.
+                Explore, edit, and share examples of @zarr20/rakit-ui and rakit-routes in real time.
               </p>
             </div>
           </div>
@@ -98,7 +98,7 @@ export default function PlaygroundPage() {
         <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800/60 flex flex-col sm:flex-row sm:items-center gap-2">
           <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 flex items-center gap-1.5 shrink-0 mr-1">
             <Layers className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-            Pilih Contoh:
+            Select Example:
           </span>
           <div className="w-full overflow-x-auto pb-1 sm:pb-0">
             <Tabs

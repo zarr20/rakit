@@ -23,7 +23,7 @@ export function SidebarPackageSwitcher({
   return (
     <div className="p-3 border-b border-slate-200/80 bg-slate-50/60">
       <div className="text-[10px] font-mono font-semibold text-slate-500 uppercase tracking-wider mb-2">
-        Pilih Dokumentasi Paket
+        Documentation Package
       </div>
       <SegmentedControl
         items={items}

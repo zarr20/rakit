@@ -2,7 +2,6 @@ import { useState } from 'react';
 import {
   toast,
   Button,
-  Card,
   type ToastPosition,
 } from '@zarr20/rakit-ui';
 import { PlaygroundHeader } from '../../shared/components/PlaygroundHeader';
@@ -26,80 +25,79 @@ export function ToastFeature() {
   ];
 
   const triggerSuccess = () => {
-    toast.success('File berhasil diunggah ke storage cloud!', {
-      description: 'Ukuran 2.4 MB tersimpan di cluster apac-east.',
+    toast.success('File successfully uploaded to cloud storage!', {
+      description: '2.4 MB stored in apac-east cluster.',
       showProgress,
       theme: toastTheme,
     });
   };
 
   const triggerError = () => {
-    toast.error('Gagal terhubung ke database server!', {
-      description: 'Koneksi timeout setelah 5000ms. Silakan periksa jaringan.',
+    toast.error('Failed to connect to database server!', {
+      description: 'Connection timed out after 5000ms. Please check network settings.',
       showProgress,
       theme: toastTheme,
     });
   };
 
   const triggerInfo = () => {
-    toast.info('Pembaruan sistem dijadwalkan', {
-      description: 'Maintenance rutin pada hari Minggu pukul 02:00 WIB.',
+    toast.info('System update scheduled', {
+      description: 'Routine maintenance on Sunday at 02:00 UTC.',
       showProgress,
       theme: toastTheme,
     });
   };
 
   const triggerWarning = () => {
-    toast.warning('Kapasitas penyimpanan mencapai 85%', {
-      description: 'Pertimbangkan untuk upgrade paket sebelum kuota habis.',
+    toast.warning('Storage capacity reached 85%', {
+      description: 'Consider upgrading your plan before quota is exhausted.',
       showProgress,
       theme: toastTheme,
     });
   };
 
-
   const triggerPromise = () => {
     const fakeAsyncProcess = new Promise((resolve, reject) => {
       setTimeout(() => {
         if (Math.random() > 0.3) resolve('Done');
-        else reject(new Error('Gagal'));
+        else reject(new Error('Failed'));
       }, 2000);
     });
 
     toast.promise(
       fakeAsyncProcess,
       {
-        loading: 'Sedang memproses pembayaran...',
-        success: 'Pembayaran berhasil dikonfirmasi!',
-        error: 'Pembayaran gagal, silakan coba kembali.',
+        loading: 'Processing payment transaction...',
+        success: 'Payment confirmed successfully!',
+        error: 'Payment failed, please try again.',
       }
     );
   };
 
   const sampleSnippet = `import { toast, Toaster } from '@zarr20/rakit-ui';
 
-// 1. Letakkan <Toaster /> di root aplikasi (misal App.tsx)
+// 1. Place <Toaster /> at root of application (e.g. App.tsx)
 <Toaster position="${position}" />
 
-// 2. Panggil kapan saja secara imperatif:
-toast.success('Operasi Berhasil!', {
-  description: 'Data telah disimpan ke database.'
+// 2. Call imperatively at any time:
+toast.success('Operation Successful!', {
+  description: 'Data has been written to the database.'
 });
 
-toast.error('Gagal memproses data');
+toast.error('Failed to process data');
 
-// 3. Promise toast (loading -> success/error otomatis):
+// 3. Promise toast (loading -> success/error automatically):
 toast.promise(fetchApi(), {
-  loading: 'Menyimpan data...',
-  success: 'Data tersimpan!',
-  error: 'Terjadi kesalahan sistem'
+  loading: 'Saving data...',
+  success: 'Data saved!',
+  error: 'System error occurred'
 });`;
 
   return (
     <div className="space-y-12">
       <PlaygroundHeader
         title="Toast Notifications"
-        tagline="Sistem notifikasi toast modern dengan pemanggilan imperatif, dukungan promise loading, durasi otomatis, dan posisi fleksibel."
+        tagline="Modern toast notification system with imperative triggers, promise loading support, auto-dismiss countdowns, and flexible positioning."
         badge="Feedback & Overlay"
         importStatement="import { toast, Toaster } from '@zarr20/rakit-ui';"
       />
@@ -173,9 +171,9 @@ toast.promise(fetchApi(), {
           </PropControls.Canvas>
 
           {/* 2. Responsive Controls Panel */}
-          <PropControls title="Konfigurasi Toaster & Posisi" columns={3}>
+          <PropControls title="Toaster & Position Configuration" columns={2}>
             <PropControls.Segmented
-              label="Pilih Posisi Layar"
+              label="Screen Position"
               items={positions.map((p) => ({ value: p, label: p }))}
               value={position}
               onChange={(p) => setPosition(p as ToastPosition)}
@@ -183,7 +181,7 @@ toast.promise(fetchApi(), {
             />
 
             <PropControls.Segmented
-              label="Tema Warna (Theme)"
+              label="Color Theme"
               items={[
                 { value: 'colored', label: 'Colored' },
                 { value: 'light', label: 'Light' },
@@ -200,7 +198,7 @@ toast.promise(fetchApi(), {
                   label="showProgress"
                   checked={showProgress}
                   onChange={setShowProgress}
-                  description="Countdown timer horizontal di bawah toast"
+                  description="Horizontal countdown timer bar along the bottom of toast"
                 />
               </div>
             </PropControls.Item>
@@ -215,14 +213,14 @@ toast.promise(fetchApi(), {
       <section
         id="examples"
         className="space-y-8 scroll-mt-6 pt-10 border-t border-slate-200/80"
-        data-toc-title="Varian & Skenario"
+        data-toc-title="Variants & Scenarios"
         data-toc-level="1"
       >
         <div className="flex items-center justify-between pb-2 border-b border-slate-200">
           <div className="flex items-center gap-2">
             <Layers className="w-4 h-4 text-emerald-600" />
             <h2 className="text-base font-display font-bold text-slate-900">
-              Varian & Skenario Penggunaan
+              Variants & Usage Scenarios
             </h2>
           </div>
           <span className="text-xs font-mono text-slate-400">#examples</span>
@@ -238,10 +236,10 @@ toast.promise(fetchApi(), {
           >
             <div>
               <h3 className="text-base font-display font-semibold text-slate-900">
-                Toast dengan Tombol Aksi (Action Undo)
+                Toast with Action Buttons (Undo Action)
               </h3>
               <p className="text-xs text-slate-500">
-                Notifikasi interaktif dengan callback aksi pembatalan langsung.
+                Interactive notification with immediate undo action callback.
               </p>
             </div>
             <div className="p-6 rounded-2xl border border-slate-200/90 bg-slate-50/50 flex flex-col items-center justify-center min-h-[140px]">
@@ -249,15 +247,15 @@ toast.promise(fetchApi(), {
                 variant="outline"
                 size="sm"
                 onClick={() => {
-                  toast('1 item dipindahkan ke tempat sampah', {
+                  toast('1 item moved to trash', {
                     action: {
-                      label: 'Urungkan',
-                      onClick: () => toast.success('Tindakan berhasil diurungkan!'),
+                      label: 'Undo',
+                      onClick: () => toast.success('Action successfully undone!'),
                     },
                   });
                 }}
               >
-                Simulasi Hapus Item & Undo
+                Simulate Delete Item & Undo
               </Button>
             </div>
           </div>
@@ -274,7 +272,7 @@ toast.promise(fetchApi(), {
                 Progress Timer Bar
               </h3>
               <p className="text-xs text-slate-500">
-                Indikator visual countdown durasi timeout toast sebelum menghilang.
+                Visual countdown indicator for toast timeout duration before dismissal.
               </p>
             </div>
             <div className="p-6 rounded-2xl border border-slate-200/90 bg-slate-50/50 flex flex-col items-center justify-center min-h-[140px]">
@@ -282,14 +280,14 @@ toast.promise(fetchApi(), {
                 variant="outline"
                 size="sm"
                 onClick={() => {
-                  toast.success('Pembaruan data tersimpan', {
-                    description: 'Notifikasi ini memiliki visual timer 5 detik.',
+                  toast.success('Data updates saved', {
+                    description: 'This notification features a 5-second visual countdown timer.',
                     duration: 5000,
                     showProgress: true,
                   });
                 }}
               >
-                Coba Toast Progress (5 Detik)
+                Try Progress Toast (5 Seconds)
               </Button>
             </div>
           </div>
@@ -306,7 +304,7 @@ toast.promise(fetchApi(), {
                 Custom JSX Layout Toast
               </h3>
               <p className="text-xs text-slate-500">
-                Render elemen React kustom sepenuhnya di dalam toast.
+                Render fully customizable React elements inside toast notifications.
               </p>
             </div>
             <div className="p-6 rounded-2xl border border-slate-200/90 bg-slate-50/50 flex flex-col items-center justify-center min-h-[140px]">
@@ -318,8 +316,8 @@ toast.promise(fetchApi(), {
                     <div className="p-4 bg-slate-900 text-white rounded-xl shadow-xl flex items-center gap-3">
                       <span className="text-xl">🚀</span>
                       <div>
-                        <div className="font-semibold text-xs">Versi 1.2.0 Dirilis!</div>
-                        <div className="text-[11px] text-slate-400">Klik untuk melihat catatan rilis.</div>
+                        <div className="font-semibold text-xs">Version 1.2.0 Released!</div>
+                        <div className="text-[11px] text-slate-400">Click to review release notes.</div>
                       </div>
                     </div>
                   );
@@ -331,7 +329,6 @@ toast.promise(fetchApi(), {
           </div>
         </div>
       </section>
-
 
       {/* Section 3: Props Reference */}
       <section

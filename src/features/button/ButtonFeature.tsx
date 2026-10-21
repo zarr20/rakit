@@ -9,7 +9,7 @@ import { BUTTON_PROPS } from './data/buttonProps';
 export function ButtonFeature() {
   const [variant, setVariant] = useState<ButtonVariant>('primary');
   const [size, setSize] = useState<ButtonSize>('md');
-  const [label, setLabel] = useState('Lanjutkan Proses');
+  const [label, setLabel] = useState('Continue Process');
   const [isLoading, setIsLoading] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [pill, setPill] = useState(false);
@@ -75,7 +75,7 @@ export function ButtonFeature() {
     <div className="space-y-12">
       <PlaygroundHeader
         title="Button"
-        tagline="Tombol interaktif dengan 10 varian tema, state loading spinner built-in, dukungan ikon fleksibel, dan gaya kapsul pill."
+        tagline="Interactive button featuring 10 theme variants, built-in loading spinner state, flexible icon slots, and pill capsule styling."
         badge="General"
         importStatement="import { Button } from '@zarr20/rakit-ui';"
       />
@@ -100,7 +100,7 @@ export function ButtonFeature() {
             onReset={() => {
               setVariant('primary');
               setSize('md');
-              setLabel('Lanjutkan Proses');
+              setLabel('Continue Process');
               setIsLoading(false);
               setDisabled(false);
               setPill(false);
@@ -126,22 +126,22 @@ export function ButtonFeature() {
           </PropControls.Canvas>
 
           {/* 2. Responsive Controls Panel */}
-          <PropControls title="Konfigurasi Props Button" columns={3}>
+          <PropControls title="Button Props Configuration" columns={2}>
             <PropControls.Text
-              label="Label Teks"
+              label="Button Label"
               value={label}
               onChange={setLabel}
             />
 
             <PropControls.Segmented
-              label="Ukuran (Size)"
+              label="Size"
               items={sizesList.map((s) => ({ value: s, label: s }))}
               value={size}
               onChange={(s) => setSize(s as ButtonSize)}
               size="xs"
             />
 
-            <PropControls.Item label={`Varian (${variant})`}>
+            <PropControls.Item label={`Variant (${variant})`}>
               <div className="flex flex-wrap gap-1 p-1 border border-slate-200 rounded-xl bg-slate-50/50">
                 {variantsList.map((v) => (
                   <Button
@@ -158,7 +158,7 @@ export function ButtonFeature() {
             </PropControls.Item>
 
             <PropControls.Segmented
-              label="Ikon Slot"
+              label="Icon Slot"
               items={[
                 { value: 'none', label: 'None' },
                 { value: 'sparkles', label: 'Sparkles' },
@@ -174,7 +174,7 @@ export function ButtonFeature() {
             <div className="col-span-1 sm:col-span-2 grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
               <PropControls.Toggle label="isLoading" checked={isLoading} onChange={setIsLoading} />
               <PropControls.Toggle label="disabled" checked={disabled} onChange={setDisabled} />
-              <PropControls.Toggle label="pill (Kapsul)" checked={pill} onChange={setPill} />
+              <PropControls.Toggle label="pill (Capsule)" checked={pill} onChange={setPill} />
               <PropControls.Toggle label="fullWidth" checked={fullWidth} onChange={setFullWidth} />
             </div>
           </PropControls>
@@ -190,7 +190,7 @@ export function ButtonFeature() {
           <div className="flex items-center gap-2">
             <Layers className="w-4 h-4 text-emerald-600" />
             <h2 className="text-base font-display font-bold text-slate-900">
-              Showcase & Varian Visual
+              Visual Variants Showcase
             </h2>
           </div>
           <span className="text-xs font-mono text-slate-400">#examples</span>
@@ -201,16 +201,16 @@ export function ButtonFeature() {
           <div
             id="button-variants"
             data-toc-id="button-variants"
-            data-toc-title="10 Varian Visual"
+            data-toc-title="10 Visual Variants"
             data-toc-level="2"
             className="space-y-3"
           >
             <div>
               <h3 className="text-sm font-semibold text-slate-800">
-                10 Varian Visual Button
+                10 Visual Button Variants
               </h3>
               <p className="text-xs text-slate-500">
-                Setiap varian dirancang dengan rasio kontras warna yang optimal dan transisi hover yang mulus.
+                Each variant is calibrated with optimal color contrast ratios and smooth interactive hover transitions.
               </p>
             </div>
             <div className="p-6 rounded-2xl border border-slate-200/90 bg-slate-50/50">
@@ -228,16 +228,16 @@ export function ButtonFeature() {
           <div
             id="button-sizes"
             data-toc-id="button-sizes"
-            data-toc-title="Skala Ukuran"
+            data-toc-title="Sizing Scale"
             data-toc-level="2"
             className="space-y-3"
           >
             <div>
               <h3 className="text-sm font-semibold text-slate-800">
-                Skala Ukuran (xs, sm, md, lg, xl, icon)
+                Sizing Scale (xs, sm, md, lg, xl, icon)
               </h3>
               <p className="text-xs text-slate-500">
-                Tinggi dan padding proporsional seragam di semua varian tombol.
+                Uniform heights and proportional padding across all button variants.
               </p>
             </div>
             <div className="p-6 rounded-2xl border border-slate-200/90 bg-slate-50/50">
@@ -267,14 +267,14 @@ export function ButtonFeature() {
                 Loading State & Pill Rounded
               </h3>
               <p className="text-xs text-slate-500">
-                Spinner built-in otomatis saat isLoading aktif dan border radius kapsul penuh dengan prop pill.
+                Built-in automatic spinner when isLoading is active, and full capsule border radius using the pill prop.
               </p>
             </div>
             <div className="p-6 rounded-2xl border border-slate-200/90 bg-slate-50/50">
               <div className="flex flex-wrap items-center gap-3">
-                <Button variant="primary" isLoading>Memproses...</Button>
-                <Button variant="outline" isLoading>Sinkronisasi</Button>
-                <Button variant="danger" isLoading>Menghapus</Button>
+                <Button variant="primary" isLoading>Processing...</Button>
+                <Button variant="outline" isLoading>Syncing...</Button>
+                <Button variant="danger" isLoading>Deleting...</Button>
                 <Button variant="success" pill leftIcon={<Sparkles className="w-4 h-4" />}>
                   Pill Success
                 </Button>

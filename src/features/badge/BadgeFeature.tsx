@@ -39,7 +39,7 @@ export function BadgeFeature() {
     <div className="space-y-12">
       <PlaygroundHeader
         title="Badge & Status"
-        tagline="Indikator status visual terstandarisasi, tag pill, dan penanda kategori dengan 5 skala ukuran seragam."
+        tagline="Standardized visual status indicators, pill tags, and category labels with uniform 5-tier sizing."
         badge="Data Display"
         importStatement="import { Badge } from '@zarr20/rakit-ui';"
       />
@@ -60,7 +60,7 @@ export function BadgeFeature() {
         <div
           id="badge-sizing"
           data-toc-id="badge-sizing"
-          data-toc-title="Skala Ukuran (xs-xl)"
+          data-toc-title="Sizing Scale (xs-xl)"
           data-toc-level="2"
           className="space-y-3"
         >
@@ -68,10 +68,10 @@ export function BadgeFeature() {
             <div className="flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">
-                Universal Sizing Scale (5 Tingkatan Ukuran Seragam)
+                Universal Sizing Scale (5 Uniform Sizing Tiers)
               </h3>
             </div>
-            <span className="text-xs font-mono text-slate-400">Presisi Ketinggian Piksel</span>
+            <span className="text-xs font-mono text-slate-400">Pixel Height Precision</span>
           </div>
 
           <div className="flex flex-wrap items-end gap-5 p-5 rounded-2xl bg-slate-50/50 border border-slate-200/90">
@@ -120,22 +120,22 @@ export function BadgeFeature() {
           </PropControls.Canvas>
 
           {/* 2. Responsive Controls Panel */}
-          <PropControls title="Konfigurasi Props Badge" columns={3}>
+          <PropControls title="Badge Props Configuration" columns={2}>
             <PropControls.Text
-              label="Teks Label"
+              label="Label Text"
               value={label}
               onChange={setLabel}
             />
 
             <PropControls.Segmented
-              label="Ukuran (Size)"
+              label="Size"
               items={badgeSizes.map((s) => ({ value: s, label: s.toUpperCase() }))}
               value={size}
               onChange={(s) => setSize(s as BadgeSize)}
               size="xs"
             />
 
-            <PropControls.Item label={`Varian Warna (${variant})`}>
+            <PropControls.Item label={`Color Variant (${variant})`}>
               <div className="flex flex-wrap gap-1 p-1 border border-slate-200 rounded-xl bg-slate-50/50">
                 {badgeVariants.map((v) => (
                   <Button
@@ -158,12 +158,12 @@ export function BadgeFeature() {
                 onChange={setPill}
               />
               <PropControls.Toggle
-                label="Ikon Kiri (leftIcon)"
+                label="Left Icon (leftIcon)"
                 checked={withLeftIcon}
                 onChange={setWithLeftIcon}
               />
               <PropControls.Toggle
-                label="Ikon Kanan (rightIcon)"
+                label="Right Icon (rightIcon)"
                 checked={withRightIcon}
                 onChange={setWithRightIcon}
               />
@@ -181,7 +181,7 @@ export function BadgeFeature() {
           <div className="flex items-center gap-2">
             <Layers className="w-4 h-4 text-emerald-600" />
             <h2 className="text-base font-display font-bold text-slate-900">
-              Showcase & Varian Status
+              Status Variants Showcase
             </h2>
           </div>
           <span className="text-xs font-mono text-slate-400">#examples</span>
@@ -192,16 +192,16 @@ export function BadgeFeature() {
           <div
             id="badge-variants"
             data-toc-id="badge-variants"
-            data-toc-title="Semua Varian Warna Status"
+            data-toc-title="All Status Color Variants"
             data-toc-level="2"
             className="space-y-3"
           >
             <div>
               <h3 className="text-sm font-semibold text-slate-800">
-                Semua Varian Warna Status Badge
+                All Badge Status Color Variants
               </h3>
               <p className="text-xs text-slate-500">
-                Palet semantik untuk berbagai kondisi status sistem, peringatan, verifikasi, dan kategori.
+                Semantic palette for various system states, alerts, verifications, and categories.
               </p>
             </div>
             <div className="p-6 rounded-2xl border border-slate-200/90 bg-slate-50/50">
@@ -219,28 +219,28 @@ export function BadgeFeature() {
           <div
             id="badge-icons"
             data-toc-id="badge-icons"
-            data-toc-title="Badge dengan Ikon Status"
+            data-toc-title="Badges with Status Icons"
             data-toc-level="2"
             className="space-y-3"
           >
             <div>
               <h3 className="text-sm font-semibold text-slate-800">
-                Badge dengan Ikon Status
+                Badges with Status Icons
               </h3>
               <p className="text-xs text-slate-500">
-                Slot ikon kiri dan kanan untuk indikator visual tambahan.
+                Left and right icon slots for additional visual cues.
               </p>
             </div>
             <div className="p-6 rounded-2xl border border-slate-200/90 bg-slate-50/50">
               <div className="flex flex-wrap items-center gap-3">
                 <Badge variant="success" size="sm" leftIcon={<ShieldCheck className="w-3.5 h-3.5" />}>
-                  Terverifikasi
+                  Verified
                 </Badge>
                 <Badge variant="warning" size="sm" leftIcon={<AlertCircle className="w-3.5 h-3.5" />}>
-                  Menunggu Review
+                  Pending Review
                 </Badge>
                 <Badge variant="primary" size="sm" leftIcon={<Sparkles className="w-3.5 h-3.5" />}>
-                  Fitur Baru
+                  New Feature
                 </Badge>
                 <Badge variant="default" size="sm" leftIcon={<Tag className="w-3.5 h-3.5" />}>
                   v1.2.0
@@ -253,27 +253,27 @@ export function BadgeFeature() {
           <div
             id="badge-shapes"
             data-toc-id="badge-shapes"
-            data-toc-title="Bentuk: Pill vs Rounded Corner"
+            data-toc-title="Shapes: Pill vs Rounded Corner"
             data-toc-level="2"
             className="space-y-3"
           >
             <div>
               <h3 className="text-sm font-semibold text-slate-800">
-                Perbandingan Bentuk: Pill vs Rounded Corner
+                Shape Comparison: Pill vs Rounded Corner
               </h3>
               <p className="text-xs text-slate-500">
-                Gaya kapsul (rounded-full) atau sudut melengkung halus standar (rounded-md/lg).
+                Capsule styling (rounded-full) or subtle proportional rounded corners (rounded-md/lg).
               </p>
             </div>
             <div className="p-6 rounded-2xl border border-slate-200/90 bg-slate-50/50">
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-mono text-slate-500">pill=true:</span>
-                  <Badge variant="primary" size="sm" pill={true}>Kapsul Pill</Badge>
+                  <Badge variant="primary" size="sm" pill={true}>Pill Capsule</Badge>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-mono text-slate-500">pill=false:</span>
-                  <Badge variant="primary" size="sm" pill={false}>Sudut Lengkung</Badge>
+                  <Badge variant="primary" size="sm" pill={false}>Rounded Corner</Badge>
                 </div>
               </div>
             </div>

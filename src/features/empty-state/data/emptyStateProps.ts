@@ -4,38 +4,38 @@ export const EMPTY_STATE_PROPS: PropItem[] = [
   {
     name: 'preset',
     type: "'empty' | '404' | 'error' | 'no-connection' | 'search'",
-    description: 'Preset ilustrasi vektor dan teks bawaan untuk skenario error, 404, offline, dsb.',
+    description: 'Built-in vector illustration and text preset for error, 404, offline, search, and empty scenarios.',
   },
   {
     name: 'title',
     type: 'string',
-    description: 'Judul utama state kosong (misal: "Tidak Ada Data"). Otomatis terisi bila menggunakan preset.',
+    description: 'Primary empty state title (e.g. "No Data Found"). Automatically populated when using presets.',
   },
   {
     name: 'description',
     type: 'string',
-    description: 'Penjelasan atau petunjuk bagi pengguna untuk mengisi data.',
+    description: 'Explanation or instructions for users to populate or resolve data state.',
   },
   {
     name: 'icon',
     type: 'ReactNode',
-    description: 'Elemen ikon grafis di tengah atas.',
+    description: 'Center graphic icon element rendered above the title.',
   },
   {
     name: 'action',
     type: 'ReactNode',
-    description: 'Tombol aksi untuk menyelesaikan empty state (e.g. tombol "Buat Baru").',
+    description: 'Call-to-action button to resolve the empty state (e.g. "Create New" button).',
   },
   {
     name: 'compact',
     type: 'boolean',
     defaultValue: 'false',
-    description: 'Mengurangi ukuran padding dan ikon untuk diletakkan di dalam card kecil atau tabel.',
+    description: 'Reduces padding and icon proportions to fit within small cards or data tables.',
   },
   {
     name: 'theme',
     type: "'light' | 'dark'",
     defaultValue: "'light'",
-    description: 'Mode tema kontras warna.',
+    description: 'Visual color contrast theme mode.',
   },
 ];

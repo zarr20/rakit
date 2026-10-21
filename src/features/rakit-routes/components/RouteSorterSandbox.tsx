@@ -101,10 +101,10 @@ ${routeElements}
         <div className="space-y-3">
           <h3 className="text-base font-display font-semibold text-slate-900 flex items-center gap-2">
             <ArrowUpDown className="w-4 h-4 text-emerald-700" />
-            <span>Pengurutan Rute Deterministik (Deterministic Priority Sorting)</span>
+            <span>Deterministic Priority Route Sorting</span>
           </h3>
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Dalam routing file-system, urutan definisi sangat menentukan! Rute statis (misal: <code className="text-emerald-800 bg-emerald-100/60 px-1 py-0.5 rounded font-mono font-medium">/users/new</code>) harus selalu didefinisikan <strong>sebelum</strong> parameter dinamis (<code className="text-emerald-800 bg-emerald-100/60 px-1 py-0.5 rounded font-mono font-medium">/users/:id</code>) agar tidak tertimpa (shadowing), dan wildcard <code className="text-emerald-800 bg-emerald-100/60 px-1 py-0.5 rounded font-mono font-medium">*</code> selalu di urutan paling akhir.
+            In file-system routing, definition order is critical! Static routes (e.g. <code className="text-emerald-800 bg-emerald-100/60 px-1 py-0.5 rounded font-mono font-medium">/users/new</code>) must always be declared <strong>before</strong> dynamic parameters (<code className="text-emerald-800 bg-emerald-100/60 px-1 py-0.5 rounded font-mono font-medium">/users/:id</code>) to prevent route shadowing, and wildcards <code className="text-emerald-800 bg-emerald-100/60 px-1 py-0.5 rounded font-mono font-medium">*</code> must always come last.
           </p>
         </div>
       </Card>
@@ -116,7 +116,7 @@ ${routeElements}
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-mono uppercase text-slate-500 font-semibold">
-                  Daftar File Virtual ({files.filter((f) => f.enabled).length} Aktif)
+                  Virtual Files List ({files.filter((f) => f.enabled).length} Active)
                 </span>
                 <Button
                   variant="subtle"
@@ -138,7 +138,7 @@ ${routeElements}
                   />
                 </div>
                 <Button variant="primary" size="md" onClick={handleAddFile} leftIcon={<Plus className="w-3.5 h-3.5" />}>
-                  Tambah
+                  Add
                 </Button>
               </div>
 
@@ -163,7 +163,7 @@ ${routeElements}
                       variant="ghost"
                       size="xs"
                       onClick={() => handleRemoveFile(file.id)}
-                      title="Hapus file"
+                      title="Delete file"
                       className="text-slate-400 hover:text-rose-600"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
@@ -181,7 +181,7 @@ ${routeElements}
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-mono uppercase text-slate-500 font-semibold">
-                  Urutan Eksekusi Rute (Hasil sortRoutes)
+                  Route Execution Order (sortRoutes Result)
                 </span>
                 <Badge variant="success" size="xs">
                   Deterministic

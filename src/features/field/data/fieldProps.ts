@@ -4,55 +4,55 @@ export const TEXT_FIELD_PROPS: PropItem[] = [
   {
     name: 'value',
     type: 'string',
-    description: 'Nilai teks controlled input.',
+    description: 'Controlled input text value.',
   },
   {
     name: 'onChange',
     type: '(e: ChangeEvent<HTMLInputElement>) => void',
-    description: 'Callback saat teks berubah.',
+    description: 'Callback fired when text value changes.',
   },
   {
     name: 'placeholder',
     type: 'string',
-    description: 'Placeholder teks saat input kosong.',
+    description: 'Placeholder text displayed when the input is empty.',
   },
   {
     name: 'size',
     type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
     defaultValue: "'md'",
-    description: 'Tingkatan ukuran standar field input.',
+    description: 'Standard size tier for the input field.',
   },
   {
     name: 'clearable',
     type: 'boolean',
     defaultValue: 'false',
-    description: 'Menampilkan tombol silang untuk menghapus isi teks dalam 1 klik.',
+    description: 'Displays a clear button to wipe text content in 1 click.',
   },
   {
     name: 'type',
     type: "'text' | 'email' | 'password' | 'number' | 'tel' | 'url'",
     defaultValue: "'text'",
-    description: 'Tipe elemen input HTML. Jika password, otomatis ada toggle mata show/hide.',
+    description: 'HTML input type. When set to password, automatically includes a show/hide toggle eye icon.',
   },
   {
     name: 'leftIcon',
     type: 'ReactNode',
-    description: 'Ikon di sisi kiri input.',
+    description: 'Icon displayed on the left side of the input.',
   },
   {
     name: 'label',
     type: 'string',
-    description: 'Label field di atas input.',
+    description: 'Field label above the input element.',
   },
   {
     name: 'helperText',
     type: 'string',
-    description: 'Pesan panduan di bawah input.',
+    description: 'Helper guidance message below the input.',
   },
   {
     name: 'error',
     type: 'string | boolean',
-    description: 'Pesan kesalahan atau status error border merah.',
+    description: 'Validation error message or boolean red error ring state.',
   },
 ];
 
@@ -60,42 +60,42 @@ export const AUTOCOMPLETE_PROPS: PropItem[] = [
   {
     name: 'options',
     type: '(AutocompleteOption | string)[]',
-    description: 'Daftar pilihan query data.',
+    description: 'List of queryable data options.',
     required: true,
   },
   {
     name: 'value',
     type: 'string',
-    description: 'Nilai yang terpilih.',
+    description: 'Currently selected value.',
   },
   {
     name: 'onChange',
     type: '(value: string) => void',
-    description: 'Callback saat item dipilih atau diketik.',
+    description: 'Callback fired when an option is selected or text is typed.',
   },
   {
     name: 'size',
     type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
     defaultValue: "'md'",
-    description: 'Ukuran kontrol autocomplete.',
+    description: 'Autocomplete control sizing.',
   },
   {
     name: 'clearable',
     type: 'boolean',
     defaultValue: 'true',
-    description: 'Menampilkan tombol hapus input cepat.',
+    description: 'Shows quick clear input button.',
   },
   {
     name: 'loading',
     type: 'boolean',
     defaultValue: 'false',
-    description: 'Menampilkan spinner saat query asinkron berjalan.',
+    description: 'Shows spinner while async query is resolving.',
   },
   {
     name: 'emptyText',
     type: 'string',
-    defaultValue: "'Tidak ada pilihan yang cocok'",
-    description: 'Pesan ketika tidak ada opsi yang sesuai pencarian.',
+    defaultValue: "'No matching options'",
+    description: 'Message displayed when no options match search query.',
   },
 ];
 
@@ -103,36 +103,36 @@ export const SELECT_PROPS: PropItem[] = [
   {
     name: 'options',
     type: 'Array<{ label: string; value: string | number } | string>',
-    description: 'Daftar pilihan dropdown.',
+    description: 'List of dropdown options.',
     required: true,
   },
   {
     name: 'value',
     type: 'string',
-    description: 'Nilai yang terpilih.',
+    description: 'Currently selected value.',
   },
   {
     name: 'onChange',
     type: '(val: string) => void',
-    description: 'Callback saat item dropdown dipilih.',
+    description: 'Callback fired when dropdown option is selected.',
   },
   {
     name: 'size',
     type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
     defaultValue: "'md'",
-    description: 'Ukuran kontrol select dropdown.',
+    description: 'Dropdown select control sizing.',
   },
   {
     name: 'searchable',
     type: 'boolean',
     defaultValue: 'false',
-    description: 'Mengaktifkan input pencarian internal dalam dropdown.',
+    description: 'Enables embedded search filter input within the dropdown.',
   },
   {
     name: 'clearable',
     type: 'boolean',
     defaultValue: 'false',
-    description: 'Menampilkan tombol hapus pilihan.',
+    description: 'Shows clear button for the selected option.',
   },
 ];
 
@@ -140,23 +140,23 @@ export const MULTI_SELECT_PROPS: PropItem[] = [
   {
     name: 'options',
     type: 'Array<{ label: string; value: string } | string>',
-    description: 'Daftar pilihan tag.',
+    description: 'List of selectable tag options.',
     required: true,
   },
   {
     name: 'value',
     type: 'string[]',
-    description: 'Array nilai yang terpilih.',
+    description: 'Array of currently selected values.',
   },
   {
     name: 'onChange',
     type: '(values: string[]) => void',
-    description: 'Callback saat array tag diperbarui.',
+    description: 'Callback fired when selected tags array is updated.',
   },
   {
     name: 'maxDisplayTags',
     type: 'number',
-    description: 'Batas jumlah tag yang ditampilkan sebelum ringkasan +N.',
+    description: 'Maximum visible tags before truncating to +N indicator.',
   },
 ];
 
@@ -164,24 +164,24 @@ export const TEXT_AREA_PROPS: PropItem[] = [
   {
     name: 'value',
     type: 'string',
-    description: 'Nilai teks multi-baris.',
+    description: 'Multi-line text value.',
   },
   {
     name: 'rows',
     type: 'number',
     defaultValue: '3',
-    description: 'Jumlah baris tinggi textarea default.',
+    description: 'Default textarea row height.',
   },
   {
     name: 'showCount',
     type: 'boolean',
     defaultValue: 'false',
-    description: 'Menampilkan counter jumlah karakter.',
+    description: 'Shows live character counter.',
   },
   {
     name: 'maxLength',
     type: 'number',
-    description: 'Batas maksimal karakter input.',
+    description: 'Maximum permitted character length.',
   },
 ];
 
@@ -189,24 +189,24 @@ export const CHECKBOX_PROPS: PropItem[] = [
   {
     name: 'checked',
     type: 'boolean',
-    description: 'Status centang.',
+    description: 'Checked state boolean.',
   },
   {
     name: 'onChange',
     type: '(checked: boolean) => void',
-    description: 'Callback saat status centang berubah.',
+    description: 'Callback fired when checked state toggles.',
   },
   {
     name: 'indeterminate',
     type: 'boolean',
     defaultValue: 'false',
-    description: 'Status parsial/sebagian (garis horizontal).',
+    description: 'Partial/indeterminate state (horizontal line indicator).',
   },
   {
     name: 'variant',
     type: "'default' | 'card'",
     defaultValue: "'default'",
-    description: 'Varian tampilan standar inline atau kotak kartu interaktif.',
+    description: 'Visual variant: standard inline or interactive card container.',
   },
 ];
 
@@ -214,25 +214,25 @@ export const RADIO_PROPS: PropItem[] = [
   {
     name: 'options',
     type: 'RadioOption[]',
-    description: 'Daftar pilihan radio eksklusif.',
+    description: 'List of mutually exclusive radio choices.',
     required: true,
   },
   {
     name: 'value',
     type: 'string',
-    description: 'Nilai radio aktif.',
+    description: 'Currently selected radio value.',
   },
   {
     name: 'orientation',
     type: "'vertical' | 'horizontal'",
     defaultValue: "'vertical'",
-    description: 'Susunan tata letak item radio.',
+    description: 'Arrangement layout for radio options.',
   },
   {
     name: 'variant',
     type: "'default' | 'card'",
     defaultValue: "'default'",
-    description: 'Varian tampilan standar atau kartu pilihan.',
+    description: 'Visual variant: standard inline or option cards.',
   },
 ];
 
@@ -240,17 +240,17 @@ export const SWITCH_PROPS: PropItem[] = [
   {
     name: 'checked',
     type: 'boolean',
-    description: 'Status aktif on/off.',
+    description: 'Active on/off boolean state.',
   },
   {
     name: 'onChange',
     type: '(checked: boolean) => void',
-    description: 'Callback saat toggle switch berubah.',
+    description: 'Callback fired when switch is toggled.',
   },
   {
     name: 'size',
     type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
     defaultValue: "'md'",
-    description: 'Tingkatan ukuran switch toggle.',
+    description: 'Switch toggle control sizing tier.',
   },
 ];

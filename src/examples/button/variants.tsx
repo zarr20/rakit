@@ -14,16 +14,16 @@ export default function App() {
   return (
     <div style={{ padding: "2rem 1.5rem", maxWidth: "700px", margin: "0 auto", fontFamily: "sans-serif" }}>
       <h2 style={{ fontSize: "1.25rem", fontWeight: "bold", color: "#0f172a", marginBottom: "0.5rem" }}>
-        Varian & Ukuran Button
+        Button Variants & Sizing
       </h2>
       <p style={{ color: "#64748b", fontSize: "0.875rem", marginBottom: "1.5rem" }}>
-        Mendukung skala ukuran seragam (xs, sm, md, lg, xl) serta 10 varian visual.
+        Supports uniform height scaling (xs, sm, md, lg, xl) and 10 visual variants.
       </p>
 
-      {/* Varian Warna */}
+      {/* Core Variants */}
       <div style={{ marginBottom: "2rem" }}>
         <h3 style={{ fontSize: "0.875rem", fontWeight: 600, color: "#475569", marginBottom: "0.75rem", textTransform: "uppercase" }}>
-          Varian Utama
+          Core Variants
         </h3>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", alignItems: "center" }}>
           <Button variant="primary">Primary</Button>
@@ -31,16 +31,16 @@ export default function App() {
           <Button variant="outline">Outline</Button>
           <Button variant="success">Success</Button>
           <Button variant="danger" leftIcon={<Trash2 style={{ width: "1rem", height: "1rem" }} />}>
-            Hapus
+            Delete
           </Button>
           <Button variant="ghost">Ghost</Button>
         </div>
       </div>
 
-      {/* Skala Ukuran */}
+      {/* Size Scale */}
       <div style={{ marginBottom: "2rem" }}>
         <h3 style={{ fontSize: "0.875rem", fontWeight: 600, color: "#475569", marginBottom: "0.75rem", textTransform: "uppercase" }}>
-          Skala Ukuran (xs - xl)
+          Size Scale (xs - xl)
         </h3>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", alignItems: "center" }}>
           <Button size="xs" variant="primary">xs (28px)</Button>
@@ -51,10 +51,10 @@ export default function App() {
         </div>
       </div>
 
-      {/* Interaksi & Loading State */}
+      {/* Loading & Icon Slots */}
       <div>
         <h3 style={{ fontSize: "0.875rem", fontWeight: 600, color: "#475569", marginBottom: "0.75rem", textTransform: "uppercase" }}>
-          Loading & Ikon Slot
+          Loading & Icon Slots
         </h3>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", alignItems: "center" }}>
           <Button
@@ -63,19 +63,19 @@ export default function App() {
             onClick={simulateLoading}
             leftIcon={<Send style={{ width: "1rem", height: "1rem" }} />}
           >
-            Kirim Data
+            Submit Data
           </Button>
           <Button
             variant="outline"
             rightIcon={<ArrowRight style={{ width: "1rem", height: "1rem" }} />}
           >
-            Lanjutkan
+            Continue
           </Button>
           <Button
             variant="secondary"
             leftIcon={<Download style={{ width: "1rem", height: "1rem" }} />}
           >
-            Unduh Laporan
+            Download Report
           </Button>
         </div>
       </div>

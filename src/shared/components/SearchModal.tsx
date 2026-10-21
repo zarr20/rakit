@@ -64,8 +64,8 @@ export function SearchModal({ isOpen, onClose, onSelect }: SearchModalProps) {
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title="Pencarian Cepat Primitives & Fitur"
-      description="Navigasi instan ke komponen, form controls, layout, atau routing."
+      title="Quick Search Primitives & Features"
+      description="Instant navigation across components, form controls, layouts, and routing."
       size="xl"
       closeOnEsc
       closeOnOverlayClick
@@ -79,7 +79,7 @@ export function SearchModal({ isOpen, onClose, onSelect }: SearchModalProps) {
             setQuery(e.target.value);
             setSelectedIndex(0);
           }}
-          placeholder="Cari tombol, modal, table, router..."
+          placeholder="Search button, modal, table, router..."
           leftIcon={<Search className="w-4 h-4 text-slate-400" />}
           clearable
           onClear={() => setQuery('')}
@@ -89,7 +89,7 @@ export function SearchModal({ isOpen, onClose, onSelect }: SearchModalProps) {
         <div className="max-h-72 overflow-y-auto p-1 divide-y divide-slate-100 rounded-xl border border-slate-200">
           {filtered.length === 0 ? (
             <div className="py-8 text-center text-slate-500 text-sm">
-              Tidak ada komponen yang cocok dengan "{query}".
+              No components matching "{query}".
             </div>
           ) : (
             filtered.map((item, idx) => {
@@ -133,8 +133,8 @@ export function SearchModal({ isOpen, onClose, onSelect }: SearchModalProps) {
 
         {/* Footer shortcuts */}
         <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 pt-2 border-t border-slate-200">
-          <span>Gunakan ↑ ↓ navigasi, Enter untuk memilih</span>
-          <span>ESC untuk menutup</span>
+          <span>Use ↑ ↓ to navigate, Enter to select</span>
+          <span>ESC to close</span>
         </div>
       </div>
     </Modal>

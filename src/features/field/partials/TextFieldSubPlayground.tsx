@@ -10,7 +10,7 @@ export function TextFieldSubPlayground() {
   const [clearable, setClearable] = useState(true);
   const [disabled, setDisabled] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [placeholder, setPlaceholder] = useState('Masukkan teks...');
+  const [placeholder, setPlaceholder] = useState('Enter text...');
 
   const sizes: FieldSize[] = ['xs', 'sm', 'md', 'lg', 'xl'];
   const types = [
@@ -35,7 +35,7 @@ export function TextFieldSubPlayground() {
 
   const generateCode = () => {
     const props: string[] = [
-      'label="Nama Akun Pengguna"',
+      'label="User Account Name"',
       `type="${type}"`,
       `value="${type === 'password' ? '********' : value}"`,
       'onChange={(e) => setValue(e.target.value)}',
@@ -44,7 +44,7 @@ export function TextFieldSubPlayground() {
     ];
     if (clearable) props.push('clearable');
     if (disabled) props.push('disabled');
-    if (hasError) props.push('error="Format input tidak sesuai kriteria"');
+    if (hasError) props.push('error="Input format does not meet requirements"');
     props.push('leftIcon={<User className="w-4 h-4" />}');
 
     return `<TextField\n  ${props.join('\n  ')}\n/>`;
@@ -63,12 +63,12 @@ export function TextFieldSubPlayground() {
           setClearable(true);
           setDisabled(false);
           setHasError(false);
-          setPlaceholder('Masukkan teks...');
+          setPlaceholder('Enter text...');
         }}
       >
         <div className="w-full max-w-md space-y-3">
           <TextField
-            label="Field Input Interaktif"
+            label="Interactive Input Field"
             type={type}
             value={value}
             onChange={(e) => setValue(e.target.value)}
@@ -78,27 +78,27 @@ export function TextFieldSubPlayground() {
             onClear={() => setValue('')}
             disabled={disabled}
             leftIcon={getIcon()}
-            error={hasError ? 'Format input tidak sesuai kriteria.' : undefined}
+            error={hasError ? 'Input format does not meet requirements.' : undefined}
             helperText={
               type === 'password'
-                ? 'Ikon mata toggle password otomatis aktif saat type="password".'
-                : 'Ketik nilai untuk melihat state diperbarui secara live.'
+                ? 'Password visibility toggle eye icon activates automatically when type="password".'
+                : 'Type a value to observe live state updates.'
             }
           />
 
           <div className="p-2.5 rounded-lg bg-white border border-slate-200/80 flex items-center justify-between text-xs">
-            <span className="font-mono text-slate-500">Nilai State:</span>
+            <span className="font-mono text-slate-500">State Value:</span>
             <span className="font-mono font-bold text-slate-800 bg-slate-100 px-2 py-0.5 rounded-md truncate max-w-[200px]">
-              {type === 'password' ? '••••••••' : value || '(kosong)'}
+              {type === 'password' ? '••••••••' : value || '(empty)'}
             </span>
           </div>
         </div>
       </PropControls.Canvas>
 
       {/* 2. Responsive Controls Panel */}
-      <PropControls title="Konfigurasi TextField" columns={3}>
+      <PropControls title="TextField Configuration" columns={2}>
         <PropControls.Segmented
-          label="Ukuran (FieldSize)"
+          label="Size (FieldSize)"
           items={sizes.map((s) => ({ value: s, label: s.toUpperCase() }))}
           value={size}
           onChange={(s) => setSize(s as FieldSize)}
@@ -106,7 +106,7 @@ export function TextFieldSubPlayground() {
         />
 
         <PropControls.Segmented
-          label="Tipe Input"
+          label="Input Type"
           items={types}
           value={type}
           onChange={(t) => setType(t as any)}
@@ -120,23 +120,24 @@ export function TextFieldSubPlayground() {
         />
 
         <PropControls.Toggle
-          label="Tombol Hapus (Clearable)"
+          label="Clearable"
           checked={clearable}
           onChange={setClearable}
-          description="Icon silang reset teks"
+          description="Clear button icon for quick reset"
         />
 
         <PropControls.Toggle
-          label="Status Error"
+          label="Error State"
           checked={hasError}
           onChange={setHasError}
-          description="Border merah & helper error"
+          description="Red error border and validation helper"
         />
 
         <PropControls.Toggle
-          label="Nonaktifkan (Disabled)"
+          label="Disabled"
           checked={disabled}
           onChange={setDisabled}
+          description="Disable input field interactions"
         />
       </PropControls>
 

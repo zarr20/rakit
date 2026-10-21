@@ -21,48 +21,48 @@ export function GridFeature() {
     if (presetLayout === 'sidebar') {
       return `<Grid cols={{ base: 1, lg: 12 }} gap="${gap}">
   <Grid.Col span={{ base: 12, lg: 5 }}>
-    <Card padding="medium">Panel Sidebar (5 Kolom)</Card>
+    <Card padding="medium">Sidebar Panel (5 Columns)</Card>
   </Grid.Col>
   <Grid.Col span={{ base: 12, lg: 7 }}>
-    <Card padding="medium">Konten Utama (7 Kolom)</Card>
+    <Card padding="medium">Main Content (7 Columns)</Card>
   </Grid.Col>
 </Grid>`;
     }
     if (presetLayout === 'halves') {
       return `<Grid cols={{ base: 1, md: 2 }} gap="${gap}">
   <Grid.Col span={{ base: 12, md: 6 }}>
-    <Card padding="medium">Kolom Kiri (50%)</Card>
+    <Card padding="medium">Left Column (50%)</Card>
   </Grid.Col>
   <Grid.Col span={{ base: 12, md: 6 }}>
-    <Card padding="medium">Kolom Kanan (50%)</Card>
+    <Card padding="medium">Right Column (50%)</Card>
   </Grid.Col>
 </Grid>`;
     }
     if (presetLayout === 'thirds') {
       return `<Grid cols={{ base: 1, md: 3 }} gap="${gap}">
   <Grid.Col span={{ base: 12, md: 4 }}>
-    <Card padding="medium">Kolom 1/3</Card>
+    <Card padding="medium">Column 1/3</Card>
   </Grid.Col>
   <Grid.Col span={{ base: 12, md: 4 }}>
-    <Card padding="medium">Kolom 2/3</Card>
+    <Card padding="medium">Column 2/3</Card>
   </Grid.Col>
   <Grid.Col span={{ base: 12, md: 4 }}>
-    <Card padding="medium">Kolom 3/3</Card>
+    <Card padding="medium">Column 3/3</Card>
   </Grid.Col>
 </Grid>`;
     }
     return `<Grid cols={{ base: 1, sm: 2, lg: 4 }} gap="${gap}">
   <Grid.Col span={{ base: 12, sm: 6, lg: 3 }}>
-    <Card padding="medium">Kartu Metrik 1</Card>
+    <Card padding="medium">Metric Card 1</Card>
   </Grid.Col>
   <Grid.Col span={{ base: 12, sm: 6, lg: 3 }}>
-    <Card padding="medium">Kartu Metrik 2</Card>
+    <Card padding="medium">Metric Card 2</Card>
   </Grid.Col>
   <Grid.Col span={{ base: 12, sm: 6, lg: 3 }}>
-    <Card padding="medium">Kartu Metrik 3</Card>
+    <Card padding="medium">Metric Card 3</Card>
   </Grid.Col>
   <Grid.Col span={{ base: 12, sm: 6, lg: 3 }}>
-    <Card padding="medium">Kartu Metrik 4</Card>
+    <Card padding="medium">Metric Card 4</Card>
   </Grid.Col>
 </Grid>`;
   };
@@ -71,7 +71,7 @@ export function GridFeature() {
     <div className="space-y-12">
       <PlaygroundHeader
         title="Grid Layout"
-        tagline="Sistem layout 12-kolom responsif dengan token gap terstandarisasi, breakpoint fleksibel, dan perataan sumbu."
+        tagline="Responsive 12-column layout system featuring standardized gap tokens, flexible breakpoints, and cross-axis alignment."
         badge="12-Cols"
         importStatement="import { Grid } from '@zarr20/rakit-ui';"
       />
@@ -107,9 +107,9 @@ export function GridFeature() {
                         <span className="text-xs font-mono font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded">
                           Grid.Col span=5
                         </span>
-                        <h4 className="font-semibold text-slate-900 text-sm">Panel Kontrol Kiri</h4>
+                        <h4 className="font-semibold text-slate-900 text-sm">Left Control Panel</h4>
                         <p className="text-xs text-slate-600 leading-relaxed">
-                          Sangat ideal untuk filter form, list master, atau konfigurasi properties.
+                          Ideal for filter forms, master lists, or property configurations.
                         </p>
                       </div>
                     </Card>
@@ -120,9 +120,9 @@ export function GridFeature() {
                         <span className="text-xs font-mono font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded">
                           Grid.Col span=7
                         </span>
-                        <h4 className="font-semibold text-slate-900 text-sm">Kanvas Konten Utama</h4>
+                        <h4 className="font-semibold text-slate-900 text-sm">Main Content Canvas</h4>
                         <p className="text-xs text-slate-600 leading-relaxed">
-                          Area fleksibel untuk rendering card, tabel analitik, atau formulir detail.
+                          Flexible area for rendering cards, analytics tables, or detailed forms.
                         </p>
                       </div>
                     </Card>
@@ -137,8 +137,8 @@ export function GridFeature() {
                       <span className="text-xs font-mono font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded">
                         span=6 (50%)
                       </span>
-                      <h4 className="font-semibold text-slate-900 text-sm mt-2">Kolom Kiri</h4>
-                      <p className="text-xs text-slate-600 mt-1">Pembagian 2 kolom simetris.</p>
+                      <h4 className="font-semibold text-slate-900 text-sm mt-2">Left Column</h4>
+                      <p className="text-xs text-slate-600 mt-1">Symmetrical 2-column split.</p>
                     </Card>
                   </Grid.Col>
                   <Grid.Col span={{ base: 12, md: 6 }}>
@@ -146,8 +146,8 @@ export function GridFeature() {
                       <span className="text-xs font-mono font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded">
                         span=6 (50%)
                       </span>
-                      <h4 className="font-semibold text-slate-900 text-sm mt-2">Kolom Kanan</h4>
-                      <p className="text-xs text-slate-600 mt-1">Pembagian 2 kolom simetris.</p>
+                      <h4 className="font-semibold text-slate-900 text-sm mt-2">Right Column</h4>
+                      <p className="text-xs text-slate-600 mt-1">Symmetrical 2-column split.</p>
                     </Card>
                   </Grid.Col>
                 </Grid>
@@ -161,8 +161,8 @@ export function GridFeature() {
                         <span className="text-xs font-mono font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded">
                           span=4 (33.3%)
                         </span>
-                        <h4 className="font-semibold text-slate-900 text-sm mt-2">Kartu #{num}</h4>
-                        <p className="text-xs text-slate-600 mt-1">Grid 3 kolom seimbang.</p>
+                        <h4 className="font-semibold text-slate-900 text-sm mt-2">Card #{num}</h4>
+                        <p className="text-xs text-slate-600 mt-1">Balanced 3-column grid.</p>
                       </Card>
                     </Grid.Col>
                   ))}
@@ -193,9 +193,9 @@ export function GridFeature() {
           </PropControls.Canvas>
 
           {/* 2. Responsive Controls Panel */}
-          <PropControls title="Konfigurasi Grid & Kolom" columns={2}>
+          <PropControls title="Grid & Column Configuration" columns={2}>
             <PropControls.Segmented
-              label="Preset Komposisi Kolom"
+              label="Column Composition Preset"
               items={[
                 { value: 'sidebar', label: '5:7 Sidebar' },
                 { value: 'halves', label: '6:6 Split' },
@@ -227,7 +227,7 @@ export function GridFeature() {
           <div className="flex items-center gap-2">
             <Layers className="w-4 h-4 text-emerald-600" />
             <h2 className="text-base font-display font-bold text-slate-900">
-              Showcase Responsif & Breakpoints
+              Responsive Showcase & Breakpoints
             </h2>
           </div>
           <span className="text-xs font-mono text-slate-400">#examples</span>
@@ -237,18 +237,18 @@ export function GridFeature() {
           <div
             id="responsive-breakpoints"
             data-toc-id="responsive-breakpoints"
-            data-toc-title="Pola Breakpoints Responsif"
+            data-toc-title="Responsive Breakpoint Patterns"
             data-toc-level="2"
             className="space-y-3"
           >
             <h3 className="text-base font-display font-semibold text-slate-900 flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-emerald-700" />
-              <span>Pola Responsif Berbasis Breakpoints</span>
+              <span>Responsive Breakpoint Patterns</span>
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Komponen <code className="text-emerald-800 font-mono font-semibold">Grid</code> dan <code className="text-emerald-800 font-mono font-semibold">Grid.Col</code> menerima objek breakpoints:
+              The <code className="text-emerald-800 font-mono font-semibold">Grid</code> and <code className="text-emerald-800 font-mono font-semibold">Grid.Col</code> components accept responsive breakpoint dictionaries:
               <code className="ml-1 text-slate-800 font-mono bg-slate-100 px-1.5 py-0.5 rounded text-xs">{`{ base: 12, sm: 6, lg: 4 }`}</code>.
-              Hal ini menjamin tampilan antarmuka menyesuaikan diri secara mulus di smartphone, tablet, maupun layar desktop lebar.
+              This guarantees layouts adapt smoothly across smartphone, tablet, and wide desktop displays.
             </p>
           </div>
 
@@ -267,7 +267,7 @@ export function GridFeature() {
                     <span>Mobile View (&lt; 768px)</span>
                   </div>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Secara default, kolom akan otomatis meregang menjadi 100% lebar layar (<code className="font-mono text-emerald-800">col-span-12</code>) untuk kenyamanan sentuhan jari.
+                    By default, columns stretch to full width (<code className="font-mono text-emerald-800">col-span-12</code>) for effortless touch usability.
                   </p>
                 </div>
               </Grid.Col>
@@ -279,7 +279,7 @@ export function GridFeature() {
                     <span>Desktop View (&ge; 1024px)</span>
                   </div>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Kolom otomatis terbagi menjadi pembagian proporsional (misal 5 kolom dan 7 kolom) tanpa pergeseran layout.
+                    Columns partition into designated proportions (e.g. 5 columns and 7 columns) without layout shifts.
                   </p>
                 </div>
               </Grid.Col>

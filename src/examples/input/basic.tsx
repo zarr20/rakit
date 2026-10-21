@@ -3,7 +3,7 @@ import { TextField, Select, Switch } from "@zarr20/rakit-ui";
 import "@zarr20/rakit-ui/styles.css";
 
 export default function App() {
-  const [name, setName] = useState("Dzarr Al Ghifari");
+  const [name, setName] = useState("Rakit Dev");
   const [role, setRole] = useState("admin");
   const [notifications, setNotifications] = useState(true);
 
@@ -13,20 +13,20 @@ export default function App() {
         Input Controls
       </h2>
       <p style={{ color: "#64748b", fontSize: "0.875rem", marginBottom: "1.5rem" }}>
-        TextField, Select, dan Switch terintegrasi dengan skala ukuran seragam.
+        TextField, Select, and Switch integrated with uniform size hierarchy.
       </p>
 
       <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
         <TextField
-          label="Nama Lengkap"
-          placeholder="Masukkan nama..."
+          label="Full Name"
+          placeholder="Enter your name..."
           value={name}
           onChange={(e) => setName(e.target.value)}
-          helperText="Nama yang akan ditampilkan di profil."
+          helperText="The name that will be displayed on your profile."
         />
 
         <Select
-          label="Hak Akses / Role"
+          label="Access Permission / Role"
           value={role}
           onChange={(val) => setRole(String(val))}
           options={[
@@ -38,7 +38,7 @@ export default function App() {
 
         <div style={{ paddingTop: "0.5rem" }}>
           <Switch
-            label="Aktifkan Notifikasi Realtime"
+            label="Enable Real-Time Notifications"
             checked={notifications}
             onChange={(checked) => setNotifications(checked)}
           />
@@ -49,7 +49,7 @@ export default function App() {
             State Preview:
           </div>
           <div style={{ fontSize: "0.875rem", color: "#334155" }}>
-            <strong>Nama:</strong> {name || "-"} | <strong>Role:</strong> {role} | <strong>Notifikasi:</strong> {notifications ? "Aktif" : "Mati"}
+            <strong>Name:</strong> {name || "-"} | <strong>Role:</strong> {role} | <strong>Notifications:</strong> {notifications ? "Enabled" : "Disabled"}
           </div>
         </div>
       </div>

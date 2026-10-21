@@ -25,7 +25,7 @@ export function AutocompleteSubPlayground() {
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [placeholder, setPlaceholder] = useState('Ketik framework...');
+  const [placeholder, setPlaceholder] = useState('Type a framework...');
 
   const sizes: FieldSize[] = ['xs', 'sm', 'md', 'lg', 'xl'];
 
@@ -40,14 +40,14 @@ export function AutocompleteSubPlayground() {
     if (clearable) props.push('clearable');
     if (loading) props.push('loading');
     if (disabled) props.push('disabled');
-    if (hasError) props.push('error="Pilihan ini tidak valid"');
+    if (hasError) props.push('error="This option is invalid"');
 
-    return `<Autocomplete\n  label="Pilih Framework"\n  ${props.join('\n  ')}\n/>`;
+    return `<Autocomplete\n  label="Select Web Framework"\n  ${props.join('\n  ')}\n/>`;
   };
 
   return (
     <div className="space-y-6">
-      {/* Educational Banner: Apa itu Autocomplete & Untuk Apa Digunakan? */}
+      {/* Educational Banner: What is Autocomplete & When to Use It? */}
       <Card
         variant="default"
         padding="large"
@@ -60,14 +60,14 @@ export function AutocompleteSubPlayground() {
           <div className="space-y-1.5">
             <div className="flex items-center gap-2">
               <h3 className="font-display font-bold text-base text-slate-900">
-                Apa itu Autocomplete & Kapan Digunakan?
+                What is Autocomplete & When to Use It?
               </h3>
               <Badge variant="success" size="xs">
                 Search-as-you-type Combobox
               </Badge>
             </div>
             <p className="text-xs text-slate-600 leading-relaxed">
-              <strong className="text-slate-900">Autocomplete</strong> adalah kontrol kombinasi (combobox) yang menyaring opsi data secara real-time saat pengguna mengetik. Menggabungkan kecepatan pencarian teks dengan keamanan data terstruktur.
+              <strong className="text-slate-900">Autocomplete</strong> is a combobox control that filters data options in real time as the user types, combining the speed of free-text search with structured data integrity.
             </p>
           </div>
         </div>
@@ -76,30 +76,30 @@ export function AutocompleteSubPlayground() {
           <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1">
             <div className="font-bold text-slate-900 flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              <span>Kapan Pakai Autocomplete?</span>
+              <span>When to Use Autocomplete?</span>
             </div>
             <p className="text-slate-600 leading-relaxed text-[11px]">
-              Gunakan jika opsi <strong>banyak</strong> (&gt;15 item hingga ribuan data seperti Kota, Negara, SKU, atau hasil API jarak jauh). Pengguna tidak perlu scrolling daftar panjang.
+              Use when options are <strong>numerous</strong> (&gt;15 items up to thousands such as Cities, Countries, SKUs, or remote API queries). Eliminates lengthy list scrolling.
             </p>
           </div>
 
           <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1">
             <div className="font-bold text-slate-900 flex items-center gap-1.5">
               <ArrowUpDown className="w-4 h-4 text-blue-600" />
-              <span>Kapan Pakai Select?</span>
+              <span>When to Use Select?</span>
             </div>
             <p className="text-slate-600 leading-relaxed text-[11px]">
-              Gunakan <code className="font-mono text-blue-700">&lt;Select&gt;</code> untuk pilihan statis yang <strong>sedikit</strong> (&lt;10 opsi, misal: Jenis Kelamin, Status Akun, atau Bahasa).
+              Use <code className="font-mono text-blue-700">&lt;Select&gt;</code> for bounded, <strong>small</strong> static option sets (&lt;10 options, e.g. Gender, Account Status, or Language).
             </p>
           </div>
 
           <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1">
             <div className="font-bold text-slate-900 flex items-center gap-1.5">
               <Command className="w-4 h-4 text-purple-600" />
-              <span>Ergonomi Keyboard</span>
+              <span>Keyboard Ergonomics</span>
             </div>
             <p className="text-slate-600 leading-relaxed text-[11px]">
-              Mendukung navigasi penuh: <kbd className="px-1 py-0.5 rounded bg-slate-100 border text-[10px]">↓</kbd> <kbd className="px-1 py-0.5 rounded bg-slate-100 border text-[10px]">↑</kbd> untuk memilih item, <kbd className="px-1 py-0.5 rounded bg-slate-100 border text-[10px]">Enter</kbd> untuk konfirmasi, dan <kbd className="px-1 py-0.5 rounded bg-slate-100 border text-[10px]">Esc</kbd> untuk menutup.
+              Full keyboard navigation support: <kbd className="px-1 py-0.5 rounded bg-slate-100 border text-[10px]">↓</kbd> <kbd className="px-1 py-0.5 rounded bg-slate-100 border text-[10px]">↑</kbd> to highlight items, <kbd className="px-1 py-0.5 rounded bg-slate-100 border text-[10px]">Enter</kbd> to confirm, and <kbd className="px-1 py-0.5 rounded bg-slate-100 border text-[10px]">Esc</kbd> to dismiss.
             </p>
           </div>
         </div>
@@ -118,12 +118,12 @@ export function AutocompleteSubPlayground() {
             setLoading(false);
             setDisabled(false);
             setHasError(false);
-            setPlaceholder('Ketik framework...');
+            setPlaceholder('Type a framework...');
           }}
         >
           <div className="w-full max-w-md space-y-3">
             <Autocomplete
-              label="Pilih Framework Web"
+              label="Select Web Framework"
               options={FRAMEWORK_OPTIONS}
               value={value}
               onChange={(val) => setValue(val)}
@@ -132,23 +132,23 @@ export function AutocompleteSubPlayground() {
               clearable={clearable}
               loading={loading}
               disabled={disabled}
-              error={hasError ? 'Pilihan ini tidak valid atau tidak didukung.' : undefined}
-              helperText="Coba ketik 'Next', 'Vite', 'Nuxt', atau 'Hono'."
+              error={hasError ? 'This option is invalid or unsupported.' : undefined}
+              helperText="Try typing 'Next', 'Vite', 'Nuxt', or 'Hono'."
             />
 
             <div className="p-2.5 rounded-lg bg-white border border-slate-200/80 flex items-center justify-between text-xs">
-              <span className="font-mono text-slate-500">Nilai State Terpilih:</span>
+              <span className="font-mono text-slate-500">Selected State Value:</span>
               <span className="font-mono font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">
-                {value || '(kosong)'}
+                {value || '(empty)'}
               </span>
             </div>
           </div>
         </PropControls.Canvas>
 
         {/* 2. Responsive Controls Panel */}
-        <PropControls title="Konfigurasi Autocomplete" columns={3}>
+        <PropControls title="Autocomplete Configuration" columns={2}>
           <PropControls.Segmented
-            label="Ukuran (FieldSize)"
+            label="Size (FieldSize)"
             items={sizes.map((s) => ({ value: s, label: s.toUpperCase() }))}
             value={size}
             onChange={(s) => setSize(s as FieldSize)}
@@ -162,30 +162,31 @@ export function AutocompleteSubPlayground() {
           />
 
           <PropControls.Toggle
-            label="Tombol Hapus (Clearable)"
+            label="Clearable"
             checked={clearable}
             onChange={setClearable}
-            description="Icon silang reset pilihan"
+            description="Clear button icon to reset selection"
           />
 
           <PropControls.Toggle
-            label="Status Memuat (Loading)"
+            label="Loading State"
             checked={loading}
             onChange={setLoading}
-            description="Spinner indikator async"
+            description="Spinner indicator for async queries"
           />
 
           <PropControls.Toggle
-            label="Status Error"
+            label="Error State"
             checked={hasError}
             onChange={setHasError}
-            description="Border merah & validasi"
+            description="Red border and validation error"
           />
 
           <PropControls.Toggle
-            label="Nonaktifkan (Disabled)"
+            label="Disabled"
             checked={disabled}
             onChange={setDisabled}
+            description="Disable combobox interactions"
           />
         </PropControls>
 

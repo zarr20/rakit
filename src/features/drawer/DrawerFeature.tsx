@@ -2,7 +2,6 @@ import { useState } from 'react';
 import {
   Drawer,
   Button,
-  Card,
   Badge,
   Checkbox,
   TextField,
@@ -20,8 +19,8 @@ export function DrawerFeature() {
   const [isOpen, setIsOpen] = useState(false);
   const [placement, setPlacement] = useState<DrawerPlacement>('right');
   const [size, setSize] = useState<DrawerSize>('md');
-  const [title, setTitle] = useState('Konfigurasi Layanan Cloud');
-  const [description, setDescription] = useState('Sesuaikan alokasi memori dan auto-scaling node.');
+  const [title, setTitle] = useState('Cloud Service Configuration');
+  const [description, setDescription] = useState('Adjust memory allocation and node auto-scaling.');
   const [closeOnEsc, setCloseOnEsc] = useState(true);
   const [closeOnOverlayClick, setCloseOnOverlayClick] = useState(true);
   const [backdropBlur, setBackdropBlur] = useState(true);
@@ -47,16 +46,16 @@ export function DrawerFeature() {
   footer={
     <div className="flex items-center justify-end gap-2">
       <Button variant="secondary" size="sm" onClick={() => setIsOpen(false)}>
-        Batal
+        Cancel
       </Button>
       <Button variant="primary" size="sm" onClick={() => setIsOpen(false)}>
-        Simpan Perubahan
+        Save Changes
       </Button>
     </div>
   }
 >
   <div className="p-4 space-y-4">
-    <p className="text-xs text-slate-600">Konten panel laci (drawer)...</p>
+    <p className="text-xs text-slate-600">Drawer panel content...</p>
   </div>
 </Drawer>`;
   };
@@ -65,7 +64,7 @@ export function DrawerFeature() {
     <div className="space-y-12">
       <PlaygroundHeader
         title="Drawer (Slide-Over)"
-        tagline="Panel laci geser (slide-over) fleksibel dari 4 sisi layar dengan animasi transform, trap focus, dan backdrop glassmorphism."
+        tagline="Flexible slide-over drawer panel from all 4 screen sides with transform animations, focus trapping, and glassmorphism backdrop."
         badge="Feedback & Overlay"
         importStatement="import { Drawer } from '@zarr20/rakit-ui';"
       />
@@ -90,8 +89,8 @@ export function DrawerFeature() {
             onReset={() => {
               setPlacement('right');
               setSize('md');
-              setTitle('Konfigurasi Layanan Cloud');
-              setDescription('Sesuaikan alokasi memori dan auto-scaling node.');
+              setTitle('Cloud Service Configuration');
+              setDescription('Adjust memory allocation and node auto-scaling.');
               setCloseOnEsc(true);
               setCloseOnOverlayClick(true);
               setBackdropBlur(true);
@@ -112,15 +111,15 @@ export function DrawerFeature() {
                 size="md"
                 onClick={() => setIsOpen(true)}
               >
-                Buka Drawer ({placement.toUpperCase()} - {size.toUpperCase()})
+                Open Drawer ({placement.toUpperCase()} - {size.toUpperCase()})
               </Button>
             </div>
           </PropControls.Canvas>
 
           {/* 2. Responsive Controls Panel */}
-          <PropControls title="Konfigurasi Props Drawer" columns={3}>
+          <PropControls title="Drawer Props Configuration" columns={2}>
             <PropControls.Segmented
-              label="Placement (Arah Muncul)"
+              label="Placement"
               items={placementsList.map((p) => ({ value: p, label: p }))}
               value={placement}
               onChange={(p) => setPlacement(p as DrawerPlacement)}
@@ -128,7 +127,7 @@ export function DrawerFeature() {
             />
 
             <PropControls.Segmented
-              label="Size (Dimensi Panel)"
+              label="Size"
               items={sizesList.map((s) => ({ value: s, label: s }))}
               value={size}
               onChange={(s) => setSize(s as DrawerSize)}
@@ -136,7 +135,7 @@ export function DrawerFeature() {
             />
 
             <PropControls.Text
-              label="Title Header"
+              label="Header Title"
               value={title}
               onChange={setTitle}
             />
@@ -151,19 +150,19 @@ export function DrawerFeature() {
               label="closeOnEsc"
               checked={closeOnEsc}
               onChange={setCloseOnEsc}
-              description="Tutup drawer via tombol ESC"
+              description="Close drawer via ESC key"
             />
             <PropControls.Toggle
               label="closeOnOverlayClick"
               checked={closeOnOverlayClick}
               onChange={setCloseOnOverlayClick}
-              description="Tutup drawer via klik backdrop overlay"
+              description="Close drawer by clicking backdrop overlay"
             />
             <PropControls.Toggle
               label="backdropBlur"
               checked={backdropBlur}
               onChange={setBackdropBlur}
-              description="Efek blur glassmorphism pada backdrop"
+              description="Glassmorphism blur effect on backdrop"
             />
           </PropControls>
 
@@ -176,14 +175,14 @@ export function DrawerFeature() {
       <section
         id="examples"
         className="space-y-8 scroll-mt-6 pt-10 border-t border-slate-200/80"
-        data-toc-title="Varian & Skenario"
+        data-toc-title="Variants & Scenarios"
         data-toc-level="1"
       >
         <div className="flex items-center justify-between pb-2 border-b border-slate-200">
           <div className="flex items-center gap-2">
             <Layers className="w-4 h-4 text-emerald-600" />
             <h2 className="text-base font-display font-bold text-slate-900">
-              Varian & Skenario Penggunaan
+              Variants & Usage Scenarios
             </h2>
           </div>
           <span className="text-xs font-mono text-slate-400">#examples</span>
@@ -204,20 +203,20 @@ export function DrawerFeature() {
                   Mobile Sidebar Drawer
                 </h4>
                 <p className="text-xs text-slate-500">
-                  Arah kiri (left) untuk navigasi off-canvas mobile menu.
+                  Left placement for off-canvas mobile navigation menu.
                 </p>
               </div>
             </div>
             <div className="p-6 rounded-2xl border border-slate-200/90 bg-slate-50/50 space-y-4">
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                Komponen Sidebar bawaan Rakit menggunakan Drawer ini untuk navigasi mobile yang mulus dengan backdrop blur.
+                Rakit's built-in Sidebar component leverages this Drawer for seamless mobile navigation with backdrop blur.
               </p>
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => setIsMobileNavOpen(true)}
               >
-                Demo Navigasi Mobile (Left Drawer)
+                Mobile Navigation Demo (Left Drawer)
               </Button>
             </div>
           </div>
@@ -236,20 +235,20 @@ export function DrawerFeature() {
                   Filter & Detail Panel
                 </h4>
                 <p className="text-xs text-slate-500">
-                  Arah kanan (right) untuk slide-over formulir filter.
+                  Right placement for slide-over filter forms.
                 </p>
               </div>
             </div>
             <div className="p-6 rounded-2xl border border-slate-200/90 bg-slate-50/50 space-y-4">
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                Ideal untuk parameter lanjutan atau detail inspeksi tanpa meninggalkan halaman saat ini.
+                Ideal for advanced filter parameters or inspecting details without leaving the current page view.
               </p>
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => setIsFilterOpen(true)}
               >
-                Demo Filter Panel (Right Drawer)
+                Filter Panel Demo (Right Drawer)
               </Button>
             </div>
           </div>
@@ -292,20 +291,20 @@ export function DrawerFeature() {
         footer={
           <div className="flex items-center justify-end gap-2">
             <Button variant="secondary" size="sm" onClick={() => setIsOpen(false)}>
-              Batal
+              Cancel
             </Button>
             <Button variant="primary" size="sm" onClick={() => setIsOpen(false)}>
-              Simpan Perubahan
+              Save Changes
             </Button>
           </div>
         }
       >
         <div className="space-y-4 text-xs text-slate-600 dark:text-slate-300 leading-relaxed p-4">
           <p>
-            Drawer terpasang secara portal ke root DOM dokumen sehingga tidak akan terpotong oleh overflow parent container mana pun.
+            The drawer is portaled to the document root DOM node so it is never clipped by parent overflow containers.
           </p>
           <div className="p-3 rounded-lg bg-emerald-50/80 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 text-emerald-950 dark:text-emerald-200">
-            <strong>Keseragaman Layout:</strong> Sidebar pada mobile secara otomatis memanfaatkan komponen Drawer ini dengan penanganan backdrop dan touch gestures yang serasi.
+            <strong>Layout Consistency:</strong> The mobile sidebar automatically utilizes this Drawer component with consistent backdrop handling and touch gestures.
           </div>
         </div>
       </Drawer>
@@ -316,11 +315,11 @@ export function DrawerFeature() {
         onClose={() => setIsMobileNavOpen(false)}
         placement="left"
         size="sm"
-        title="Menu Navigasi Mobile"
-        description="Contoh panel drawer navigasi samping"
+        title="Mobile Navigation Menu"
+        description="Side drawer navigation panel example"
       >
         <div className="p-4 space-y-1">
-          {['Dashboard', 'Komponen', 'Formulir', 'Tabel Data', 'Pengaturan'].map((item) => (
+          {['Dashboard', 'Components', 'Forms', 'Data Tables', 'Settings'].map((item) => (
             <Button
               key={item}
               variant="ghost"
@@ -340,29 +339,29 @@ export function DrawerFeature() {
         onClose={() => setIsFilterOpen(false)}
         placement="right"
         size="md"
-        title="Filter Lanjutan"
-        description="Sesuaikan kriteria pencarian data"
+        title="Advanced Filters"
+        description="Refine your search criteria"
         footer={
           <div className="flex items-center justify-end gap-2">
             <Button variant="ghost" size="sm" onClick={() => setIsFilterOpen(false)}>
               Reset
             </Button>
             <Button variant="primary" size="sm" onClick={() => setIsFilterOpen(false)}>
-              Terapkan Filter
+              Apply Filters
             </Button>
           </div>
         }
       >
         <div className="p-4 space-y-4">
-          <TextField label="Cari Kata Kunci" placeholder="Ketik nama atau ID..." size="sm" />
+          <TextField label="Search Keywords" placeholder="Type name or ID..." size="sm" />
           <div className="space-y-2">
             <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">
-              Status Entitas
+              Entity Status
             </label>
             <div className="space-y-1.5">
-              <Checkbox label="Aktif & Beroperasi" defaultChecked size="sm" />
-              <Checkbox label="Tertunda (Pending)" size="sm" />
-              <Checkbox label="Diarsipkan (Archived)" size="sm" />
+              <Checkbox label="Active & Operational" defaultChecked size="sm" />
+              <Checkbox label="Pending" size="sm" />
+              <Checkbox label="Archived" size="sm" />
             </div>
           </div>
         </div>

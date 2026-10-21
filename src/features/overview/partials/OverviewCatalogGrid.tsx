@@ -48,7 +48,7 @@ export function OverviewCatalogGrid() {
   const [activeCategory, setActiveCategory] = useState<string>('all');
 
   const categories = [
-    { id: 'all', label: 'Semua Komponen' },
+    { id: 'all', label: 'All Components' },
     { id: 'Layout & Structure', label: 'Layout' },
     { id: 'Inputs & Forms', label: 'Forms' },
     { id: 'Data Display', label: 'Data Display' },
@@ -68,10 +68,10 @@ export function OverviewCatalogGrid() {
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <h2 className="text-2xl sm:text-3xl font-display font-bold text-slate-900 tracking-tight">
-            Katalog Primitives & Komponen
+            Primitives & Components Catalog
           </h2>
           <p className="text-slate-600 text-sm mt-1">
-            Pilih komponen untuk melihat dokumentasi API, playground interaktif, dan props.
+            Select a component to explore API documentation, interactive playground, and props.
           </p>
         </div>
 
@@ -115,7 +115,7 @@ export function OverviewCatalogGrid() {
                 </div>
 
                 <div className="pt-3 mt-3 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-emerald-700 font-medium">
-                  <span>Lihat Dokumentasi</span>
+                  <span>View Documentation</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </Card>

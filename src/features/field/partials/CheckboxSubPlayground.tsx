@@ -17,8 +17,8 @@ export function CheckboxSubPlayground() {
 
   const generateCode = () => {
     const props: string[] = [
-      'label="Langganan Buletin Pengembang"',
-      'description="Dapatkan info rilis komponen setiap minggu."',
+      'label="Developer Newsletter Subscription"',
+      'description="Get weekly component release tips and updates."',
       `checked={${checked}}`,
       'onChange={setChecked}',
       `size="${size}"`,
@@ -46,8 +46,8 @@ export function CheckboxSubPlayground() {
       >
         <div className="w-full max-w-md space-y-3">
           <Checkbox
-            label="Langganan Buletin Pengembang"
-            description="Dapatkan pembaruan dan tips rilis komponen setiap minggu."
+            label="Developer Newsletter Subscription"
+            description="Get weekly component release tips and updates."
             checked={checked}
             onChange={setChecked}
             size={size}
@@ -57,7 +57,7 @@ export function CheckboxSubPlayground() {
           />
 
           <div className="p-2.5 rounded-lg bg-white border border-slate-200/80 flex items-center justify-between text-xs">
-            <span className="font-mono text-slate-500">Nilai State (Boolean):</span>
+            <span className="font-mono text-slate-500">State Value (Boolean):</span>
             <span className="font-mono font-bold text-slate-800 bg-slate-100 px-2 py-0.5 rounded-md">
               {indeterminate ? 'indeterminate' : checked ? 'true (checked)' : 'false (unchecked)'}
             </span>
@@ -66,9 +66,9 @@ export function CheckboxSubPlayground() {
       </PropControls.Canvas>
 
       {/* 2. Responsive Controls Panel */}
-      <PropControls title="Konfigurasi Checkbox" columns={2}>
+      <PropControls title="Checkbox Configuration" columns={2}>
         <PropControls.Segmented
-          label="Ukuran (FieldSize)"
+          label="Size (FieldSize)"
           items={sizes.map((s) => ({ value: s, label: s.toUpperCase() }))}
           value={size}
           onChange={(s) => setSize(s as FieldSize)}
@@ -76,7 +76,7 @@ export function CheckboxSubPlayground() {
         />
 
         <PropControls.Segmented
-          label="Varian Tampilan"
+          label="Visual Variant"
           items={variants}
           value={variant}
           onChange={(v) => setVariant(v as any)}
@@ -87,13 +87,14 @@ export function CheckboxSubPlayground() {
           label="Indeterminate State"
           checked={indeterminate}
           onChange={setIndeterminate}
-          description="Status parsial (garis horizontal)"
+          description="Partial status (horizontal dash)"
         />
 
         <PropControls.Toggle
-          label="Nonaktifkan (Disabled)"
+          label="Disabled"
           checked={disabled}
           onChange={setDisabled}
+          description="Disable checkbox interactions"
         />
       </PropControls>
 

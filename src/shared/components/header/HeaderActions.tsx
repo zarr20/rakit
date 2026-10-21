@@ -61,7 +61,7 @@ export function HeaderActions({
           size="sm"
           onClick={() => setIsSwitcherOpen((prev) => !prev)}
           className="h-8.5 text-xs font-mono font-medium gap-1.5"
-          title="Pilih Paket Dokumentasi Aktif"
+          title="Select Active Documentation Package"
           leftIcon={
             currentPkg.id === 'rakit-ui' ? (
               <Layers className="w-3.5 h-3.5 text-emerald-600" />
@@ -78,7 +78,7 @@ export function HeaderActions({
         {isSwitcherOpen && (
           <div className="absolute right-0 mt-1.5 w-64 rounded-xl border border-slate-200 bg-white p-1.5 shadow-xl z-50 animate-in fade-in zoom-in-95">
             <div className="px-2 py-1 text-[11px] font-mono font-semibold text-slate-400 uppercase tracking-wider">
-              Pilih Paket Ekosistem
+              Select Ecosystem Package
             </div>
             {PACKAGES_LIST.map((pkg) => {
               const isSelected = pkg.id === currentPkg.id;
@@ -112,7 +112,7 @@ export function HeaderActions({
         size="icon"
         onClick={onOpenSearch}
         className="md:hidden text-slate-500 h-8.5 w-8.5"
-        aria-label="Cari Komponen"
+        aria-label="Search Components"
       >
         <Search className="w-4 h-4" />
       </Button>
@@ -122,7 +122,7 @@ export function HeaderActions({
         href={currentPkg.npmUrl}
         target="_blank"
         rel="noreferrer"
-        title="Lihat di NPM Registry"
+        title="View on NPM Registry"
         className="hidden sm:inline-flex"
       >
         <Button variant="ghost" size="icon" className="text-slate-500 h-8.5 w-8.5">
@@ -135,7 +135,7 @@ export function HeaderActions({
         href="https://github.com/zarr20/rakit"
         target="_blank"
         rel="noreferrer"
-        title="Lihat Repositori GitHub"
+        title="View GitHub Repository"
         className="hidden sm:inline-flex"
       >
         <Button variant="ghost" size="icon" className="text-slate-500 h-8.5 w-8.5">
@@ -156,7 +156,7 @@ export function HeaderActions({
           size="icon"
           onClick={onToggleMobileSidebar}
           className="lg:hidden h-8.5 w-8.5 text-slate-700"
-          aria-label="Buka Menu Sidebar"
+          aria-label="Open Sidebar Menu"
         >
           <Menu className="w-4 h-4" />
         </Button>

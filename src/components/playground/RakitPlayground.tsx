@@ -59,6 +59,7 @@ export function RakitPlayground({
       showToolbar={showToolbar}
       scope={routesScope}
       className={className}
+      theme='light'
     />
   );
 }

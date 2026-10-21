@@ -74,32 +74,32 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 @import "tailwindcss";
 @import "@zarr20/rakit-ui/styles.css";
 
-/* Rakit Dark Mode Variant (Opsional) */
+/* Rakit Dark Mode Variant (Optional) */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
-/* Override Design Tokens (Opsional) */
+/* Override Design Tokens (Optional) */
 :root {
   --rakit-font-sans: 'Inter', -apple-system, sans-serif;
   --rakit-radius: 0.75rem;
 }`;
 
   const identifiersData = [
-    { component: 'Button', classIdentifier: '.rakit-btn', dataAttr: 'data-rakit="button"', description: 'Elemen tombol interaktif dengan 10 varian' },
-    { component: 'Card', classIdentifier: '.rakit-card', dataAttr: 'data-rakit="card"', description: 'Wadah modular compound dengan border & padding' },
-    { component: 'Badge', classIdentifier: '.rakit-badge', dataAttr: 'data-rakit="badge"', description: 'Tag pill status dengan 5 skala ukuran' },
-    { component: 'SegmentedControl', classIdentifier: '.rakit-segmented-control', dataAttr: 'data-rakit="segmented-control"', description: 'Connected pill switches untuk mode & tab' },
-    { component: 'TextField', classIdentifier: '.rakit-input, .rakit-field-wrapper', dataAttr: 'data-rakit="text-field"', description: 'Kontrol input form dengan icon slot & error message' },
-    { component: 'Grid', classIdentifier: '.rakit-grid, .rakit-grid-col', dataAttr: 'data-rakit="grid"', description: 'Sistem layout responsif 12 kolom' },
-    { component: 'Table', classIdentifier: '.rakit-table', dataAttr: 'data-rakit="table"', description: 'Tabel data tabular responsif' },
-    { component: 'Modal', classIdentifier: '.rakit-modal', dataAttr: 'data-rakit="modal"', description: 'Dialog modal overlay dengan backdrop' },
-    { component: 'Drawer', classIdentifier: '.rakit-drawer', dataAttr: 'data-rakit="drawer"', description: 'Panel geser samping (slide-over panel)' },
+    { component: 'Button', classIdentifier: '.rakit-btn', dataAttr: 'data-rakit="button"', description: 'Interactive button element with 10 visual variants' },
+    { component: 'Card', classIdentifier: '.rakit-card', dataAttr: 'data-rakit="card"', description: 'Modular compound container with border & padding' },
+    { component: 'Badge', classIdentifier: '.rakit-badge', dataAttr: 'data-rakit="badge"', description: 'Status pill tag with 5 size tiers' },
+    { component: 'SegmentedControl', classIdentifier: '.rakit-segmented-control', dataAttr: 'data-rakit="segmented-control"', description: 'Connected pill switches for mode & tab selection' },
+    { component: 'TextField', classIdentifier: '.rakit-input, .rakit-field-wrapper', dataAttr: 'data-rakit="text-field"', description: 'Form input control with icon slots & error messaging' },
+    { component: 'Grid', classIdentifier: '.rakit-grid, .rakit-grid-col', dataAttr: 'data-rakit="grid"', description: 'Responsive 12-column layout grid system' },
+    { component: 'Table', classIdentifier: '.rakit-table', dataAttr: 'data-rakit="table"', description: 'Responsive tabular data table' },
+    { component: 'Modal', classIdentifier: '.rakit-modal', dataAttr: 'data-rakit="modal"', description: 'Modal overlay dialog with backdrop' },
+    { component: 'Drawer', classIdentifier: '.rakit-drawer', dataAttr: 'data-rakit="drawer"', description: 'Slide-over panel with 4 placement directions' },
   ];
 
   return (
     <div className="space-y-12">
       <PlaygroundHeader
         title="Theming & RakitProvider"
-        tagline="Arsitektur tema enterprise, RakitProvider Context, defineRakitConfig, semantic identifiers, dan token Tailwind CSS v4."
+        tagline="Enterprise theming architecture, RakitProvider Context, defineRakitConfig, semantic identifiers, and Tailwind CSS v4 tokens."
         badge="Architecture"
         importStatement="import { RakitProvider, defineRakitConfig } from '@zarr20/rakit-ui';"
       />
@@ -147,8 +147,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 </div>
 
                 <TextField
-                  label="Pratinjau Input"
-                  placeholder="Ketik sesuatu..."
+                  label="Input Preview"
+                  placeholder="Type something..."
                   defaultValue="Rakit Enterprise UI"
                   size="sm"
                 />
@@ -158,10 +158,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                     type="button"
                     className={`px-3 py-1.5 text-xs font-semibold ${radiusStyles} ${accentStyles} transition-all shadow-2xs cursor-pointer`}
                   >
-                    Aksi Utama
+                    Primary Action
                   </button>
                   <Button variant="secondary" size="sm">
-                    Sekunder
+                    Secondary
                   </Button>
                   <Badge variant="success" size="sm">
                     {enableIdentifiers ? 'Identifiers ON' : 'Pure CSS'}
@@ -172,7 +172,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           </PropControls.Canvas>
 
           {/* 2. Responsive Controls Panel */}
-          <PropControls title="Konfigurasi Props RakitProvider" columns={3}>
+          <PropControls title="RakitProvider Props Configuration" columns={2}>
             <PropControls.Text
               label="Class Prefix"
               value={prefix}
@@ -194,7 +194,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             />
 
             <PropControls.Segmented
-              label="Warna Aksen Inti"
+              label="Core Accent Color"
               items={[
                 { value: 'emerald', label: 'Emerald' },
                 { value: 'blue', label: 'Blue' },
@@ -210,10 +210,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               <PropControls.Item label="Semantic Identifiers">
                 <div className="pt-1">
                   <PropControls.Toggle
-                    label="Aktifkan Semantic Identifiers"
+                    label="Enable Semantic Identifiers"
                     checked={enableIdentifiers}
                     onChange={setEnableIdentifiers}
-                    description={`Tambahkan kelas .${prefix}-* dan data-rakit="*" ke DOM`}
+                    description={`Add .${prefix}-* classes and data-rakit="*" to DOM elements`}
                   />
                 </div>
               </PropControls.Item>
@@ -231,7 +231,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <div className="flex items-center gap-2">
             <Layers className="w-4 h-4 text-emerald-600" />
             <h2 className="text-base font-display font-bold text-slate-900">
-              Panduan Setup & Integrasi
+              Setup & Integration Guide
             </h2>
           </div>
           <span className="text-xs font-mono text-slate-400">#examples</span>
@@ -241,16 +241,16 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <div
             id="root-provider"
             data-toc-id="root-provider"
-            data-toc-title="Setup Provider di Root"
+            data-toc-title="Root Provider Setup"
             data-toc-level="2"
             className="space-y-3"
           >
             <div>
               <h3 className="text-base font-display font-semibold text-slate-900">
-                1. Setup Provider di Root Aplikasi
+                1. Setup Provider at Application Root
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed mt-1">
-                Bungkus aplikasi React Anda dengan <code className="px-1.5 py-0.5 rounded bg-slate-100 font-mono text-[11px]">&lt;RakitProvider&gt;</code> untuk menerapkan konfigurasi override secara universal tanpa perlu menyentuh prop di setiap pemanggilan komponen.
+                Wrap your React application with <code className="px-1.5 py-0.5 rounded bg-slate-100 font-mono text-[11px]">&lt;RakitProvider&gt;</code> to apply universal config overrides without altering individual component props.
               </p>
             </div>
             <CodeViewer value={setupSnippet} language="tsx" theme="dark" showToolbar={true} />
@@ -265,10 +265,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           >
             <div>
               <h3 className="text-base font-display font-semibold text-slate-900">
-                2. Konfigurasi Tailwind CSS v4 & Dark Mode
+                2. Tailwind CSS v4 & Dark Mode Setup
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed mt-1">
-                Di Tailwind CSS v4, konfigurasi dilakukan langsung pada file CSS utama menggunakan direktif <code className="px-1.5 py-0.5 rounded bg-slate-100 font-mono text-[11px]">@custom-variant</code> dan variabel CSS kustom.
+                In Tailwind CSS v4, setup is configured directly in your root CSS stylesheet using the <code className="px-1.5 py-0.5 rounded bg-slate-100 font-mono text-[11px]">@custom-variant</code> directive and CSS variables.
               </p>
             </div>
             <CodeViewer value={tailwindSnippet} language="css" theme="dark" showToolbar={true} />
@@ -297,10 +297,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         >
           <div>
             <h3 className="text-base font-display font-semibold text-slate-900">
-              Daftar Semantic Identifiers & Data Attributes
+              Semantic Identifiers & Data Attributes Directory
             </h3>
             <p className="text-xs text-slate-600 mt-1">
-              Seluruh komponen Rakit UI menyertakan class identifier semantik dan atribut <code className="font-mono text-[11px]">data-rakit="*"</code> untuk mempermudah targeting selector di level global atau testing suite (Playwright / Cypress).
+              All Rakit UI components include semantic class identifiers and a <code className="font-mono text-[11px]">data-rakit="*"</code> attribute to simplify global targeting and automated testing suites (Playwright / Cypress).
             </p>
           </div>
 
@@ -309,7 +309,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             columns={[
               {
                 key: 'component',
-                title: 'Komponen',
+                title: 'Component',
                 width: '18%',
                 render: (row) => (
                   <span className="font-bold text-slate-900 font-mono text-xs sm:text-[13px]">
@@ -339,7 +339,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               },
               {
                 key: 'description',
-                title: 'Deskripsi',
+                title: 'Description',
                 width: '28%',
                 render: (row) => (
                   <span className="font-sans text-xs sm:text-sm text-slate-600 leading-relaxed">

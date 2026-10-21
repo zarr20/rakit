@@ -20,9 +20,9 @@ export function ContainerFeature() {
   const generateCode = () => {
     return `<Container size="${size}" variant="${variant}" padding="medium">
   <div className="py-6 px-4 text-center">
-    <h2 className="text-base font-bold text-slate-900">Judul Konten Halaman</h2>
+    <h2 className="text-base font-bold text-slate-900">Page Content Title</h2>
     <p className="text-xs text-slate-600 mt-1 max-w-md mx-auto">
-      Container mengelola batas lebar responsif, alignment tengah, dan padding otomatis.
+      Container manages responsive max-width constraints, center alignment, and standardized padding.
     </p>
   </div>
 </Container>`;
@@ -32,7 +32,7 @@ export function ContainerFeature() {
     <div className="space-y-12">
       <PlaygroundHeader
         title="Container & Layout"
-        tagline="Primitif tata letak struktural aplikasi: Container pembatas lebar, ActionBar, Layout shell, Sidebar, dan Backdrop."
+        tagline="Structural application layout primitives: Max-width Container, ActionBar, Layout shell, Sidebar, and Backdrop."
         badge="Layout & Structure"
         importStatement="import { Container, ActionBar, Layout } from '@zarr20/rakit-ui';"
       />
@@ -49,9 +49,9 @@ export function ContainerFeature() {
           <span className="text-xs font-mono text-slate-400">#playground</span>
         </div>
 
-        {/* Responsive Full-Width Studio Layout (Canvas on top, controls below) */}
+        {/* Responsive Full-Width Studio Layout */}
         <div className="space-y-4">
-          {/* 1. Full Width Live Canvas (Without fake sub-cards) */}
+          {/* 1. Full Width Live Canvas */}
           <PropControls.Canvas
             codeSnippet={generateCode()}
             onReset={() => {
@@ -66,7 +66,7 @@ export function ContainerFeature() {
                     &lt;Container size="{size}" variant="{variant}" padding="medium"&gt;
                   </div>
                   <p className="text-xs text-slate-600 max-w-lg mx-auto leading-relaxed">
-                    Container membatasi lebar maksimal di tengah layar secara responsif dengan padding horizontal terstandarisasi.
+                    Container constrains maximum width centered on screen responsively with standardized horizontal padding.
                   </p>
                 </div>
               </Container>
@@ -74,9 +74,9 @@ export function ContainerFeature() {
           </PropControls.Canvas>
 
           {/* 2. Responsive Controls Panel */}
-          <PropControls title="Konfigurasi Container & Shell" columns={2}>
+          <PropControls title="Container & Shell Configuration" columns={2}>
             <PropControls.Segmented
-              label="Lebar Maksimal (Size)"
+              label="Max Width (Size)"
               items={sizes.map((s) => ({ value: s, label: s.toUpperCase() }))}
               value={size}
               onChange={(s) => setSize(s as ContainerSize)}
@@ -84,7 +84,7 @@ export function ContainerFeature() {
             />
 
             <PropControls.Segmented
-              label="Varian Tampilan"
+              label="Visual Variant"
               items={variants.map((v) => ({ value: v, label: v }))}
               value={variant}
               onChange={(v) => setVariant(v as ContainerVariant)}
@@ -119,10 +119,10 @@ export function ContainerFeature() {
         >
           <div>
             <h3 className="text-base font-display font-semibold text-slate-900">
-              Skala Lebar Maksimal Container (Breakpoint Widths)
+              Container Max Width Scale (Breakpoint Widths)
             </h3>
             <p className="text-xs text-slate-500 mt-0.5">
-              Container mengunci lebar maksimal di tengah kanvas (center alignment) dengan padding horizontal otomatis.
+              Container constrains maximum width at the center of the canvas with automatic horizontal padding.
             </p>
           </div>
 
@@ -137,7 +137,7 @@ export function ContainerFeature() {
                 </div>
                 <Container size={s} variant="bordered" padding="small" className="bg-white">
                   <div className="py-2 text-center text-xs font-mono text-slate-700">
-                    Area Konten Container ({s})
+                    Container Content Area ({s})
                   </div>
                 </Container>
               </div>

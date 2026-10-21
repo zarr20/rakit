@@ -36,9 +36,9 @@ export function SandboxFeature() {
         status: 'success',
         statusCode: 200,
         data: [
-          { id: 1, name: 'Dzarr Al Ghifari', role: 'Architect', active: true },
-          { id: 2, name: 'Sarah Jenkins', role: 'Designer', active: true },
-          { id: 3, name: 'Alex Rivera', role: 'DevOps', active: false },
+          { id: 1, name: 'Budi Santoso', role: 'Architect', active: true },
+          { id: 2, name: 'Citra Lestari', role: 'Designer', active: true },
+          { id: 3, name: 'Joko Widodo', role: 'DevOps', active: false },
         ],
         metadata: {
           page: 1,
@@ -64,7 +64,7 @@ export function SandboxFeature() {
       setIsSubmitting(false);
       const code = method === 'POST' ? 201 : method === 'DELETE' ? 204 : 200;
       const duration = Math.floor(Math.random() * 80) + 15;
-      const now = new Date().toLocaleTimeString('id-ID');
+      const now = new Date().toLocaleTimeString('en-US');
 
       const newItem: HistoryItem = {
         id: String(Date.now()),
@@ -84,15 +84,15 @@ export function SandboxFeature() {
         statusCode: code,
         timestamp: new Date().toISOString(),
         payload: {
-          message: `Request [${method}] ${endpoint} berhasil dieksekusi.`,
+          message: `Request [${method}] ${endpoint} successfully executed.`,
           durationMs: duration,
         },
       };
 
       setActiveJson(JSON.stringify(mockResponse, null, 2));
 
-      toast.success(`Request ${method} berhasil!`, {
-        description: `${endpoint} merespons dengan kode ${code} (${duration}ms)`,
+      toast.success(`Request ${method} succeeded!`, {
+        description: `${endpoint} responded with status code ${code} (${duration}ms)`,
       });
     }, 600);
   };
@@ -135,7 +135,7 @@ export function SandboxFeature() {
     },
     {
       key: 'time',
-      title: 'Waktu',
+      title: 'Time',
       align: 'right',
       render: (r) => <span className="font-mono text-[11px] text-slate-500">{r.time}</span>,
     },
@@ -154,7 +154,7 @@ export function SandboxFeature() {
           </Badge>
         </div>
         <p className="text-slate-600 text-sm sm:text-base">
-          Uji coba integrasi nyata: kirim HTTP request simulasi, pantau riwayat tabel log real-time, dan telusuri respon JSON dalam editor visual!
+          Test real integrations: dispatch simulated HTTP requests, monitor real-time table logs, and inspect JSON responses in the visual code editor!
         </p>
       </div>
 
@@ -207,7 +207,7 @@ export function SandboxFeature() {
               onClick={handleSendRequest}
               rightIcon={<Send className="w-4 h-4" />}
             >
-              Kirim Request
+              Send Request
             </Button>
           </div>
         </div>
@@ -219,7 +219,7 @@ export function SandboxFeature() {
         <Grid.Col span={{ base: 12, lg: 6 }} className="space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-xs font-mono uppercase text-slate-500 font-semibold tracking-wider">
-              Respon JSON (CodeEditor)
+              JSON Response (CodeEditor)
             </span>
             <span className="text-[11px] font-mono text-emerald-700 font-bold">HTTP 200 OK</span>
           </div>
@@ -244,7 +244,7 @@ export function SandboxFeature() {
         <Grid.Col span={{ base: 12, lg: 6 }} className="space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-xs font-mono uppercase text-slate-500 font-semibold tracking-wider">
-              Log Riwayat Request (Table)
+              Request History Log (Table)
             </span>
             <Button
               variant="subtle"
@@ -252,7 +252,7 @@ export function SandboxFeature() {
               onClick={() => setHistory([])}
               leftIcon={<Trash2 className="w-3.5 h-3.5" />}
             >
-              Hapus Log
+              Clear Log
             </Button>
           </div>
 
@@ -263,8 +263,8 @@ export function SandboxFeature() {
               size="sm"
               striped
               rowKey={(r) => r.id}
-              emptyTitle="Belum Ada Riwayat Request"
-              emptyMessage="Klik tombol 'Kirim Request' di atas untuk memicu pemanggilan API simulasi."
+              emptyTitle="No Request History"
+              emptyMessage="Click 'Send Request' above to trigger a simulated API call."
             />
           </Card>
         </Grid.Col>

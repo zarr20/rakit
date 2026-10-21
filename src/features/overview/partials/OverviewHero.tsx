@@ -15,11 +15,11 @@ export function OverviewHero() {
       </div>
 
       <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-slate-900 tracking-tight leading-[1.15]">
-        Fondasi Enterprise untuk Aplikasi Web Modern.
+        The Enterprise Foundation for Modern Web Applications.
       </h1>
 
       <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-        Kombinasi pustaka komponen UI enterprise <span className="text-slate-900 font-semibold">@zarr20/rakit-ui</span> dan routing engine otomatis <span className="text-slate-900 font-semibold">@zarr20/rakit-routes</span>. Zero-config, tipe TypeScript lengkap, dan performa tinggi.
+        A unified suite of enterprise UI components <span className="text-slate-900 font-semibold">@zarr20/rakit-ui</span> and automated file-system routing <span className="text-slate-900 font-semibold">@zarr20/rakit-routes</span>. Zero-config, fully typed TypeScript, and blazing-fast performance.
       </p>
 
       {/* CTA Buttons */}
@@ -31,7 +31,7 @@ export function OverviewHero() {
             rightIcon={<ArrowRight className="w-4 h-4" />}
             className="shadow-lg shadow-emerald-600/20 font-semibold"
           >
-            Jelajahi Dokumentasi
+            Explore Documentation
           </Button>
         </Link>
 
@@ -41,7 +41,7 @@ export function OverviewHero() {
             size="lg"
             leftIcon={<Terminal className="w-4 h-4 text-slate-600" />}
           >
-            Buka Live Playground
+            Open Live Playground
           </Button>
         </Link>
       </div>
@@ -51,7 +51,7 @@ export function OverviewHero() {
         <div
           onClick={() => copy(installCmd)}
           className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 font-mono text-xs cursor-pointer hover:bg-slate-800 transition-colors shadow-md group"
-          title="Klik untuk salin perintah instalasi"
+          title="Click to copy install command"
         >
           <span className="text-emerald-400 font-bold">$</span>
           <span className="text-slate-100">{installCmd}</span>

@@ -17,7 +17,7 @@ export function DocsTableOfContents({
   items,
   activeId,
   onSelect,
-  title = 'Pada Halaman Ini',
+  title = 'On This Page',
 }: DocsTableOfContentsProps) {
   if (!items || items.length === 0) return null;
 

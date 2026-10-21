@@ -5,25 +5,25 @@ export const GRID_PROPS: PropItem[] = [
     name: 'cols',
     type: 'GridColsNumber | ResponsiveProp<GridColsNumber>',
     defaultValue: '12',
-    description: 'Jumlah kolom grid (1-12) atau objek breakpoint responsif: { base: 1, sm: 2, md: 3, lg: 12 }',
+    description: 'Number of grid columns (1-12) or responsive breakpoint dictionary: { base: 1, sm: 2, md: 3, lg: 12 }',
   },
   {
     name: 'gap',
     type: "'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | ResponsiveProp<GridGap>",
     defaultValue: "'lg'",
-    description: 'Jarak antar kolom dan baris (gap bawaan)',
+    description: 'Spacing gap between columns and rows.',
   },
   {
     name: 'align',
     type: "'start' | 'center' | 'end' | 'stretch' | 'baseline'",
     defaultValue: "'start'",
-    description: 'Perataan vertikal item grid (align-items)',
+    description: 'Vertical alignment of grid items (align-items).',
   },
   {
     name: 'justify',
     type: "'start' | 'center' | 'end' | 'between' | 'around' | 'evenly'",
     defaultValue: 'undefined',
-    description: 'Distribusi horizontal item grid (justify-content)',
+    description: 'Horizontal distribution of grid items (justify-content).',
   },
 ];
 
@@ -32,12 +32,12 @@ export const GRID_COL_PROPS: PropItem[] = [
     name: 'span',
     type: 'GridSpanNumber | ResponsiveProp<GridSpanNumber>',
     defaultValue: '12',
-    description: 'Lebar kolom (1-12, "full", "auto") atau objek breakpoint responsif: { base: 12, md: 6, lg: 4 }',
+    description: 'Column span width (1-12, "full", "auto") or responsive breakpoint dictionary: { base: 12, md: 6, lg: 4 }',
   },
   {
     name: 'className',
     type: 'string',
     defaultValue: "''",
-    description: 'Kelas CSS kustom tambahan',
+    description: 'Additional custom CSS classes.',
   },
 ];

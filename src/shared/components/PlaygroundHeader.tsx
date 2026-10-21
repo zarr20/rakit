@@ -60,7 +60,7 @@ export function PlaygroundHeader({
             )
           }
           className="font-mono text-xs max-w-xs sm:max-w-md truncate"
-          title="Klik untuk salin import statement"
+          title="Click to copy import statement"
         >
           <span className="text-slate-500 mr-1.5 font-normal">import:</span>
           <span className="text-slate-800 font-semibold truncate">{importStatement}</span>

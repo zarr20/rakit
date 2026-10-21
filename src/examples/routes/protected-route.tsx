@@ -16,18 +16,18 @@ export default function App() {
           Protected Route (RBAC)
         </h2>
         <Badge variant={hasAccess ? "success" : "danger"} size="sm">
-          {hasAccess ? "Akses Diberikan" : "Akses Ditolak"}
+          {hasAccess ? "Access Granted" : "Access Denied"}
         </Badge>
       </div>
 
       <p style={{ color: "#64748b", fontSize: "0.875rem", marginBottom: "1.5rem" }}>
-        Simulasi RouteGuard berbasis Role-Based Access Control (RBAC).
+        Simulated RouteGuard using Role-Based Access Control (RBAC).
       </p>
 
       {/* Role Switcher */}
       <div style={{ marginBottom: "1.5rem" }}>
         <div style={{ fontSize: "0.75rem", fontWeight: 600, color: "#64748b", textTransform: "uppercase", marginBottom: "0.5rem" }}>
-          Simulasikan Peran Pengguna Aktif:
+          Simulate Active User Role:
         </div>
         <div style={{ display: "flex", gap: "0.5rem" }}>
           <Button
@@ -35,14 +35,14 @@ export default function App() {
             size="sm"
             onClick={() => setRole("guest")}
           >
-            Tamu (Guest)
+            Guest
           </Button>
           <Button
             variant={role === "user" ? "primary" : "outline"}
             size="sm"
             onClick={() => setRole("user")}
           >
-            Member (User)
+            User
           </Button>
           <Button
             variant={role === "admin" ? "primary" : "outline"}
@@ -72,12 +72,12 @@ export default function App() {
 
           <div>
             <h3 style={{ fontSize: "1rem", fontWeight: 600, color: hasAccess ? "#15803d" : "#991b1b", marginBottom: "0.25rem" }}>
-              {hasAccess ? "Area Khusus Administrator Terbuka" : "403 Forbidden: Halaman Terproteksi"}
+              {hasAccess ? "Administrator Restricted Area Unlocked" : "403 Forbidden: Protected Route"}
             </h3>
             <p style={{ fontSize: "0.875rem", color: hasAccess ? "#166534" : "#7f1d1d", marginBottom: "1rem" }}>
               {hasAccess
-                ? "Selamat datang Admin! Anda memiliki izin penuh untuk mengelola database dan pengaturan server."
-                : "Halaman ini memerlukan peran 'admin'. Peran Anda saat ini adalah: '" + role + "'."}
+                ? "Welcome Admin! You have full permissions to manage the database and server configuration."
+                : "This page requires the 'admin' role. Your current role is: '" + role + "'."}
             </p>
 
             <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontSize: "0.75rem", fontFamily: "monospace", color: hasAccess ? "#166534" : "#991b1b" }}>

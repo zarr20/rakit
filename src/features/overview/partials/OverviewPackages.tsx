@@ -9,15 +9,15 @@ export function OverviewPackages() {
       name: '@zarr20/rakit-ui',
       version: 'v1.0.0',
       badge: 'Component Library',
-      description: 'Pustaka komponen enterprise berbasis React 19 & Tailwind CSS v4 dengan skala ukuran presisi xs-xl.',
+      description: 'Enterprise component library built with React 19 & Tailwind CSS v4 featuring precise xs-xl uniform sizing.',
       icon: Layers,
       docLink: '/button',
       npmUrl: 'https://www.npmjs.com/package/@zarr20/rakit-ui',
       features: [
-        '18 Primitives UI: Button, Fields, Card, Table, Drawer, Modal, Tabs, dll',
-        'Keseragaman skala ukuran universal 5-level (xs, sm, md, lg, xl)',
-        'Arsitektur compound komponen dan aksesibilitas WAI-ARIA bawaan',
-        'Dukungan penuh mode gelap Tailwind v4 tanpa flash theme',
+        '18 UI Primitives: Button, Fields, Card, Table, Drawer, Modal, Tabs, etc.',
+        'Universal 5-level uniform sizing hierarchy (xs, sm, md, lg, xl)',
+        'Compound component architecture and built-in WAI-ARIA accessibility',
+        'Full Tailwind v4 dark mode support without theme flash',
       ],
       color: 'emerald',
     },
@@ -26,15 +26,15 @@ export function OverviewPackages() {
       name: '@zarr20/rakit-routes',
       version: 'v1.1.5',
       badge: 'Routing Engine',
-      description: 'Zero-config file-system router dan RouteGuard RBAC otomatis untuk React & Vite.',
+      description: 'Zero-config file-system router and automatic RBAC RouteGuard for React & Vite.',
       icon: Route,
       docLink: '/rakit-routes',
       npmUrl: 'https://www.npmjs.com/package/@zarr20/rakit-routes',
       features: [
-        'File-system based automatic routing dari direktori src/pages',
-        'Vite Plugin dengan zero runtime configuration overhead',
-        'RouteGuard RBAC untuk proteksi halaman berbasis peran & autentikasi',
-        'Deterministik static route sorting & automatic code splitting',
+        'File-system based automatic routing from the src/pages directory',
+        'Vite Plugin with zero runtime configuration overhead',
+        'RouteGuard RBAC for role- and authentication-based route protection',
+        'Deterministic static route sorting & automatic code splitting',
       ],
       color: 'blue',
     },
@@ -44,10 +44,10 @@ export function OverviewPackages() {
     <section className="py-8">
       <div className="text-center max-w-2xl mx-auto mb-8">
         <h2 className="text-2xl sm:text-3xl font-display font-bold text-slate-900 tracking-tight">
-          Dua Paket Inti dalam Satu Ekosistem
+          Two Core Packages in One Ecosystem
         </h2>
         <p className="text-slate-600 text-sm mt-2">
-          Pilih paket dokumentasi di bawah untuk mempelajari API, props, dan contoh implementasinya.
+          Select a documentation package below to explore APIs, props, and implementation examples.
         </p>
       </div>
 
@@ -118,7 +118,7 @@ export function OverviewPackages() {
                     size="sm"
                     rightIcon={<ArrowRight className="w-3.5 h-3.5" />}
                   >
-                    Buka Dokumentasi
+                    Open Documentation
                   </Button>
                 </Link>
               </div>

@@ -5,23 +5,23 @@ export function OverviewPrinciples() {
   const principles = [
     {
       icon: SlidersHorizontal,
-      title: 'Skala Ukuran Universal (xs–xl)',
-      description: 'Seluruh kontrol form (TextField, Select, TextArea, Switch, Radio, Checkbox) dan Button memiliki tinggi pixel yang identik di setiap tingkat ukuran.',
+      title: 'Universal Sizing Scale (xs–xl)',
+      description: 'All form controls (TextField, Select, TextArea, Switch, Radio, Checkbox) and Button share identical pixel heights at every size tier.',
     },
     {
       icon: Palette,
       title: 'Pure Default Design System',
-      description: 'Palet warna Slate & Emerald yang harmonis. Dilengkapi semantic identifier (.rakit-*) dan atribut data-rakit untuk kemudahan konfigurasi.',
+      description: 'Harmonious Slate & Emerald color palette. Equipped with semantic identifiers (.rakit-*) and data-rakit attributes for seamless customization.',
     },
     {
       icon: Layers,
-      title: 'Komponen Compound Modular',
-      description: 'Card, Table, Sidebar, Drawer, Typography, dan Breadcrumb menggunakan pola compound subkomponen untuk fleksibilitas komposisi maksimal.',
+      title: 'Modular Compound Components',
+      description: 'Card, Table, Sidebar, Drawer, Typography, and Breadcrumb leverage compound subcomponent patterns for maximum compositional flexibility.',
     },
     {
       icon: Route,
-      title: 'Routing Otomatis & RBAC',
-      description: 'Zero-config router generator berbasis struktur berkas src/pages lengkap dengan proteksi RouteGuard berbasis hak akses peran.',
+      title: 'Automatic Routing & RBAC',
+      description: 'Zero-config route generator based on the src/pages directory structure with built-in RBAC RouteGuard access control.',
     },
   ];
 
@@ -29,10 +29,10 @@ export function OverviewPrinciples() {
     <section className="py-8 max-w-5xl mx-auto space-y-6">
       <div className="text-center">
         <h2 className="text-2xl sm:text-3xl font-display font-bold text-slate-900 tracking-tight">
-          Prinsip Rekayasa Ekosistem
+          Ecosystem Engineering Principles
         </h2>
         <p className="text-slate-600 text-sm mt-1">
-          Dirancang untuk standar keandalan perangkat lunak kelas enterprise.
+          Built for enterprise-grade software reliability and developer experience.
         </p>
       </div>
 

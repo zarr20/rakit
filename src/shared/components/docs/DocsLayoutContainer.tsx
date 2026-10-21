@@ -63,7 +63,7 @@ export function DocsLayoutContainer({
     return () => clearTimeout(timer);
   }, [activeCategory, setTocItems, setActiveSection]);
 
-  // ScrollSpy: dynamically highlight active section or sub-content in 'Pada Halaman Ini'
+  // ScrollSpy: dynamically highlight active section or sub-content in 'On This Page'
   useEffect(() => {
     if (!tocItems || tocItems.length === 0) return;
 

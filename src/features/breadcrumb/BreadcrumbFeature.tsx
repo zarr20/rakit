@@ -83,7 +83,7 @@ import { Home, Folder, Shield } from 'lucide-react';
     <div className="space-y-12">
       <PlaygroundHeader
         title="Breadcrumb"
-        tagline="Jalur navigasi hierarkis cerdas untuk menunjukkan posisi pengguna di dalam hierarki konten dan struktur routing aplikasi."
+        tagline="Intelligent hierarchical navigation trail displaying user position within content hierarchies and routing structures."
         badge="Router & Navigation"
         importStatement="import { Breadcrumb } from '@zarr20/rakit-ui';"
       />
@@ -127,7 +127,7 @@ import { Home, Folder, Shield } from 'lucide-react';
           </PropControls.Canvas>
 
           {/* 2. Responsive Controls Panel */}
-          <PropControls title="Konfigurasi Props Breadcrumb" columns={3}>
+          <PropControls title="Breadcrumb Props Configuration" columns={2}>
             <PropControls.Segmented
               label="Separator Style"
               items={[
@@ -142,7 +142,7 @@ import { Home, Folder, Shield } from 'lucide-react';
             />
 
             <PropControls.Segmented
-              label="Ukuran (Size)"
+              label="Size"
               items={[
                 { value: 'xs', label: 'XS' },
                 { value: 'sm', label: 'SM' },
@@ -154,10 +154,10 @@ import { Home, Folder, Shield } from 'lucide-react';
               size="xs"
             />
 
-            <PropControls.Item label="Opsi Ikon">
+            <PropControls.Item label="Icon Options">
               <div className="pt-1">
                 <PropControls.Toggle
-                  label="Tampilkan Ikon Node"
+                  label="Display Node Icons"
                   checked={withIcons}
                   onChange={setWithIcons}
                 />
@@ -174,14 +174,14 @@ import { Home, Folder, Shield } from 'lucide-react';
       <section
         id="examples"
         className="space-y-8 scroll-mt-6 pt-10 border-t border-slate-200/80"
-        data-toc-title="Varian & Skenario"
+        data-toc-title="Variants & Scenarios"
         data-toc-level="1"
       >
         <div className="flex items-center justify-between pb-2 border-b border-slate-200">
           <div className="flex items-center gap-2">
             <Layers className="w-4 h-4 text-emerald-600" />
             <h2 className="text-base font-display font-bold text-slate-900">
-              Varian & Skenario Penggunaan
+              Variants & Usage Scenarios
             </h2>
           </div>
           <span className="text-xs font-mono text-slate-400">#examples</span>
@@ -200,7 +200,7 @@ import { Home, Folder, Shield } from 'lucide-react';
                 Separator Styles
               </h3>
               <p className="text-xs text-slate-500">
-                Kustomisasi karakter atau ikon pemisah rute navigasi.
+                Customizable separator characters or icons between route segments.
               </p>
             </div>
 
@@ -267,7 +267,7 @@ import { Home, Folder, Shield } from 'lucide-react';
                 Compound Component Syntax
               </h3>
               <p className="text-xs text-slate-500">
-                Mode compound memberikan kebebasan fleksibel menyisipkan elemen custom atau router hooks (seperti Next.js Link atau React Router).
+                Compound mode provides full flexibility to integrate custom elements or router links (e.g. Next.js Link or React Router).
               </p>
             </div>
 

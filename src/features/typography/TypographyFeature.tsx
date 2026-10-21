@@ -7,7 +7,6 @@ import {
   CodeText,
   Blockquote,
   LinkText,
-  Card,
   Select,
   type HeadingLevel,
   type HeadingSize,
@@ -91,7 +90,7 @@ export function TypographyFeature() {
     <div className="space-y-12">
       <PlaygroundHeader
         title="Typography"
-        tagline="Primitif tipografi terstruktur: Heading dengan skala Space Grotesk, Text varian semantik, Paragraph, Keyboard keys, Inline code, Blockquote, dan Link."
+        tagline="Structured typography primitives: Headings with Space Grotesk display scale, semantic Text variants, Paragraphs, Keyboard shortcuts, Inline code, Blockquotes, and Links."
         badge="General"
         importStatement="import { Heading, Text, Paragraph, Kbd, CodeText, Blockquote, LinkText, Typography } from '@zarr20/rakit-ui';"
       />
@@ -165,7 +164,7 @@ export function TypographyFeature() {
           </PropControls.Canvas>
 
           {/* 2. Responsive Controls Panel */}
-          <PropControls title="Konfigurasi Props Typography" columns={3}>
+          <PropControls title="Typography Props Configuration" columns={2}>
             <PropControls.Text
               label="Heading Content"
               value={headingText}
@@ -286,14 +285,14 @@ export function TypographyFeature() {
       <section
         id="examples"
         className="space-y-8 scroll-mt-6 pt-10 border-t border-slate-200/80"
-        data-toc-title="Varian & Skenario"
+        data-toc-title="Variants & Scenarios"
         data-toc-level="1"
       >
         <div className="flex items-center justify-between pb-2 border-b border-slate-200">
           <div className="flex items-center gap-2">
             <Layers className="w-4 h-4 text-emerald-600" />
             <h2 className="text-base font-display font-bold text-slate-900">
-              Varian & Skenario Penggunaan
+              Variants & Usage Scenarios
             </h2>
           </div>
           <span className="text-xs font-mono text-slate-400">#examples</span>
@@ -312,7 +311,7 @@ export function TypographyFeature() {
                 Heading Hierarchy (Space Grotesk Display)
               </h3>
               <p className="text-xs text-slate-500">
-                Skala visual heading proporsional dari 4XL hingga MD.
+                Proportional visual heading scale from 4XL down to MD.
               </p>
             </div>
 
@@ -356,7 +355,7 @@ export function TypographyFeature() {
                 Text Variants & Formats
               </h3>
               <p className="text-xs text-slate-500">
-                Varian semantik body, lead, label, caption, dan monospace.
+                Semantic variants for body, lead, label, caption, and monospace code.
               </p>
             </div>
 
@@ -402,7 +401,7 @@ export function TypographyFeature() {
                 Blockquotes, Links & Inline Primitives
               </h3>
               <p className="text-xs text-slate-500">
-                Kutipan sitasi, keyboard shortcut caps, dan tautan semantik.
+                Citations, keyboard shortcut caps, and semantic link elements.
               </p>
             </div>
 

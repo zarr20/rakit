@@ -18,7 +18,7 @@ export function PropsTable({ props }: PropsTableProps) {
           </span>
           {p.required && (
             <span className="inline-flex items-center px-1.5 py-0.2 rounded text-[10px] font-semibold bg-rose-50 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400 border border-rose-200/80 dark:border-rose-900/60">
-              Wajib
+              Required
             </span>
           )}
         </div>
@@ -26,7 +26,7 @@ export function PropsTable({ props }: PropsTableProps) {
     },
     {
       key: 'type',
-      title: 'Tipe Data',
+      title: 'Type',
       width: '32%',
       render: (p) => (
         <code className="text-indigo-700 dark:text-indigo-300 bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-900/50 px-2 py-0.5 rounded-md inline-block max-w-full break-words leading-relaxed font-mono text-[11px] sm:text-xs">
@@ -36,7 +36,7 @@ export function PropsTable({ props }: PropsTableProps) {
     },
     {
       key: 'defaultValue',
-      title: 'Nilai Default',
+      title: 'Default',
       width: '16%',
       render: (p) =>
         p.defaultValue ? (
@@ -49,7 +49,7 @@ export function PropsTable({ props }: PropsTableProps) {
     },
     {
       key: 'description',
-      title: 'Keterangan',
+      title: 'Description',
       width: '30%',
       render: (p) => (
         <div className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-sans">

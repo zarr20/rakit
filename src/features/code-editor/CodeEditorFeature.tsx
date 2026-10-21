@@ -32,10 +32,10 @@ export function CounterWidget() {
         <h2 className="text-lg font-bold">Rakit UI Counter</h2>
         <Badge variant="primary">v1.0.0</Badge>
       </div>
-      <p className="text-slate-600 mt-2">Nilai saat ini: {count}</p>
+      <p className="text-slate-600 mt-2">Current count: {count}</p>
       <div className="flex gap-2 mt-4">
         <Button size="sm" onClick={() => setCount(count + 1)}>
-          Tambah Nilai
+          Increment
         </Button>
         <Button size="sm" variant="outline" onClick={() => setCount(0)}>
           Reset
@@ -70,7 +70,7 @@ export type AuthResponse = {
     language: 'html',
     filename: 'index.html',
     code: `<!DOCTYPE html>
-<html lang="id">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -164,9 +164,6 @@ export function CodeEditorFeature() {
     }
   };
 
-  const viewModes: CodeEditorViewMode[] =
-    selectedLangKey === 'json' ? ['code', 'tree', 'split'] : ['code'];
-
   const generateCode = () => {
     return `<CodeEditor
   value={code}
@@ -186,7 +183,7 @@ export function CodeEditorFeature() {
     <div className="space-y-12">
       <PlaygroundHeader
         title="Code Editor & Multi-File Viewer"
-        tagline="Editor kode mandiri dan File Viewer interaktif mendukung syntax highlighting untuk TSX, TypeScript, HTML, JavaScript, dan JSON dengan mode tabs berkas."
+        tagline="Standalone code editor and interactive File Viewer supporting syntax highlighting for TSX, TypeScript, HTML, JavaScript, and JSON with multi-file tab navigation."
         badge="Tools"
         importStatement="import { CodeEditor, CodeViewer, FileViewer, JsonTreeViewer } from '@zarr20/rakit-ui';"
       />
@@ -226,9 +223,9 @@ export function CodeEditorFeature() {
           </div>
 
           {/* 2. Responsive Controls Panel */}
-          <PropControls title="Konfigurasi Props CodeEditor" columns={3}>
+          <PropControls title="CodeEditor Props Configuration" columns={2}>
             <PropControls.Segmented
-              label="Bahasa (Syntax)"
+              label="Language (Syntax)"
               items={[
                 { value: 'tsx', label: 'TSX' },
                 { value: 'ts', label: 'TS' },
@@ -252,7 +249,7 @@ export function CodeEditorFeature() {
               size="xs"
             />
 
-            <PropControls.Item label="Opsi Editor">
+            <PropControls.Item label="Editor Options">
               <div className="flex items-center gap-4 pt-1">
                 <PropControls.Toggle
                   label="showLineNumbers"
@@ -279,7 +276,7 @@ export function CodeEditorFeature() {
           <div className="flex items-center gap-2">
             <Layers className="w-4 h-4 text-emerald-600" />
             <h2 className="text-base font-display font-bold text-slate-900">
-              Varian & Skenario Penggunaan
+              Variants & Usage Scenarios
             </h2>
           </div>
           <span className="text-xs font-mono text-slate-400">#examples</span>
@@ -302,7 +299,7 @@ export function CodeEditorFeature() {
                 </h3>
               </div>
               <p className="text-xs text-slate-500 mt-0.5">
-                Komponen <code className="text-emerald-700 bg-emerald-50 px-1 py-0.5 rounded font-mono text-[11px]">&lt;LivePlayground /&gt;</code> mengeksekusi kode TSX secara live di browser dengan dukungan Split/Code/Preview views, device viewports (Desktop, Tablet, Mobile), dan toggle tema terang/gelap.
+                The <code className="text-emerald-700 bg-emerald-50 px-1 py-0.5 rounded font-mono text-[11px]">&lt;LivePlayground /&gt;</code> component compiles and executes TSX code live in the browser, featuring Split/Code/Preview views, responsive device viewports (Desktop, Tablet, Mobile), and light/dark theme toggles.
               </p>
             </div>
 
@@ -327,11 +324,11 @@ export function CodeEditorFeature() {
               <div className="flex items-center gap-2">
                 <Files className="w-4 h-4 text-emerald-600" />
                 <h3 className="text-base font-display font-semibold text-slate-900">
-                  2. Multi-File Viewer dengan Tabs & Syntax Highlighting
+                  2. Multi-File Viewer with Tabs & Syntax Highlighting
                 </h3>
               </div>
               <p className="text-xs text-slate-500 mt-0.5">
-                Gunakan komponen <code className="text-emerald-700 bg-emerald-50 px-1 py-0.5 rounded font-mono text-[11px]">&lt;FileViewer files={'{...}'} /&gt;</code> untuk menampilkan beberapa berkas sekaligus. Bahasa syntax highlighting (TSX, TS, HTML, JS, JSON) dan ikon berkas otomatis terdeteksi berdasarkan ekstensi file.
+                Use the <code className="text-emerald-700 bg-emerald-50 px-1 py-0.5 rounded font-mono text-[11px]">&lt;FileViewer files={'{...}'} /&gt;</code> component to display multiple files simultaneously. Programming languages (TSX, TS, HTML, JS, JSON) and file icons are automatically resolved from file extensions.
               </p>
             </div>
 
@@ -355,10 +352,10 @@ export function CodeEditorFeature() {
           >
             <div>
               <h3 className="text-base font-display font-semibold text-slate-900">
-                3. Komponen &lt;CodeViewer /&gt; Single File
+                3. Single File &lt;CodeViewer /&gt; Component
               </h3>
               <p className="text-xs text-slate-500 mt-0.5">
-                Komponen ringan untuk menampilkan cuplikan kode read-only dengan tombol salin (copy) otomatis dan penomoran baris.
+                Lightweight component for displaying read-only code snippets with automatic clipboard copy button and line numbers.
               </p>
             </div>
 
@@ -369,7 +366,7 @@ export function CodeEditorFeature() {
 export function DashboardWidget() {
   return (
     <Card variant="default" padding="large">
-      <TextField size="md" placeholder="Cari data..." />
+      <TextField size="md" placeholder="Search data..." />
       <Button variant="primary" size="md">Submit</Button>
     </Card>
   );
@@ -391,10 +388,10 @@ export function DashboardWidget() {
           >
             <div>
               <h3 className="text-base font-display font-semibold text-slate-900">
-                4. Komponen &lt;JsonTreeViewer /&gt; Visual Hierarchy
+                4. Visual Hierarchy &lt;JsonTreeViewer /&gt; Component
               </h3>
               <p className="text-xs text-slate-500 mt-0.5">
-                Navigasi pohon objek dan array JSON secara visual dengan fitur expand/collapse per level node.
+                Navigate JSON objects and arrays visually with expand/collapse capabilities per node level.
               </p>
             </div>
 

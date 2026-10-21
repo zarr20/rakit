@@ -8,8 +8,8 @@ export default function NotFoundPage() {
   return (
     <div className="py-12 flex items-center justify-center min-h-[400px]">
       <EmptyState
-        title="404 - Halaman Tidak Ditemukan"
-        description="Rute yang Anda tuju belum terdaftar pada sistem auto-routing rakit-routes."
+        title="404 - Page Not Found"
+        description="The requested route is not registered in the rakit-routes auto-routing system."
         icon={<Compass className="w-10 h-10 text-emerald-500" />}
         action={
           <Button
@@ -18,7 +18,7 @@ export default function NotFoundPage() {
             leftIcon={<Home className="w-4 h-4" />}
             onClick={() => navigate('/')}
           >
-            Kembali ke Beranda
+            Back to Home
           </Button>
         }
       />

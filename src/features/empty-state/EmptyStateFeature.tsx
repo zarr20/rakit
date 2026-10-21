@@ -12,8 +12,8 @@ import { FolderX, Plus, Search, Inbox, Database, Play, Layers, BookOpen, Refresh
 
 export function EmptyStateFeature() {
   const [selectedPreset, setSelectedPreset] = useState<EmptyStatePreset | 'custom'>('custom');
-  const [title, setTitle] = useState('Belum Ada Proyek');
-  const [description, setDescription] = useState('Mulai dengan membuat proyek baru atau import repositori Git Anda.');
+  const [title, setTitle] = useState('No Projects Found');
+  const [description, setDescription] = useState('Get started by creating a new project or importing your Git repository.');
   const [compact, setCompact] = useState(false);
   const [iconType, setIconType] = useState<'folder' | 'search' | 'inbox' | 'database'>('folder');
 
@@ -40,7 +40,7 @@ export function EmptyStateFeature() {
   compact={${compact}}
   action={
     <Button variant="primary" size="xs">
-      Muat Ulang
+      Reload
     </Button>
   }
 />`;
@@ -54,7 +54,7 @@ export function EmptyStateFeature() {
   theme="light"
   action={
     <Button variant="primary" size="xs" leftIcon={<Plus className="w-3.5 h-3.5" />}>
-      Buat Item Baru
+      Create New Item
     </Button>
   }
 />`;
@@ -64,7 +64,7 @@ export function EmptyStateFeature() {
     <div className="space-y-12">
       <PlaygroundHeader
         title="Empty State"
-        tagline="Tampilan visual ramah pengguna saat data belum tersedia, hasil pencarian kosong, atau status error dengan preset ilustrasi vektor ringan."
+        tagline="User-friendly visual display when data is unavailable, search yields no results, or error states occur, with lightweight vector illustration presets."
         badge="Data Display"
         importStatement="import { EmptyState } from '@zarr20/rakit-ui';"
       />
@@ -88,8 +88,8 @@ export function EmptyStateFeature() {
             codeSnippet={generateCode()}
             onReset={() => {
               setSelectedPreset('custom');
-              setTitle('Belum Ada Proyek');
-              setDescription('Mulai dengan membuat proyek baru atau import repositori Git Anda.');
+              setTitle('No Projects Found');
+              setDescription('Get started by creating a new project or importing your Git repository.');
               setCompact(false);
               setIconType('folder');
             }}
@@ -105,7 +105,7 @@ export function EmptyStateFeature() {
                 theme="light"
                 action={
                   <Button variant="primary" size="xs" leftIcon={<Plus className="w-3.5 h-3.5" />}>
-                    {isPresetMode ? 'Muat Ulang' : 'Buat Item Baru'}
+                    {isPresetMode ? 'Reload' : 'Create New Item'}
                   </Button>
                 }
               />
@@ -113,9 +113,9 @@ export function EmptyStateFeature() {
           </PropControls.Canvas>
 
           {/* 2. Responsive Controls Panel */}
-          <PropControls title="Konfigurasi Props EmptyState" columns={3}>
+          <PropControls title="EmptyState Props Configuration" columns={2}>
             <PropControls.Segmented
-              label="Preset Ilustrasi Bawaan"
+              label="Built-in Illustration Preset"
               items={[
                 { value: 'custom', label: 'Custom' },
                 { value: '404', label: '404' },
@@ -132,21 +132,21 @@ export function EmptyStateFeature() {
             {!isPresetMode && (
               <>
                 <PropControls.Text
-                  label="Judul (Title)"
+                  label="Title"
                   value={title}
                   onChange={setTitle}
-                  placeholder="Judul empty state..."
+                  placeholder="Empty state title..."
                 />
 
                 <PropControls.Text
-                  label="Deskripsi"
+                  label="Description"
                   value={description}
                   onChange={setDescription}
-                  placeholder="Penjelasan ringkas..."
+                  placeholder="Brief description..."
                 />
 
                 <PropControls.Segmented
-                  label="Pilihan Ikon Custom"
+                  label="Custom Icon Selection"
                   items={[
                     { value: 'folder', label: 'Folder' },
                     { value: 'search', label: 'Search' },
@@ -160,10 +160,10 @@ export function EmptyStateFeature() {
               </>
             )}
 
-            <PropControls.Item label="Opsi Tampilan">
+            <PropControls.Item label="Display Options">
               <div className="pt-1">
                 <PropControls.Toggle
-                  label="compact mode (ukuran padat)"
+                  label="compact mode (compact size)"
                   checked={compact}
                   onChange={setCompact}
                 />
@@ -182,7 +182,7 @@ export function EmptyStateFeature() {
           <div className="flex items-center gap-2">
             <Layers className="w-4 h-4 text-emerald-600" />
             <h2 className="text-base font-display font-bold text-slate-900">
-              Preset Ilustrasi & Skenario Penggunaan
+              Illustration Presets & Scenarios
             </h2>
           </div>
           <span className="text-xs font-mono text-slate-400">#examples</span>
@@ -198,7 +198,7 @@ export function EmptyStateFeature() {
           >
             <div>
               <h3 className="text-sm font-semibold text-slate-800">404 Not Found</h3>
-              <p className="text-xs text-slate-500">Preset saat halaman tidak ditemukan.</p>
+              <p className="text-xs text-slate-500">Preset when a page is not found.</p>
             </div>
             <div className="p-4 rounded-2xl border border-slate-200/90 bg-slate-50/50 flex items-center justify-center">
               <EmptyState preset="404" compact />
@@ -214,13 +214,13 @@ export function EmptyStateFeature() {
           >
             <div>
               <h3 className="text-sm font-semibold text-slate-800">System Error</h3>
-              <p className="text-xs text-slate-500">Preset kegagalan memproses request.</p>
+              <p className="text-xs text-slate-500">Preset when request execution encounters an error.</p>
             </div>
             <div className="p-4 rounded-2xl border border-slate-200/90 bg-slate-50/50 flex items-center justify-center">
               <EmptyState
                 preset="error"
                 compact
-                action={<Button variant="outline" size="xs" leftIcon={<RefreshCw className="w-3 h-3" />}>Coba Lagi</Button>}
+                action={<Button variant="outline" size="xs" leftIcon={<RefreshCw className="w-3 h-3" />}>Try Again</Button>}
               />
             </div>
           </div>
@@ -234,7 +234,7 @@ export function EmptyStateFeature() {
           >
             <div>
               <h3 className="text-sm font-semibold text-slate-800">No Connection</h3>
-              <p className="text-xs text-slate-500">Preset koneksi jaringan terputus.</p>
+              <p className="text-xs text-slate-500">Preset when network connection drops.</p>
             </div>
             <div className="p-4 rounded-2xl border border-slate-200/90 bg-slate-50/50 flex items-center justify-center">
               <EmptyState preset="no-connection" compact />
@@ -242,7 +242,6 @@ export function EmptyStateFeature() {
           </div>
         </div>
       </section>
-
 
       {/* Section 3: API Reference */}
       <section id="props" className="space-y-6 scroll-mt-6 pt-10 border-t border-slate-200/80">

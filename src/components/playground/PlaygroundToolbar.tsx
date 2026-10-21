@@ -17,9 +17,9 @@ import type { PlaygroundViewport, PlaygroundViewMode, PlaygroundExample } from '
 import { encodePlaygroundCode } from './urlUtils';
 
 const VIEW_MODE_ITEMS = [
-  { value: 'split', icon: <Columns2 className="w-3.5 h-3.5" />, title: 'Tampilan Terpisah (Split)' },
-  { value: 'editor', icon: <Code2 className="w-3.5 h-3.5" />, title: 'Hanya Editor Kode' },
-  { value: 'preview', icon: <Eye className="w-3.5 h-3.5" />, title: 'Hanya Live Preview' },
+  { value: 'split', icon: <Columns2 className="w-3.5 h-3.5" />, title: 'Split View' },
+  { value: 'editor', icon: <Code2 className="w-3.5 h-3.5" />, title: 'Code Editor Only' },
+  { value: 'preview', icon: <Eye className="w-3.5 h-3.5" />, title: 'Live Preview Only' },
 ];
 
 const VIEWPORT_ITEMS = [
@@ -58,8 +58,8 @@ export function PlaygroundToolbar({
   // Reset: Reverts code back to initial code
   const handleReset = () => {
     sandpack.updateFile(sandpack.activeFile, initialCode);
-    toast.info('Kode dikembalikan ke contoh awal.', {
-      description: 'Seluruh modifikasi telah di-reset.',
+    toast.info('Code reset to initial example.', {
+      description: 'All modifications have been reverted.',
     });
   };
 
@@ -69,12 +69,12 @@ export function PlaygroundToolbar({
       const code = getActiveCode();
       await navigator.clipboard.writeText(code);
       setCopied(true);
-      toast.success('Kode berhasil disalin!', {
-        description: 'Tersimpan di clipboard Anda.',
+      toast.success('Code copied to clipboard!', {
+        description: 'Ready to paste.',
       });
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      toast.error('Gagal menyalin kode ke clipboard.');
+      toast.error('Failed to copy code to clipboard.');
     }
   };
 
@@ -93,12 +93,12 @@ export function PlaygroundToolbar({
       window.history.replaceState(null, '', url.toString());
 
       setShared(true);
-      toast.success('Tautan playground berhasil dibuat!', {
-        description: 'URL tersimpan di clipboard dan siap dibagikan.',
+      toast.success('Playground link generated!', {
+        description: 'Shareable URL copied to clipboard.',
       });
       setTimeout(() => setShared(false), 2500);
     } catch {
-      toast.error('Gagal membuat tautan share.');
+      toast.error('Failed to create share link.');
     }
   };
 
@@ -152,7 +152,7 @@ export function PlaygroundToolbar({
           variant="ghost"
           size="xs"
           onClick={handleReset}
-          title="Reset ke contoh kode awal"
+          title="Reset to initial example"
           leftIcon={<RotateCcw className="w-3 h-3 text-slate-400" />}
           className="text-slate-300 hover:text-slate-100 hover:bg-slate-800"
         >
@@ -163,7 +163,7 @@ export function PlaygroundToolbar({
           variant="secondary"
           size="xs"
           onClick={handleCopy}
-          title="Salin kode aktif ke clipboard"
+          title="Copy active code to clipboard"
           leftIcon={
             copied ? (
               <Check className="w-3 h-3 text-emerald-400" />
@@ -173,14 +173,14 @@ export function PlaygroundToolbar({
           }
           className="text-slate-200 bg-slate-800 border-slate-700 hover:bg-slate-700"
         >
-          {copied ? 'Tersalin' : 'Copy'}
+          {copied ? 'Copied' : 'Copy'}
         </Button>
 
         <Button
           variant="primary"
           size="xs"
           onClick={handleShare}
-          title="Bagikan URL dengan kode terkini"
+          title="Share URL with current code"
           leftIcon={
             shared ? (
               <Check className="w-3 h-3 text-slate-900" />
@@ -189,7 +189,7 @@ export function PlaygroundToolbar({
             )
           }
         >
-          {shared ? 'Tersimpan' : 'Share'}
+          {shared ? 'Shared' : 'Share'}
         </Button>
       </div>
     </div>

@@ -11,8 +11,8 @@ export function SwitchSubPlayground() {
 
   const generateCode = () => {
     const props: string[] = [
-      'label="Notifikasi Realtime Webhook"',
-      'description="Kirim peringatan instan ketika service mengalami kegagalan."',
+      'label="Realtime Webhook Notifications"',
+      'description="Send instant alerts when services encounter unexpected downtime."',
       `checked={${checked}}`,
       'onChange={setChecked}',
       `size="${size}"`,
@@ -36,8 +36,8 @@ export function SwitchSubPlayground() {
       >
         <div className="w-full max-w-md space-y-3">
           <Switch
-            label="Notifikasi Realtime Webhook"
-            description="Kirim peringatan instan ketika service mengalami kegagalan."
+            label="Realtime Webhook Notifications"
+            description="Send instant alerts when services encounter unexpected downtime."
             checked={checked}
             onChange={setChecked}
             size={size}
@@ -45,18 +45,18 @@ export function SwitchSubPlayground() {
           />
 
           <div className="p-2.5 rounded-lg bg-white border border-slate-200/80 flex items-center justify-between text-xs">
-            <span className="font-mono text-slate-500">Nilai State (Boolean):</span>
+            <span className="font-mono text-slate-500">State Value (Boolean):</span>
             <span className="font-mono font-bold text-slate-800 bg-slate-100 px-2 py-0.5 rounded-md">
-              {checked ? 'true (aktif)' : 'false (nonaktif)'}
+              {checked ? 'true (active)' : 'false (inactive)'}
             </span>
           </div>
         </div>
       </PropControls.Canvas>
 
       {/* 2. Responsive Controls Panel */}
-      <PropControls title="Konfigurasi Switch" columns={2}>
+      <PropControls title="Switch Configuration" columns={2}>
         <PropControls.Segmented
-          label="Ukuran (FieldSize)"
+          label="Size (FieldSize)"
           items={sizes.map((s) => ({ value: s, label: s.toUpperCase() }))}
           value={size}
           onChange={(s) => setSize(s as FieldSize)}
@@ -64,16 +64,17 @@ export function SwitchSubPlayground() {
         />
 
         <PropControls.Toggle
-          label="Status Sakelar (Checked)"
+          label="Switch State (Checked)"
           checked={checked}
           onChange={setChecked}
-          description="Aktif (true) atau nonaktif (false)"
+          description="Active (true) or inactive (false)"
         />
 
         <PropControls.Toggle
-          label="Nonaktifkan (Disabled)"
+          label="Disabled"
           checked={disabled}
           onChange={setDisabled}
+          description="Disable switch toggle interactions"
         />
       </PropControls>
 

@@ -37,56 +37,56 @@ export const FIELD_SEGMENTS: FieldSegmentItem[] = [
     name: 'Autocomplete',
     tag: 'Combobox',
     icon: Sparkles,
-    description: 'Pencarian prediktif search-as-you-type untuk data dinamis / dataset besar.',
+    description: 'Predictive search-as-you-type combobox for dynamic or large datasets.',
   },
   {
     id: 'textfield',
     name: 'TextField',
     tag: 'Input',
     icon: Type,
-    description: 'Input teks standar, password toggle, prefix, suffix, & validasi.',
+    description: 'Standard text input with password toggle, prefix, suffix, and validation.',
   },
   {
     id: 'select',
     name: 'Select',
     tag: 'Dropdown',
     icon: ChevronDown,
-    description: 'Dropdown pilihan tunggal untuk opsi terbatas & statis.',
+    description: 'Single-selection dropdown for bounded and static option sets.',
   },
   {
     id: 'multiselect',
     name: 'MultiSelect',
     tag: 'Tags',
     icon: Tags,
-    description: 'Pemilihan ganda berbasis pill/tag dengan filter pencarian.',
+    description: 'Pill/tag-based multi-selection with search filtering.',
   },
   {
     id: 'textarea',
     name: 'TextArea',
     tag: 'Multiline',
     icon: AlignLeft,
-    description: 'Input teks multi-baris dengan auto-counter dan batasan karakter.',
+    description: 'Multi-line text input with character counter and length constraints.',
   },
   {
     id: 'checkbox',
     name: 'Checkbox',
-    tag: 'Biner / Grup',
+    tag: 'Binary / Group',
     icon: CheckSquare,
-    description: 'Kotak centang tunggal atau multi-pilihan varian default & kartu.',
+    description: 'Single checkbox or multi-selection choices in default and card variants.',
   },
   {
     id: 'radio',
     name: 'RadioGroup',
-    tag: 'Eksklusif',
+    tag: 'Exclusive',
     icon: CircleDot,
-    description: 'Pilihan opsi tunggal eksklusif dengan orientasi vertikal/horizontal.',
+    description: 'Mutually exclusive single-choice option group with vertical or horizontal layout.',
   },
   {
     id: 'switch',
     name: 'Switch',
     tag: 'Toggle',
     icon: ToggleRight,
-    description: 'Sakelar status on/off interaktif untuk preferensi atau setelan cepat.',
+    description: 'Interactive on/off status toggle switch for settings and instant preferences.',
   },
 ];
 
@@ -122,7 +122,7 @@ export function FieldSegmentNav({ activeSegment, onChange }: FieldSegmentNavProp
           size="xs"
           onClick={() => scroll('left')}
           className="shrink-0 text-slate-500 hover:text-slate-800 p-1.5 h-8 w-8 rounded-lg"
-          title="Scroll ke kiri"
+          title="Scroll left"
         >
           <ChevronLeft className="w-4 h-4" />
         </Button>
@@ -173,7 +173,7 @@ export function FieldSegmentNav({ activeSegment, onChange }: FieldSegmentNavProp
           size="xs"
           onClick={() => scroll('right')}
           className="shrink-0 text-slate-500 hover:text-slate-800 p-1.5 h-8 w-8 rounded-lg"
-          title="Scroll ke kanan"
+          title="Scroll right"
         >
           <ChevronRight className="w-4 h-4" />
         </Button>
@@ -181,7 +181,7 @@ export function FieldSegmentNav({ activeSegment, onChange }: FieldSegmentNavProp
         {/* Total Badge */}
         <div className="hidden md:flex items-center pl-2 border-l border-slate-200 shrink-0">
           <Badge variant="subtle" size="xs">
-            {FIELD_SEGMENTS.length} Komponen
+            {FIELD_SEGMENTS.length} Components
           </Badge>
         </div>
       </div>
@@ -197,7 +197,7 @@ export function FieldSegmentNav({ activeSegment, onChange }: FieldSegmentNavProp
             <span className="text-slate-500 hidden sm:inline">{currentSegmentMeta.description}</span>
           </div>
           <span className="text-[11px] font-mono text-slate-400">
-            Scroll horizontal bar untuk beralih kontrol
+            Scroll horizontal bar to switch controls
           </span>
         </div>
       )}

@@ -30,7 +30,7 @@ export function BrandLogo({ size = 'md', showWordmark = true, className = '' }: 
     <div
       onClick={triggerAnimation}
       className={`inline-flex items-center gap-2.5 cursor-pointer select-none group ${className}`}
-      title="Klik untuk menganimasikan rakit matrix"
+      title="Click to animate rakit matrix"
     >
       <svg
         className={`${svgSizes[size]} transition-transform duration-300 group-hover:scale-105 ${

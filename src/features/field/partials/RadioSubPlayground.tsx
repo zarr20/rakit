@@ -3,9 +3,9 @@ import { RadioGroup, type FieldSize } from '@zarr20/rakit-ui';
 import { PropControls } from '../../../shared/components/prop-controls/PropControls';
 
 const DEPLOY_OPTIONS = [
-  { label: 'Edge Network (Global low-latency)', value: 'edge', description: 'Deploy otomatis ke 300+ PoP di seluruh dunia' },
-  { label: 'Serverless Functions', value: 'serverless', description: 'Eksekusi container microVM sesuai permintaan' },
-  { label: 'Dedicated VPS', value: 'vps', description: 'Akses root penuh & CPU terdedikasi' },
+  { label: 'Edge Network (Global low-latency)', value: 'edge', description: 'Automatic deployment to 300+ PoPs worldwide' },
+  { label: 'Serverless Functions', value: 'serverless', description: 'On-demand microVM container execution' },
+  { label: 'Dedicated VPS', value: 'vps', description: 'Full root access with dedicated CPU cores' },
 ];
 
 export function RadioSubPlayground() {
@@ -21,7 +21,7 @@ export function RadioSubPlayground() {
     { value: 'card', label: 'Card Variant' },
   ];
   const orientations = [
-    { value: 'vertical', label: 'Vertikal' },
+    { value: 'vertical', label: 'Vertical' },
     { value: 'horizontal', label: 'Horizontal' },
   ];
 
@@ -37,7 +37,7 @@ export function RadioSubPlayground() {
     ];
     if (disabled) props.push('disabled');
 
-    return `<RadioGroup\n  label="Target Deployment Server"\n  ${props.join('\n  ')}\n/>`;
+    return `<RadioGroup\n  label="Deployment Target Server"\n  ${props.join('\n  ')}\n/>`;
   };
 
   return (
@@ -56,7 +56,7 @@ export function RadioSubPlayground() {
       >
         <div className="w-full max-w-md space-y-3">
           <RadioGroup
-            label="Target Deployment Server"
+            label="Deployment Target Server"
             name="deployTarget"
             options={DEPLOY_OPTIONS}
             value={value}
@@ -68,7 +68,7 @@ export function RadioSubPlayground() {
           />
 
           <div className="p-2.5 rounded-lg bg-white border border-slate-200/80 flex items-center justify-between text-xs">
-            <span className="font-mono text-slate-500">Nilai State Terpilih:</span>
+            <span className="font-mono text-slate-500">Selected State Value:</span>
             <span className="font-mono font-bold text-slate-800 bg-slate-100 px-2 py-0.5 rounded-md">
               {value}
             </span>
@@ -77,9 +77,9 @@ export function RadioSubPlayground() {
       </PropControls.Canvas>
 
       {/* 2. Responsive Controls Panel */}
-      <PropControls title="Konfigurasi RadioGroup" columns={3}>
+      <PropControls title="RadioGroup Configuration" columns={2}>
         <PropControls.Segmented
-          label="Ukuran (FieldSize)"
+          label="Size (FieldSize)"
           items={sizes.map((s) => ({ value: s, label: s.toUpperCase() }))}
           value={size}
           onChange={(s) => setSize(s as FieldSize)}
@@ -87,7 +87,7 @@ export function RadioSubPlayground() {
         />
 
         <PropControls.Segmented
-          label="Varian Tampilan"
+          label="Visual Variant"
           items={variants}
           value={variant}
           onChange={(v) => setVariant(v as any)}
@@ -95,7 +95,7 @@ export function RadioSubPlayground() {
         />
 
         <PropControls.Segmented
-          label="Orientasi Layout"
+          label="Layout Orientation"
           items={orientations}
           value={orientation}
           onChange={(o) => setOrientation(o as any)}
@@ -103,9 +103,10 @@ export function RadioSubPlayground() {
         />
 
         <PropControls.Toggle
-          label="Nonaktifkan (Disabled)"
+          label="Disabled"
           checked={disabled}
           onChange={setDisabled}
+          description="Disable radio group interactions"
         />
       </PropControls>
 

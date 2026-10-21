@@ -8,12 +8,12 @@ export default function App() {
   const [password, setPassword] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  // Validasi email
-  const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  const emailError = email && !isEmailValid ? "Format email tidak valid (harus mengandung @ dan domain)" : undefined;
+  // Email validation
+  const isEmailValid = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);
+  const emailError = email && !isEmailValid ? "Invalid email format (must contain @ and a domain)" : undefined;
 
-  // Validasi password
-  const passwordError = password && password.length < 8 ? "Password minimal harus 8 karakter" : undefined;
+  // Password validation
+  const passwordError = password && password.length < 8 ? "Password must be at least 8 characters long" : undefined;
 
   const canSubmit = isEmailValid && password.length >= 8;
 
@@ -29,42 +29,42 @@ export default function App() {
         Form Validation
       </h2>
       <p style={{ color: "#64748b", fontSize: "0.875rem", marginBottom: "1.5rem" }}>
-        Validasi input langsung dengan umpan balik visual instan.
+        Live input validation with instant visual error feedback.
       </p>
 
       {submitted ? (
         <div style={{ padding: "1.5rem", backgroundColor: "#f0fdf4", border: "1px solid #bbf7d0", borderRadius: "0.75rem", textAlign: "center" }}>
           <CheckCircle2 style={{ width: "2.5rem", height: "2.5rem", color: "#16a34a", margin: "0 auto 0.75rem" }} />
           <h3 style={{ fontSize: "1rem", fontWeight: 600, color: "#15803d", marginBottom: "0.25rem" }}>
-            Validasi Berhasil!
+            Validation Successful!
           </h3>
           <p style={{ fontSize: "0.875rem", color: "#166534", marginBottom: "1rem" }}>
-            Data untuk <strong>{email}</strong> siap dikirim ke server.
+            Account details for <strong>{email}</strong> are ready to submit.
           </p>
           <Button variant="outline" size="sm" onClick={() => { setSubmitted(false); setEmail(""); setPassword(""); }}>
-            Isi Form Lagi
+            Reset Form
           </Button>
         </div>
       ) : (
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
           <TextField
-            label="Alamat Email"
+            label="Email Address"
             type="email"
-            placeholder="nama@domain.com"
+            placeholder="name@domain.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             error={emailError}
-            helperText={!emailError ? "Gunakan email perusahaan yang valid." : undefined}
+            helperText={!emailError ? "Use a valid work or personal email." : undefined}
           />
 
           <TextField
-            label="Kata Sandi"
+            label="Password"
             type="password"
-            placeholder="Minimal 8 karakter..."
+            placeholder="Minimum 8 characters..."
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             error={passwordError}
-            helperText={!passwordError ? "Gunakan kombinasi huruf dan angka." : undefined}
+            helperText={!passwordError ? "Use a combination of letters and numbers." : undefined}
           />
 
           <Button
@@ -74,7 +74,7 @@ export default function App() {
             fullWidth
             disabled={!canSubmit}
           >
-            Daftar Akun
+            Register Account
           </Button>
         </form>
       )}

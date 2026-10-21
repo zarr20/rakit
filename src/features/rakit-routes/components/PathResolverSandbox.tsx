@@ -39,7 +39,7 @@ const filePath = "${filePath}";
 const baseDir = "${baseDir}";
 
 const routeUrl = toRoutePath(filePath, baseDir);
-// Output Hasil: "${resolvedUrl}"`;
+// Resolved Output: "${resolvedUrl}"`;
 
   return (
     <div className="space-y-6">
@@ -48,10 +48,10 @@ const routeUrl = toRoutePath(filePath, baseDir);
         <div className="space-y-3">
           <h3 className="text-base font-display font-semibold text-slate-900 flex items-center gap-2">
             <Sparkles className="w-4 h-4 text-emerald-700" />
-            <span>Aturan Konversi Path File ke Route URL</span>
+            <span>File Path to Route URL Conversion Rules</span>
           </h3>
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Ketik atau pilih contoh path file di bawah ini untuk melihat bagaimana algoritma <code className="text-emerald-800 font-mono font-medium">toRoutePath()</code> mengonversi format folder file-system menjadi rute URL standar React Router secara instan.
+            Type or select a file path below to observe how the <code className="text-emerald-800 font-mono font-medium">toRoutePath()</code> algorithm transforms file-system paths into standard React Router URL paths.
           </p>
 
           {/* Preset chips using rakit Tabs */}
@@ -80,7 +80,7 @@ const routeUrl = toRoutePath(filePath, baseDir);
                 label="File Path Input"
                 value={filePath}
                 onChange={(e: any) => setFilePath(e.target.value)}
-                placeholder="misal: src/pages/users/[id].tsx"
+                placeholder="e.g. src/pages/users/[id].tsx"
                 leftIcon={<FileCode className="w-4 h-4 text-slate-400" />}
               />
 
@@ -94,7 +94,7 @@ const routeUrl = toRoutePath(filePath, baseDir);
               {/* Real-time Result Card */}
               <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono uppercase text-slate-500 font-semibold">Hasil URL Rute</span>
+                  <span className="text-xs font-mono uppercase text-slate-500 font-semibold">Resolved Route URL</span>
                   <Badge variant={categoryInfo.variant} size="xs">
                     {categoryInfo.label}
                   </Badge>
@@ -109,7 +109,7 @@ const routeUrl = toRoutePath(filePath, baseDir);
                     variant="ghost"
                     size="xs"
                     onClick={() => copy(resolvedUrl)}
-                    title="Salin URL"
+                    title="Copy URL"
                   >
                     {copied ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
                   </Button>
@@ -121,7 +121,7 @@ const routeUrl = toRoutePath(filePath, baseDir);
 
         {/* Code Snippet */}
         <Grid.Col span={{ base: 12, lg: 6 }} className="space-y-3">
-          <span className="text-xs font-mono text-slate-500 font-medium">Eksekusi Fungsi:</span>
+          <span className="text-xs font-mono text-slate-500 font-medium">Function Execution:</span>
           <CodeViewer value={codeSnippet} language="typescript" title="toRoutePath.ts" />
         </Grid.Col>
       </Grid>

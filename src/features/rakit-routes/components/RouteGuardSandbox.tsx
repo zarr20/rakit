@@ -39,7 +39,7 @@ export function RouteGuardSandbox() {
     isLogin,
     roles: selectedRoles,
     permissions: selectedPerms,
-    user: isLogin ? { name: 'Dzarr Al Ghifari', email: 'dzarr@rakit.dev' } : undefined,
+    user: isLogin ? { name: 'Rakit Dev', email: 'dev@rakit.dev' } : undefined,
   };
 
   const currentMeta: RouteMeta = {
@@ -65,7 +65,7 @@ const meta = ${JSON.stringify(currentMeta, null, 2)};
   auth={auth}
   fallback={(redirectUrl) => (
     <div className="p-4 bg-rose-50 text-rose-800 rounded-xl border border-rose-200">
-      Akses Ditolak! Redirect ke: {redirectUrl}
+      Access Denied! Redirect to: {redirectUrl}
     </div>
   )}
 >
@@ -82,7 +82,7 @@ const meta = ${JSON.stringify(currentMeta, null, 2)};
             <span>Role-Based Access Control (RBAC) & RouteGuard</span>
           </h3>
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Simulasikan izin akses pengguna berdasarkan hak peran (roles), izin khusus (permissions), atau mode guest-only (misal: halaman login tidak boleh diakses oleh pengguna yang sudah login).
+            Simulate user access permissions based on roles, specific permissions, or guest-only mode (e.g. login pages should not be accessible to already authenticated users).
           </p>
         </div>
       </Card>
@@ -95,7 +95,7 @@ const meta = ${JSON.stringify(currentMeta, null, 2)};
               <div className="flex items-center justify-between">
                 <span className="text-xs font-mono uppercase text-slate-500 font-semibold flex items-center gap-1.5">
                   <UserCheck className="w-4 h-4 text-emerald-700" />
-                  <span>1. Status Pengguna (Auth State)</span>
+                  <span>1. User Auth State</span>
                 </span>
                 <Checkbox
                   checked={isLogin}
@@ -106,7 +106,7 @@ const meta = ${JSON.stringify(currentMeta, null, 2)};
 
               {/* Roles of current user */}
               <div className="space-y-1.5">
-                <label className="text-xs font-mono font-medium text-slate-600">User Roles (Peran User)</label>
+                <label className="text-xs font-mono font-medium text-slate-600">User Roles</label>
                 <div className="flex flex-wrap gap-1.5">
                   {availableRoles.map((r) => (
                     <Button
@@ -123,7 +123,7 @@ const meta = ${JSON.stringify(currentMeta, null, 2)};
 
               {/* Permissions of current user */}
               <div className="space-y-1.5">
-                <label className="text-xs font-mono font-medium text-slate-600">User Permissions (Hak Izin)</label>
+                <label className="text-xs font-mono font-medium text-slate-600">User Permissions</label>
                 <div className="flex flex-wrap gap-1.5">
                   {availablePerms.map((p) => (
                     <Button
@@ -142,24 +142,24 @@ const meta = ${JSON.stringify(currentMeta, null, 2)};
               <div className="pt-4 border-t border-slate-200 space-y-4">
                 <span className="text-xs font-mono uppercase text-slate-500 font-semibold flex items-center gap-1.5">
                   <Lock className="w-4 h-4 text-amber-700" />
-                  <span>2. Syarat Akses Halaman (Route Meta)</span>
+                  <span>2. Route Access Requirements (Route Meta)</span>
                 </span>
 
                 <div className="grid grid-cols-2 gap-3">
                   <Checkbox
                     checked={isProtected}
                     onChange={setIsProtected}
-                    label="protected (butuh login)"
+                    label="protected (requires login)"
                   />
                   <Checkbox
                     checked={isGuestOnly}
                     onChange={setIsGuestOnly}
-                    label="guestOnly (hanya tamu)"
+                    label="guestOnly (unauthenticated only)"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-mono font-medium text-slate-600">Wajib Role</label>
+                  <label className="text-xs font-mono font-medium text-slate-600">Required Role</label>
                   <Tabs
                     items={([
                       { id: 'none', label: 'None' },
@@ -175,7 +175,7 @@ const meta = ${JSON.stringify(currentMeta, null, 2)};
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-mono font-medium text-slate-600">Wajib Permission</label>
+                  <label className="text-xs font-mono font-medium text-slate-600">Required Permission</label>
                   <Tabs
                     items={([
                       { id: 'none', label: 'None' },
@@ -210,10 +210,10 @@ const meta = ${JSON.stringify(currentMeta, null, 2)};
                 )}
                 <div>
                   <h4 className="font-bold text-sm text-slate-900">
-                    Hasil Evaluasi: {evaluation.allowed ? 'AKSES DIIZINKAN' : 'AKSES DITOLAK'}
+                    Evaluation Result: {evaluation.allowed ? 'ACCESS GRANTED' : 'ACCESS DENIED'}
                   </h4>
                   <p className="text-xs text-slate-600">
-                    Alasan: <code className="font-mono text-slate-800 font-semibold">{evaluation.reason}</code>
+                    Reason: <code className="font-mono text-slate-800 font-semibold">{evaluation.reason}</code>
                   </p>
                 </div>
               </div>
@@ -231,13 +231,13 @@ const meta = ${JSON.stringify(currentMeta, null, 2)};
                 fallback={(redirect) => (
                   <div className="flex items-center gap-2.5 text-xs text-rose-800 bg-rose-50 p-3 rounded-lg border border-rose-200">
                     <AlertCircle className="w-4 h-4 text-rose-600 shrink-0" />
-                    <span>Akses Ditolak! RouteGuard akan mengarahkan user ke <strong>{redirect}</strong></span>
+                    <span>Access Denied! RouteGuard will redirect user to <strong>{redirect}</strong></span>
                   </div>
                 )}
               >
                 <div className="flex items-center gap-2.5 text-xs text-emerald-800 bg-emerald-50 p-3 rounded-lg border border-emerald-200">
                   <ShieldCheck className="w-4 h-4 text-emerald-700 shrink-0" />
-                  <span>Selamat datang di Halaman Rahasia Admin! Seluruh otorisasi terpenuhi.</span>
+                  <span>Welcome to the Admin Protected Area! All authorization checks passed.</span>
                 </div>
               </RouteGuard>
             </div>

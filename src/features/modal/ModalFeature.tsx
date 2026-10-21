@@ -3,7 +3,6 @@ import {
   Modal,
   Button,
   TextField,
-  Card,
   Badge,
   type ModalSize,
 } from '@zarr20/rakit-ui';
@@ -17,8 +16,8 @@ export function ModalFeature() {
   // Modal states
   const [isOpen, setIsOpen] = useState(false);
   const [modalSize, setModalSize] = useState<ModalSize>('md');
-  const [title, setTitle] = useState('Konfirmasi Deploy Sistem');
-  const [description, setDescription] = useState('Pastikan branch release telah melalui seluruh unit testing.');
+  const [title, setTitle] = useState('System Deployment Confirmation');
+  const [description, setDescription] = useState('Ensure release branch has passed all automated unit tests.');
   const [closeOnEsc, setCloseOnEsc] = useState(true);
   const [closeOnOverlayClick, setCloseOnOverlayClick] = useState(true);
 
@@ -40,16 +39,16 @@ export function ModalFeature() {
   footer={
     <div className="flex items-center justify-end gap-2">
       <Button variant="secondary" size="sm" onClick={() => setIsOpen(false)}>
-        Batal
+        Cancel
       </Button>
       <Button variant="primary" size="sm" onClick={() => setIsOpen(false)}>
-        Lanjutkan
+        Proceed
       </Button>
     </div>
   }
 >
   <p className="text-sm text-slate-600">
-    Proses deployment akan memperbarui seluruh worker container secara rolling update.
+    The deployment process will update all worker containers via a rolling update.
   </p>
 </Modal>`;
   };
@@ -58,7 +57,7 @@ export function ModalFeature() {
     <div className="space-y-12">
       <PlaygroundHeader
         title="Modal Dialog"
-        tagline="Dialog modal berbasis React Portal dengan backdrop blur, transisi animasi halus, dan penanganan accessibility."
+        tagline="React Portal-based modal dialog featuring glassmorphism backdrop blur, smooth animation transitions, and accessibility handling."
         badge="Feedback & Overlay"
         importStatement="import { Modal } from '@zarr20/rakit-ui';"
       />
@@ -81,8 +80,8 @@ export function ModalFeature() {
           <PropControls.Canvas
             codeSnippet={generateCode()}
             onReset={() => {
-              setTitle('Konfirmasi Deploy Sistem');
-              setDescription('Pastikan branch release telah melalui seluruh unit testing.');
+              setTitle('System Deployment Confirmation');
+              setDescription('Ensure release branch has passed all automated unit tests.');
               setModalSize('md');
               setCloseOnEsc(true);
               setCloseOnOverlayClick(true);
@@ -91,9 +90,9 @@ export function ModalFeature() {
           >
             <div className="flex flex-col items-center justify-center gap-3 py-6">
               <div className="flex items-center gap-2">
-                <span className="text-xs font-mono text-slate-500">Status Modal:</span>
+                <span className="text-xs font-mono text-slate-500">Modal Status:</span>
                 <Badge variant={isOpen ? 'success' : 'default'} size="sm">
-                  {isOpen ? 'OPEN (Aktif)' : 'CLOSED (Tertutup)'}
+                  {isOpen ? 'OPEN (Active)' : 'CLOSED (Inactive)'}
                 </Badge>
               </div>
               <Button
@@ -101,27 +100,27 @@ export function ModalFeature() {
                 size="md"
                 onClick={() => setIsOpen(true)}
               >
-                Buka Dialog Modal ({modalSize.toUpperCase()})
+                Open Modal Dialog ({modalSize.toUpperCase()})
               </Button>
             </div>
           </PropControls.Canvas>
 
           {/* 2. Responsive Controls Panel */}
-          <PropControls title="Konfigurasi Props Modal" columns={3}>
+          <PropControls title="Modal Props Configuration" columns={2}>
             <PropControls.Text
-              label="Judul Modal"
+              label="Modal Title"
               value={title}
               onChange={setTitle}
             />
 
             <PropControls.Text
-              label="Deskripsi Subjudul"
+              label="Subtitle Description"
               value={description}
               onChange={setDescription}
             />
 
             <PropControls.Segmented
-              label="Ukuran Modal (size)"
+              label="Modal Size (size)"
               items={sizesList.map((s) => ({ value: s, label: s }))}
               value={modalSize}
               onChange={(s) => setModalSize(s as ModalSize)}
@@ -132,13 +131,13 @@ export function ModalFeature() {
               label="closeOnEsc"
               checked={closeOnEsc}
               onChange={setCloseOnEsc}
-              description="Tutup via tombol ESC"
+              description="Close via ESC key"
             />
             <PropControls.Toggle
               label="closeOnOverlayClick"
               checked={closeOnOverlayClick}
               onChange={setCloseOnOverlayClick}
-              description="Tutup via klik backdrop overlay"
+              description="Close via backdrop overlay click"
             />
           </PropControls>
 
@@ -151,14 +150,14 @@ export function ModalFeature() {
       <section
         id="examples"
         className="space-y-8 scroll-mt-6 pt-10 border-t border-slate-200/80"
-        data-toc-title="Varian & Skenario"
+        data-toc-title="Variants & Scenarios"
         data-toc-level="1"
       >
         <div className="flex items-center justify-between pb-2 border-b border-slate-200">
           <div className="flex items-center gap-2">
             <Layers className="w-4 h-4 text-emerald-600" />
             <h2 className="text-base font-display font-bold text-slate-900">
-              Varian & Skenario Penggunaan
+              Variants & Usage Scenarios
             </h2>
           </div>
           <span className="text-xs font-mono text-slate-400">#examples</span>
@@ -169,15 +168,15 @@ export function ModalFeature() {
           <div
             id="danger-confirmation"
             className="space-y-3 scroll-mt-6"
-            data-toc-title="Konfirmasi Bahaya"
+            data-toc-title="Danger Confirmation"
             data-toc-level="2"
           >
             <div>
               <h3 className="text-base font-display font-semibold text-slate-900">
-                Konfirmasi Penghapusan Permanen
+                Permanent Deletion Confirmation
               </h3>
               <p className="text-xs text-slate-500">
-                Dialog peringatan dengan ikon bahaya dan tombol aksi khusus.
+                Warning dialog with destructive alert icon and explicit action buttons.
               </p>
             </div>
             <div className="p-6 rounded-2xl border border-slate-200/90 bg-slate-50/50 flex flex-col items-center justify-center min-h-[140px]">
@@ -187,7 +186,7 @@ export function ModalFeature() {
                 leftIcon={<Trash2 className="w-4 h-4" />}
                 onClick={() => setIsDangerOpen(true)}
               >
-                Hapus Database Proyek
+                Delete Project Database
               </Button>
             </div>
           </div>
@@ -196,15 +195,15 @@ export function ModalFeature() {
           <div
             id="form-dialog"
             className="space-y-3 scroll-mt-6"
-            data-toc-title="Formulir dalam Modal"
+            data-toc-title="Form in Modal"
             data-toc-level="2"
           >
             <div>
               <h3 className="text-base font-display font-semibold text-slate-900">
-                Formulir dalam Modal
+                Form in Modal
               </h3>
               <p className="text-xs text-slate-500">
-                Dialog berisi kontrol formulir untuk input data cepat.
+                Dialog containing input controls for rapid data entry.
               </p>
             </div>
             <div className="p-6 rounded-2xl border border-slate-200/90 bg-slate-50/50 flex flex-col items-center justify-center min-h-[140px]">
@@ -214,7 +213,7 @@ export function ModalFeature() {
                 leftIcon={<ShieldCheck className="w-4 h-4" />}
                 onClick={() => setIsFormOpen(true)}
               >
-                Buat API Key Baru
+                Create New API Key
               </Button>
             </div>
           </div>
@@ -255,17 +254,17 @@ export function ModalFeature() {
         footer={
           <div className="flex items-center justify-end gap-2">
             <Button variant="secondary" size="sm" onClick={() => setIsOpen(false)}>
-              Batal
+              Cancel
             </Button>
             <Button variant="primary" size="sm" onClick={() => setIsOpen(false)}>
-              Lanjutkan
+              Proceed
             </Button>
           </div>
         }
       >
         <div className="space-y-3 text-sm text-slate-600">
           <p>
-            Proses deployment akan memvalidasi signature enkripsi dan mendistribusikan aset statis ke 280+ PoP edge network secara global.
+            The deployment process will validate encryption signatures and distribute static assets to 280+ global edge network PoPs.
           </p>
           <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono text-slate-700">
             Environment: production-apac-east1
@@ -277,23 +276,23 @@ export function ModalFeature() {
       <Modal
         isOpen={isDangerOpen}
         onClose={() => setIsDangerOpen(false)}
-        title="Hapus Database Proyek?"
-        description="Tindakan ini tidak dapat dibatalkan dan seluruh data akan dihapus permanen."
+        title="Delete Project Database?"
+        description="This action cannot be undone and all data will be permanently wiped."
         icon={<AlertTriangle className="w-5 h-5 text-rose-600" />}
         size="md"
         footer={
           <div className="flex items-center justify-end gap-2">
             <Button variant="secondary" size="sm" onClick={() => setIsDangerOpen(false)}>
-              Batalkan
+              Cancel
             </Button>
             <Button variant="danger" size="sm" onClick={() => setIsDangerOpen(false)}>
-              Ya, Hapus Sekarang
+              Yes, Delete Now
             </Button>
           </div>
         }
       >
         <p className="text-sm text-rose-700 bg-rose-50 p-3 rounded-xl border border-rose-200">
-          Semua tabel, indeks, dan backup snapshot akan dihapus seketika.
+          All tables, indexes, and automated backup snapshots will be deleted immediately.
         </p>
       </Modal>
 
@@ -301,13 +300,13 @@ export function ModalFeature() {
       <Modal
         isOpen={isFormOpen}
         onClose={() => setIsFormOpen(false)}
-        title="Buat Kunci API Baru"
-        description="Gunakan kunci ini untuk otentikasi request SDK Anda."
+        title="Create New API Key"
+        description="Use this key to authenticate requests from your client SDK."
         size="lg"
         footer={
           <div className="flex items-center justify-end gap-2">
             <Button variant="secondary" size="sm" onClick={() => setIsFormOpen(false)}>
-              Batal
+              Cancel
             </Button>
             <Button variant="primary" size="sm" onClick={() => setIsFormOpen(false)}>
               Generate Token
@@ -316,8 +315,8 @@ export function ModalFeature() {
         }
       >
         <div className="space-y-4">
-          <TextField label="Nama Token" placeholder="contoh: Production Webhook Key" required />
-          <TextField label="Masa Berlaku (Expired)" placeholder="30 hari / 90 hari" defaultValue="30 hari" />
+          <TextField label="Token Name" placeholder="e.g. Production Webhook Key" required />
+          <TextField label="Expiration Period" placeholder="30 days / 90 days" defaultValue="30 days" />
         </div>
       </Modal>
     </div>

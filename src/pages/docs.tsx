@@ -16,10 +16,10 @@ export default function DocsIndexPage() {
           </div>
           <div>
             <h1 className="text-2xl sm:text-3xl font-display font-bold text-slate-900 tracking-tight">
-              Pusat Dokumentasi Rakit
+              Rakit Documentation Center
             </h1>
             <p className="text-slate-600 text-sm mt-0.5">
-              Pilih paket untuk menavigasi dokumentasi API, panduan penggunaan, dan interaktivitas.
+              Select a package to navigate API documentation, usage guides, and interactive sandboxes.
             </p>
           </div>
         </div>
@@ -71,7 +71,7 @@ export default function DocsIndexPage() {
                   onClick={() => navigate(pkg.defaultRoute)}
                   rightIcon={<ArrowRight className="w-3.5 h-3.5" />}
                 >
-                  Buka Dokumentasi {isUi ? 'UI' : 'Router'}
+                  Open {isUi ? 'UI' : 'Router'} Documentation
                 </Button>
               </div>
             </Card>

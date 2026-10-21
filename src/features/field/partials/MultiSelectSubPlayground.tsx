@@ -21,7 +21,7 @@ export function MultiSelectSubPlayground() {
   const [clearable, setClearable] = useState(true);
   const [disabled, setDisabled] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [placeholder, setPlaceholder] = useState('Pilih keahlian teknis...');
+  const [placeholder, setPlaceholder] = useState('Select technical skills...');
 
   const sizes: FieldSize[] = ['xs', 'sm', 'md', 'lg', 'xl'];
 
@@ -36,9 +36,9 @@ export function MultiSelectSubPlayground() {
     if (searchable) props.push('searchable');
     if (clearable) props.push('clearable');
     if (disabled) props.push('disabled');
-    if (hasError) props.push('error="Pilih minimal satu keahlian"');
+    if (hasError) props.push('error="Select at least one skill"');
 
-    return `<MultiSelect\n  label="Keahlian Teknis (Skills)"\n  ${props.join('\n  ')}\n/>`;
+    return `<MultiSelect\n  label="Technical Skills"\n  ${props.join('\n  ')}\n/>`;
   };
 
   return (
@@ -54,12 +54,12 @@ export function MultiSelectSubPlayground() {
           setClearable(true);
           setDisabled(false);
           setHasError(false);
-          setPlaceholder('Pilih keahlian teknis...');
+          setPlaceholder('Select technical skills...');
         }}
       >
         <div className="w-full max-w-md space-y-3">
           <MultiSelect
-            label="Keahlian Teknis (Skills)"
+            label="Technical Skills"
             options={SKILL_OPTIONS}
             value={value}
             onChange={(vals) => setValue(vals)}
@@ -68,15 +68,15 @@ export function MultiSelectSubPlayground() {
             searchable={searchable}
             clearable={clearable}
             disabled={disabled}
-            error={hasError ? 'Pilih minimal satu keahlian teknis.' : undefined}
-            helperText="Klik opsi untuk menambah tag badge, atau klik silang untuk menghapus tag."
+            error={hasError ? 'Select at least one technical skill.' : undefined}
+            helperText="Click an option to add tag badge, or click cross to remove tag."
           />
 
           <div className="p-2.5 rounded-lg bg-white border border-slate-200/80 space-y-2 text-xs">
-            <span className="font-mono text-slate-500">Tag Terpilih ({value.length}):</span>
+            <span className="font-mono text-slate-500">Selected Tags ({value.length}):</span>
             <div className="flex flex-wrap gap-1.5">
               {value.length === 0 ? (
-                <span className="text-slate-400 italic">Belum ada item terpilih</span>
+                <span className="text-slate-400 italic">No items selected yet</span>
               ) : (
                 value.map((v) => (
                   <Badge key={v} variant="subtle" size="xs">
@@ -90,9 +90,9 @@ export function MultiSelectSubPlayground() {
       </PropControls.Canvas>
 
       {/* 2. Responsive Controls Panel */}
-      <PropControls title="Konfigurasi MultiSelect" columns={3}>
+      <PropControls title="MultiSelect Configuration" columns={2}>
         <PropControls.Segmented
-          label="Ukuran (FieldSize)"
+          label="Size (FieldSize)"
           items={sizes.map((s) => ({ value: s, label: s.toUpperCase() }))}
           value={size}
           onChange={(s) => setSize(s as FieldSize)}
@@ -106,30 +106,31 @@ export function MultiSelectSubPlayground() {
         />
 
         <PropControls.Toggle
-          label="Filter Pencarian"
+          label="Search Filter"
           checked={searchable}
           onChange={setSearchable}
-          description="Filter opsi di dropdown"
+          description="Filter options inside dropdown"
         />
 
         <PropControls.Toggle
-          label="Tombol Hapus Semua"
+          label="Clear All"
           checked={clearable}
           onChange={setClearable}
-          description="Reset semua tag"
+          description="Reset all tags"
         />
 
         <PropControls.Toggle
-          label="Status Error"
+          label="Error State"
           checked={hasError}
           onChange={setHasError}
-          description="Border merah & validasi"
+          description="Red error border and validation helper"
         />
 
         <PropControls.Toggle
-          label="Nonaktifkan (Disabled)"
+          label="Disabled"
           checked={disabled}
           onChange={setDisabled}
+          description="Disable multi-select interactions"
         />
       </PropControls>
 

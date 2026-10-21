@@ -40,10 +40,10 @@ export default defineConfig({
         <div className="space-y-3">
           <h3 className="text-base font-display font-semibold text-slate-900 flex items-center gap-2">
             <Zap className="w-4 h-4 text-emerald-700" />
-            <span>Integrasi Otomatis Vite Plugin & CLI Runner</span>
+            <span>Automated Vite Plugin & CLI Runner Integration</span>
           </h3>
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Dengan Vite Plugin <code className="text-emerald-800 bg-emerald-100/60 px-1 py-0.5 rounded font-mono font-medium">rakitRoutesPlugin()</code>, setiap kali Anda membuat, mengubah nama, atau menghapus file di dalam folder halaman, router akan digenerate ulang secara instan dalam hitungan milidetik tanpa me-restart server Vite!
+            With the <code className="text-emerald-800 bg-emerald-100/60 px-1 py-0.5 rounded font-mono font-medium">rakitRoutesPlugin()</code> Vite Plugin, every time you create, rename, or delete a file in the pages directory, the router regenerates instantly in milliseconds without restarting the Vite server!
           </p>
         </div>
       </Card>
@@ -54,7 +54,7 @@ export default defineConfig({
           <Card variant="default" padding="large">
             <div className="space-y-4">
               <span className="text-xs font-mono uppercase text-slate-500 font-semibold">
-                Konfigurasi Direktori
+                Directory Configuration
               </span>
 
               <TextField
@@ -73,7 +73,7 @@ export default defineConfig({
 
               <div className="pt-2 border-t border-slate-200">
                 <Checkbox
-                  label="--watch mode (regenerasi saat file berubah)"
+                  label="--watch mode (regenerate on file changes)"
                   checked={isWatch}
                   onChange={setIsWatch}
                 />
@@ -81,7 +81,7 @@ export default defineConfig({
 
               {/* Quick CLI command box */}
               <div className="pt-2 space-y-2">
-                <span className="text-xs font-mono text-slate-500 font-medium">Perintah CLI:</span>
+                <span className="text-xs font-mono text-slate-500 font-medium">CLI Command:</span>
                 <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200 font-mono text-xs">
                   <div className="flex items-center gap-2 truncate mr-2">
                     <Terminal className="w-4 h-4 text-emerald-700 shrink-0" />
@@ -91,7 +91,7 @@ export default defineConfig({
                     variant="ghost"
                     size="xs"
                     onClick={() => copy(generatedCliCmd)}
-                    title="Salin perintah CLI"
+                    title="Copy CLI command"
                   >
                     {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
                   </Button>

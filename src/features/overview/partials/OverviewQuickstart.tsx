@@ -23,7 +23,7 @@ export function OverviewQuickstart() {
   const tailwindSetupCode = `@import "tailwindcss";
 @import "@zarr20/rakit-ui/styles.css";
 
-/* Rakit Dark Mode Variant (Opsional) */
+/* Rakit Dark Mode Variant (Optional) */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 `;
 
@@ -31,10 +31,10 @@ export function OverviewQuickstart() {
     <section className="py-8 max-w-4xl mx-auto space-y-6">
       <div className="text-center">
         <h2 className="text-2xl sm:text-3xl font-display font-bold text-slate-900 tracking-tight">
-          Panduan Cepat (Quickstart)
+          Quickstart Guide
         </h2>
         <p className="text-slate-600 text-sm mt-1">
-          Dua langkah mudah untuk mulai membangun aplikasi dengan Rakit Ecosystem.
+          Two simple steps to start building applications with the Rakit Ecosystem.
         </p>
       </div>
 
@@ -46,7 +46,7 @@ export function OverviewQuickstart() {
               <span className="w-5 h-5 rounded-full bg-emerald-600 text-white text-[11px] font-bold flex items-center justify-center">
                 1
               </span>
-              Instalasi Paket
+              Install Packages
             </h3>
 
             {/* Package Manager Switcher */}
@@ -73,7 +73,7 @@ export function OverviewQuickstart() {
             <span className="w-5 h-5 rounded-full bg-emerald-600 text-white text-[11px] font-bold flex items-center justify-center">
               2
             </span>
-            Setup Styling (index.css)
+            Setup Styles (index.css)
           </h3>
 
           <CodeViewer

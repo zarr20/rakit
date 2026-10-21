@@ -10,13 +10,13 @@ export default function App() {
     <div style={{ padding: "2rem 1.5rem", maxWidth: "600px", margin: "0 auto", fontFamily: "sans-serif" }}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1rem" }}>
         <h2 style={{ fontSize: "1.25rem", fontWeight: "bold", color: "#0f172a" }}>
-          Simulasi Navigasi Router
+          Router Navigation Simulation
         </h2>
         <Badge variant="primary" size="sm">rakit-routes</Badge>
       </div>
 
       <p style={{ color: "#64748b", fontSize: "0.875rem", marginBottom: "1.5rem" }}>
-        Simulasi navigasi halaman berbasis rute file-system.
+        Simulated page navigation powered by file-system routing.
       </p>
 
       {/* Nav Bar */}
@@ -27,7 +27,7 @@ export default function App() {
           leftIcon={<Home style={{ width: "0.875rem", height: "0.875rem" }} />}
           onClick={() => setCurrentPath("/")}
         >
-          Beranda
+          Home
         </Button>
         <Button
           variant={currentPath === "/profile" ? "primary" : "ghost"}
@@ -35,7 +35,7 @@ export default function App() {
           leftIcon={<User style={{ width: "0.875rem", height: "0.875rem" }} />}
           onClick={() => setCurrentPath("/profile")}
         >
-          Profil
+          Profile
         </Button>
         <Button
           variant={currentPath === "/settings" ? "primary" : "ghost"}
@@ -43,23 +43,23 @@ export default function App() {
           leftIcon={<Settings style={{ width: "0.875rem", height: "0.875rem" }} />}
           onClick={() => setCurrentPath("/settings")}
         >
-          Pengaturan
+          Settings
         </Button>
       </div>
 
       {/* Route Content */}
       <Card variant="default" padding="large">
         <div style={{ fontSize: "0.75rem", fontFamily: "monospace", color: "#64748b", marginBottom: "0.5rem" }}>
-          Rute Aktif: <span style={{ color: "#0284c7", fontWeight: 600 }}>{currentPath}</span>
+          Active Route: <span style={{ color: "#0284c7", fontWeight: 600 }}>{currentPath}</span>
         </div>
 
         {currentPath === "/" && (
           <div>
             <h3 style={{ fontSize: "1.125rem", fontWeight: 600, color: "#0f172a", marginBottom: "0.5rem" }}>
-              Halaman Beranda
+              Home Page
             </h3>
             <p style={{ color: "#475569", fontSize: "0.875rem", marginBottom: "1rem" }}>
-              Selamat datang di dashboard Rakit Ecosystem. Komponen router mendeteksi halaman otomatis.
+              Welcome to Rakit Ecosystem. The router resolves file-system routes automatically.
             </p>
             <Button
               variant="outline"
@@ -67,7 +67,7 @@ export default function App() {
               rightIcon={<ArrowRight style={{ width: "0.875rem", height: "0.875rem" }} />}
               onClick={() => setCurrentPath("/profile")}
             >
-              Lihat Profil Pengguna
+              View User Profile
             </Button>
           </div>
         )}
@@ -75,13 +75,13 @@ export default function App() {
         {currentPath === "/profile" && (
           <div>
             <h3 style={{ fontSize: "1.125rem", fontWeight: 600, color: "#0f172a", marginBottom: "0.5rem" }}>
-              Halaman Profil
+              Profile Page
             </h3>
             <p style={{ color: "#475569", fontSize: "0.875rem", marginBottom: "1rem" }}>
-              Informasi identitas akun dan hak akses pengguna.
+              Account identity details and user permissions.
             </p>
             <Button variant="secondary" size="sm" onClick={() => setCurrentPath("/")}>
-              Kembali ke Beranda
+              Back to Home
             </Button>
           </div>
         )}
@@ -89,10 +89,10 @@ export default function App() {
         {currentPath === "/settings" && (
           <div>
             <h3 style={{ fontSize: "1.125rem", fontWeight: 600, color: "#0f172a", marginBottom: "0.5rem" }}>
-              Halaman Pengaturan
+              Settings Page
             </h3>
             <p style={{ color: "#475569", fontSize: "0.875rem" }}>
-              Konfigurasi preferensi sistem, tema, dan integrasi API.
+              Configure system preferences, themes, and API integrations.
             </p>
           </div>
         )}

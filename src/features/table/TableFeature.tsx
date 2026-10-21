@@ -43,7 +43,6 @@ export function TableFeature() {
     { id: '6', name: 'Metrics Collector', route: '/api/v1/telemetry', method: 'PUT', status: 'operational', latency: 19 },
   ];
 
-
   const filteredData = isEmpty
     ? []
     : rawData.filter(
@@ -55,7 +54,7 @@ export function TableFeature() {
   const columns: TableColumn<ServiceRecord>[] = [
     {
       key: 'name',
-      title: 'Nama Service',
+      title: 'Service Name',
       sortable: true,
       render: (record) => (
         <div className="flex items-center gap-2">
@@ -169,7 +168,7 @@ export function TableFeature() {
     <div className="space-y-12">
       <PlaygroundHeader
         title="Data Table"
-        tagline="Tabel data performa tinggi dengan fitur pengurutan kolom, sticky header, multi-row selection, skeleton loading, zebra stripes, dan kerapatan density."
+        tagline="High-performance data table featuring column sorting, sticky headers, multi-row selection, skeleton loading, zebra striping, and density controls."
         badge="Data Display"
         importStatement="import { Table, DataTable } from '@zarr20/rakit-ui';"
       />
@@ -193,7 +192,7 @@ export function TableFeature() {
             <TextField
               value={search}
               onChange={(e: any) => setSearch(e.target.value)}
-              placeholder="Filter nama atau rute endpoint..."
+              placeholder="Filter service name or endpoint route..."
               leftIcon={<Search className="w-4 h-4 text-slate-400" />}
               size="sm"
             />
@@ -249,7 +248,7 @@ export function TableFeature() {
               />
             )}
             <Checkbox
-              label="Kosong"
+              label="Empty"
               checked={isEmpty}
               onChange={setIsEmpty}
               size="sm"
@@ -262,10 +261,10 @@ export function TableFeature() {
           <div className="px-4 py-2.5 rounded-xl border border-emerald-200 bg-emerald-50/70 flex items-center justify-between gap-3 text-xs text-emerald-950">
             <div className="flex items-center gap-2">
               <Badge variant="success" size="sm">
-                {selectedKeys.length} Terpilih
+                {selectedKeys.length} Selected
               </Badge>
               <span className="font-medium text-slate-600">
-                dari {filteredData.length} baris total.
+                of {filteredData.length} total rows.
               </span>
             </div>
             <div className="flex items-center gap-2">
@@ -274,14 +273,14 @@ export function TableFeature() {
                 size="xs"
                 onClick={() => setSelectedKeys([])}
               >
-                Reset Pilihan
+                Reset Selection
               </Button>
               <Button
                 variant="primary"
                 size="xs"
-                onClick={() => alert(`Memproses ${selectedKeys.length} baris data.`)}
+                onClick={() => alert(`Processing ${selectedKeys.length} records.`)}
               >
-                Eksekusi Aksi Terpilih
+                Execute Selected Action
               </Button>
             </div>
           </div>
@@ -310,7 +309,7 @@ export function TableFeature() {
         </div>
 
         <div className="space-y-2">
-          <span className="text-xs font-mono text-slate-500">Kode Contoh Table:</span>
+          <span className="text-xs font-mono text-slate-500">Table Code Example:</span>
           <CodeBlock code={generateCode()} />
         </div>
 
@@ -342,7 +341,7 @@ export function TableFeature() {
                   Compact Density Table (size="sm")
                 </h3>
                 <p className="text-xs text-slate-500 mt-0.5">
-                  Ideal untuk dashboard analitik atau panel dengan volume baris data tinggi yang membutuhkan ruang vertikal efisien.
+                  Ideal for analytics dashboards or panels with dense row volume requiring efficient vertical space.
                 </p>
               </div>
               <Badge variant="default" size="xs">
@@ -365,18 +364,18 @@ export function TableFeature() {
           <div
             id="table-features"
             data-toc-id="table-features"
-            data-toc-title="Fitur Arsitektur Table"
+            data-toc-title="Table Architecture Features"
             data-toc-level="2"
             className="space-y-3 p-5 rounded-2xl border border-slate-200/90 bg-slate-50/50"
           >
             <h4 className="text-xs font-mono font-semibold uppercase text-slate-600">
-              Fitur Utama Arsitektur Data Table
+              Primary Features of Data Table Architecture
             </h4>
             <ul className="text-xs sm:text-sm text-slate-600 space-y-1.5 list-disc list-inside leading-relaxed">
-              <li>Klik judul kolom (Service Name, Route, Latency) untuk sorting multi-arah (ASC / DESC).</li>
-              <li>Dukungan kolom sticky left/right untuk tabel lebar yang memiliki scroll horizontal.</li>
-              <li>Custom format cell rendering dengan komponen apa pun (Badge, Icon, Button).</li>
-              <li>Integrasi otomatis dengan EmptyState saat array data bernilai kosong.</li>
+              <li>Click column headers (Service Name, Latency) for bi-directional sorting (ASC / DESC).</li>
+              <li>Sticky left/right column pin support for wide tables with horizontal scroll.</li>
+              <li>Custom cell format rendering using any components (Badge, Icon, Button).</li>
+              <li>Automatic integration with EmptyState when the data array is empty.</li>
             </ul>
           </div>
         </div>

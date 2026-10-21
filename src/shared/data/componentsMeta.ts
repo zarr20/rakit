@@ -5,7 +5,7 @@ export const COMPONENTS_CATALOG: ComponentMeta[] = [
   {
     id: 'overview',
     name: 'Getting Started',
-    tagline: 'Panduan instalasi, setup Tailwind CSS v4, arsitektur tema, dan quickstart',
+    tagline: 'Installation guide, Tailwind CSS v4 setup, theming architecture, and quickstart',
     badge: 'Quickstart',
     iconName: 'LayoutGrid',
     category: 'Getting Started',
@@ -14,7 +14,7 @@ export const COMPONENTS_CATALOG: ComponentMeta[] = [
   {
     id: 'theming',
     name: 'Theming & Config',
-    tagline: 'Panduan konfigurasi RakitProvider, defineRakitConfig, semantic identifiers, dan token Tailwind v4',
+    tagline: 'Configuration guide for RakitProvider, defineRakitConfig, semantic identifiers, and Tailwind v4 tokens',
     badge: 'Design System',
     iconName: 'Palette',
     category: 'Getting Started',
@@ -23,7 +23,7 @@ export const COMPONENTS_CATALOG: ComponentMeta[] = [
   {
     id: 'playground',
     name: 'Live Playground',
-    tagline: 'Editor kode interaktif browser runtime dengan live preview, reset, copy, dan shareable URL',
+    tagline: 'Interactive in-browser code editor with live preview, reset, copy, and shareable URLs',
     badge: 'Live Code',
     iconName: 'Terminal',
     category: 'Getting Started',
@@ -32,7 +32,7 @@ export const COMPONENTS_CATALOG: ComponentMeta[] = [
   {
     id: 'sandbox',
     name: 'HTTP Sandbox',
-    tagline: 'Kanvas interaktif real-time untuk eksplorasi integrasi HTTP & JSON viewer',
+    tagline: 'Interactive real-time canvas for HTTP integration exploration & JSON viewer',
     badge: 'HTTP Tester',
     iconName: 'Play',
     category: 'Getting Started',
@@ -43,7 +43,7 @@ export const COMPONENTS_CATALOG: ComponentMeta[] = [
   {
     id: 'grid',
     name: 'Grid Layout',
-    tagline: 'Sistem layout 12-kolom responsif dengan gap tokens dan breakpoint spans',
+    tagline: 'Responsive 12-column layout system with gap tokens and breakpoint column spans',
     badge: '12-Cols',
     iconName: 'LayoutGrid',
     category: 'Layout & Structure',
@@ -52,7 +52,7 @@ export const COMPONENTS_CATALOG: ComponentMeta[] = [
   {
     id: 'container',
     name: 'Container & Shell',
-    tagline: 'Layout shell primitives dengan Header, Sidebar, Backdrop, dan ActionBars',
+    tagline: 'Layout shell primitives with Header, Sidebar, Backdrop, and ActionBars',
     badge: 'App Shell',
     iconName: 'Layers',
     category: 'Layout & Structure',
@@ -61,7 +61,7 @@ export const COMPONENTS_CATALOG: ComponentMeta[] = [
   {
     id: 'card',
     name: 'Card Container',
-    tagline: 'Modular card compound dengan Header, Title, Content, Footer, dan FeatureBanner',
+    tagline: 'Modular compound card with Header, Title, Content, Footer, and FeatureBanner',
     badge: 'Compound',
     iconName: 'SquareCode',
     category: 'Layout & Structure',
@@ -72,8 +72,8 @@ export const COMPONENTS_CATALOG: ComponentMeta[] = [
   {
     id: 'button',
     name: 'Button',
-    tagline: 'Tombol serbaguna 10 varian, loading state, icon slots, dan skala tinggi seragam xs-xl',
-    badge: '10 Varian',
+    tagline: 'Versatile button with 10 variants, loading states, icon slots, and uniform xs-xl height scale',
+    badge: '10 Variants',
     iconName: 'MousePointerClick',
     category: 'Inputs & Forms',
     packageId: 'rakit-ui',
@@ -81,7 +81,7 @@ export const COMPONENTS_CATALOG: ComponentMeta[] = [
   {
     id: 'field',
     name: 'Form Fields',
-    tagline: 'Kontrol input: TextField, TextArea, Select, MultiSelect, Autocomplete, Checkbox, Radio, Switch',
+    tagline: 'Input controls: TextField, TextArea, Select, MultiSelect, Autocomplete, Checkbox, Radio, Switch',
     badge: 'Uniform xs-xl',
     iconName: 'FormInput',
     category: 'Inputs & Forms',
@@ -92,7 +92,7 @@ export const COMPONENTS_CATALOG: ComponentMeta[] = [
   {
     id: 'badge',
     name: 'Status Badge',
-    tagline: 'Label status, tag indikator, dan counter pill seragam 5 tingkat ukuran xs-xl',
+    tagline: 'Status labels, indicator tags, and counter pills across 5 uniform sizes xs-xl',
     badge: 'Status Tag',
     iconName: 'Tag',
     category: 'Data Display',
@@ -101,7 +101,7 @@ export const COMPONENTS_CATALOG: ComponentMeta[] = [
   {
     id: 'typography',
     name: 'Typography System',
-    tagline: 'Sistem tipografi modular: Heading (Space Grotesk), Text, Paragraph, Kbd, CodeText, Blockquote, Link',
+    tagline: 'Modular typography system: Heading (Space Grotesk), Text, Paragraph, Kbd, CodeText, Blockquote, Link',
     badge: 'Typo Tokens',
     iconName: 'Type',
     category: 'Data Display',
@@ -110,7 +110,7 @@ export const COMPONENTS_CATALOG: ComponentMeta[] = [
   {
     id: 'table',
     name: 'Data Table',
-    tagline: 'Tabel data enterprise dengan sorting, pagination, empty state, dan multi-select rows',
+    tagline: 'Enterprise data table with sorting, pagination, empty state, and multi-row selection',
     badge: 'Sort & Page',
     iconName: 'Table2',
     category: 'Data Display',
@@ -119,7 +119,7 @@ export const COMPONENTS_CATALOG: ComponentMeta[] = [
   {
     id: 'code-editor',
     name: 'Code & JSON Viewer',
-    tagline: 'Editor kode sintaksis, JSON formatter, dan visualizer tree interaktif',
+    tagline: 'Syntax-highlighted code editor, JSON formatter, and interactive tree visualizer',
     badge: 'Syntax Highlighting',
     iconName: 'Code2',
     category: 'Data Display',
@@ -130,7 +130,7 @@ export const COMPONENTS_CATALOG: ComponentMeta[] = [
   {
     id: 'modal',
     name: 'Modal Dialog',
-    tagline: 'Dialog popup modular dengan Header, Content, Footer, dan aksi konfirmasi terintegrasi',
+    tagline: 'Modular popup dialog with Header, Content, Footer, and integrated confirmation actions',
     badge: 'Overlay',
     iconName: 'Maximize2',
     category: 'Feedback & Overlay',
@@ -139,7 +139,7 @@ export const COMPONENTS_CATALOG: ComponentMeta[] = [
   {
     id: 'drawer',
     name: 'Slide-Over Drawer',
-    tagline: 'Panel slide-over 4 arah placement (left, right, top, bottom) dengan backdrop blur portal',
+    tagline: 'Slide-over panel with 4 placement directions (left, right, top, bottom) and backdrop blur portal',
     badge: 'Slide-Over',
     iconName: 'PanelRight',
     category: 'Feedback & Overlay',
@@ -148,7 +148,7 @@ export const COMPONENTS_CATALOG: ComponentMeta[] = [
   {
     id: 'toast',
     name: 'Toast Notifications',
-    tagline: 'Sistem toast notifikasi imperatif dengan 4 varian status dan action callback undo',
+    tagline: 'Imperative toast notification system with 4 status variants and undo action callbacks',
     badge: 'Imperative',
     iconName: 'BellRing',
     category: 'Feedback & Overlay',
@@ -157,7 +157,7 @@ export const COMPONENTS_CATALOG: ComponentMeta[] = [
   {
     id: 'empty-state',
     name: 'Empty State',
-    tagline: 'Tampilan placeholder representatif saat data kosong, pencarian nihil, atau error status',
+    tagline: 'Representative placeholder display for empty data, zero search results, or error states',
     badge: 'UX Placeholder',
     iconName: 'FolderX',
     category: 'Feedback & Overlay',
@@ -168,7 +168,7 @@ export const COMPONENTS_CATALOG: ComponentMeta[] = [
   {
     id: 'tabs',
     name: 'Tabs Navigation',
-    tagline: 'Komponen tabs aksesibel dengan varian pills, underline, dan bordered',
+    tagline: 'Accessible tabs component with pills, underline, and bordered styles',
     badge: '3 Styles',
     iconName: 'FolderKanban',
     category: 'Navigation',
@@ -177,7 +177,7 @@ export const COMPONENTS_CATALOG: ComponentMeta[] = [
   {
     id: 'breadcrumb',
     name: 'Breadcrumb Navigation',
-    tagline: 'Hierarki lokasi halaman modular dengan separator chevron, slash, arrow, bullet, dan icon slots',
+    tagline: 'Modular page hierarchy navigation with chevron, slash, arrow, bullet separators, and icon slots',
     badge: 'Breadcrumb',
     iconName: 'Milestone',
     category: 'Navigation',
@@ -188,7 +188,7 @@ export const COMPONENTS_CATALOG: ComponentMeta[] = [
   {
     id: 'rakit-routes',
     name: 'Rakit Routes Core',
-    tagline: 'File-system router zero-config, sorting deterministik, Vite plugin, dan RouteGuard RBAC',
+    tagline: 'Zero-config file-system router, deterministic sorting, Vite plugin, and RBAC RouteGuard',
     badge: 'v1.1.5',
     iconName: 'Route',
     category: 'Ecosystem & Routing',

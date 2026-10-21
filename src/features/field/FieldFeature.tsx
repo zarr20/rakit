@@ -33,12 +33,12 @@ export function FieldFeature() {
     <div className="space-y-12">
       <PlaygroundHeader
         title="Form Fields & Controls"
-        tagline="Koleksi kontrol formulir enterprise: Autocomplete, TextField, Select, MultiSelect, TextArea, Checkbox, Radio, dan Switch."
+        tagline="Enterprise form control collection: Autocomplete, TextField, Select, MultiSelect, TextArea, Checkbox, Radio, and Switch."
         badge="Form Controls"
         importStatement="import { Autocomplete, TextField, Select, MultiSelect, TextArea, Checkbox, RadioGroup, Switch } from '@zarr20/rakit-ui';"
       />
 
-      {/* Section 1: Interactive Sub Playgrounds per Komponen */}
+      {/* Section 1: Interactive Sub Playgrounds per Component */}
       <section id="playground" className="space-y-6 scroll-mt-6">
         <div className="flex items-center justify-between pb-2 border-b border-slate-200">
           <div className="flex items-center gap-2">
@@ -56,7 +56,7 @@ export function FieldFeature() {
           onChange={setFieldSegment}
         />
 
-        {/* Selective Rendering: Hanya render sub-playground aktif */}
+        {/* Selective Rendering: Only render active sub-playground */}
         {fieldSegment === 'autocomplete' && <AutocompleteSubPlayground />}
         {fieldSegment === 'textfield' && <TextFieldSubPlayground />}
         {fieldSegment === 'select' && <SelectSubPlayground />}
@@ -73,7 +73,7 @@ export function FieldFeature() {
           <div className="flex items-center gap-2">
             <Layers className="w-4 h-4 text-emerald-600" />
             <h2 className="text-base font-display font-bold text-slate-900">
-              Showcase & Keseragaman Skala Ukuran
+              Showcase & Sizing Scale Consistency
             </h2>
           </div>
           <span className="text-xs font-mono text-slate-400">#examples</span>
@@ -84,16 +84,16 @@ export function FieldFeature() {
           <div
             id="sizing-scale"
             data-toc-id="sizing-scale"
-            data-toc-title="Keseragaman Skala Ukuran"
+            data-toc-title="Uniform Sizing Scale"
             data-toc-level="2"
             className="space-y-4"
           >
             <div>
               <h3 className="text-base font-display font-semibold text-slate-900">
-                Keseragaman Skala Ukuran Kontrol (xs, sm, md, lg, xl)
+                Control Sizing Scale Uniformity (xs, sm, md, lg, xl)
               </h3>
               <p className="text-xs text-slate-600 mt-1">
-                Seluruh kontrol input (<code className="font-mono text-emerald-800">TextField</code>, <code className="font-mono text-emerald-800">Select</code>) dan <code className="font-mono text-emerald-800">Button</code> memiliki tinggi (height), padding, font size, dan radius yang presisi dan harmonis saat diletakkan sejajar.
+                All input controls (<code className="font-mono text-emerald-800">TextField</code>, <code className="font-mono text-emerald-800">Select</code>) and <code className="font-mono text-emerald-800">Button</code> share precise, harmonious heights, padding, font sizes, and radii when placed side-by-side.
               </p>
             </div>
 
@@ -102,7 +102,7 @@ export function FieldFeature() {
                 <div key={sz} className="p-3.5 rounded-2xl border border-slate-200/90 bg-slate-50/50 space-y-2">
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-mono font-bold text-slate-700 uppercase">
-                      Ukuran: {sz}
+                      Size: {sz}
                     </span>
                     <span className="text-[11px] font-mono text-slate-500">
                       {sz === 'xs' ? 'h-7 / 28px' : sz === 'sm' ? 'h-8 / 32px' : sz === 'md' ? 'h-10 / 40px (Default)' : sz === 'lg' ? 'h-11 / 44px' : 'h-12 / 48px'}
@@ -114,15 +114,15 @@ export function FieldFeature() {
                       <TextField
                         size={sz}
                         placeholder={`TextField size="${sz}"...`}
-                        defaultValue={`Teks input (${sz})`}
+                        defaultValue={`Input text (${sz})`}
                       />
                     </div>
                     <div className="sm:col-span-4">
                       <Select
                         size={sz}
-                        options={['Opsi Alpha', 'Opsi Beta', 'Opsi Gamma']}
+                        options={['Alpha Option', 'Beta Option', 'Gamma Option']}
                         placeholder={`Select size="${sz}"`}
-                        defaultValue="Opsi Alpha"
+                        defaultValue="Alpha Option"
                       />
                     </div>
                     <div className="sm:col-span-3 flex items-center gap-2">
@@ -130,7 +130,7 @@ export function FieldFeature() {
                         Submit
                       </Button>
                       <Button size={sz} variant="outline">
-                        Batal
+                        Cancel
                       </Button>
                     </div>
                   </div>
@@ -139,7 +139,7 @@ export function FieldFeature() {
             </div>
           </div>
 
-          {/* Selection Controls Bawaan */}
+          {/* Selection Controls Built-in */}
           <div
             id="selection-controls"
             data-toc-id="selection-controls"
@@ -149,17 +149,17 @@ export function FieldFeature() {
           >
             <div>
               <h3 className="text-base font-display font-semibold text-slate-900">
-                Selection Controls Bawaan (Switch, Checkbox, Radio)
+                Built-in Selection Controls (Switch, Checkbox, Radio)
               </h3>
               <p className="text-xs text-slate-600 mt-1">
-                Gaya asli tanpa override (pure default) dengan 5 tingkatan skala ukuran (xs–xl) dan dukungan varian default maupun card.
+                Pure default styles across 5 sizing tiers (xs–xl) with support for standard inline and interactive card variants.
               </p>
             </div>
 
             <div className="space-y-6 pt-1 divide-y divide-slate-100">
               <div className="space-y-3">
                 <span className="text-xs font-mono font-bold text-slate-700 uppercase">
-                  Skala Ukuran (xs, sm, md, lg, xl)
+                  Sizing Scale (xs, sm, md, lg, xl)
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-5 gap-4 items-start">
                   {(['xs', 'sm', 'md', 'lg', 'xl'] as const).map((sz) => (
@@ -177,27 +177,27 @@ export function FieldFeature() {
 
               <div className="pt-4 space-y-3">
                 <span className="text-xs font-mono font-bold text-slate-700 uppercase">
-                  Varian Card (Pilihan Berbasis Kartu)
+                  Card Variant (Card-based Choices)
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <Checkbox
                     variant="card"
                     size="sm"
-                    label="Autentikasi Dua Faktor"
-                    description="Kirim token OTP via SMS atau authenticator app."
+                    label="Two-Factor Authentication"
+                    description="Send OTP token via SMS or authenticator app."
                     defaultChecked
                   />
                   <Checkbox
                     variant="card"
                     size="sm"
-                    label="Pencadangan Cloud Otomatis"
-                    description="Sinkronkan data setiap 24 jam ke cold storage."
+                    label="Automated Cloud Backup"
+                    description="Sync data every 24 hours to cold storage."
                   />
                   <Checkbox
                     variant="card"
                     size="sm"
-                    label="Akses Audit Log Enterprise"
-                    description="Penyimpanan riwayat akses selama 365 hari."
+                    label="Enterprise Audit Log Access"
+                    description="Store access history for 365 days."
                     disabled
                   />
                 </div>

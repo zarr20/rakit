@@ -12,7 +12,7 @@ interface PropControlsProps {
 }
 
 export function PropControls({
-  title = 'Konfigurasi Props',
+  title = 'Props Configuration',
   description,
   children,
   className = '',
@@ -206,10 +206,10 @@ PropControls.Canvas = function PropCanvas({
     try {
       await navigator.clipboard.writeText(codeSnippet);
       setCopied(true);
-      toast.success('Kode TSX berhasil disalin!');
+      toast.success('TSX code copied to clipboard!');
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      toast.error('Gagal menyalin kode.');
+      toast.error('Failed to copy code.');
     }
   };
 
@@ -247,7 +247,7 @@ PropControls.Canvas = function PropCanvas({
                 size="xs"
                 onClick={onReset}
                 leftIcon={<RotateCcw className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />}
-                title="Reset nilai ke awal"
+                title="Reset to default values"
               >
                 Reset
               </Button>
@@ -266,7 +266,7 @@ PropControls.Canvas = function PropCanvas({
                   )
                 }
               >
-                {copied ? 'Tersalin' : 'Salin TSX'}
+                {copied ? 'Copied' : 'Copy TSX'}
               </Button>
             )}
 
@@ -275,7 +275,7 @@ PropControls.Canvas = function PropCanvas({
               size="xs"
               onClick={handleOpenPlayground}
               rightIcon={<ExternalLink className="w-3.5 h-3.5" />}
-              title="Buka kode di full runtime Sandpack"
+              title="Open code in Sandpack runtime"
             >
               Playground
             </Button>

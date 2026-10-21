@@ -13,7 +13,7 @@ export default function App() {
           Button Basic Demo
         </h2>
         <p style={{ color: "#64748b", fontSize: "0.875rem" }}>
-          Klik tombol di bawah untuk melihat reaktivitas state dan styling Rakit UI.
+          Click the button below to observe state reactivity and Rakit UI styling.
         </p>
       </div>
 
@@ -24,7 +24,7 @@ export default function App() {
           leftIcon={<Sparkles style={{ width: "1rem", height: "1rem" }} />}
           onClick={() => setCount((prev) => prev + 1)}
         >
-          Diklik {count} kali
+          Clicked {count} times
         </Button>
 
         {count > 0 && (
@@ -33,7 +33,7 @@ export default function App() {
             size="sm"
             onClick={() => setCount(0)}
           >
-            Reset Penghitung
+            Reset Counter
           </Button>
         )}
       </div>

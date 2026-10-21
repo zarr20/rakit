@@ -19,7 +19,7 @@ export function RakitRoutesPlayground() {
     { id: 'sorter' as const, label: 'Route Sorter & Generator', icon: Layers },
     { id: 'guard' as const, label: 'RouteGuard & RBAC', icon: ShieldCheck },
     { id: 'vite' as const, label: 'Vite Plugin & CLI', icon: Zap },
-    { id: 'cheatsheet' as const, label: 'Konvensi & Aturan', icon: BookOpen },
+    { id: 'cheatsheet' as const, label: 'Conventions & Rules', icon: BookOpen },
     { id: 'api' as const, label: 'API Reference', icon: Route },
   ];
 
@@ -42,7 +42,7 @@ export function RakitRoutesPlayground() {
           </h1>
 
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Eksplorasi sistem routing berbasis file-system untuk React. Mendukung parameter dinamis <code className="text-emerald-800 bg-emerald-100/60 px-1 py-0.5 rounded font-mono font-medium">[id]</code>, catch-all <code className="text-emerald-800 bg-emerald-100/60 px-1 py-0.5 rounded font-mono font-medium">[...slug]</code>, route grouping <code className="text-emerald-800 bg-emerald-100/60 px-1 py-0.5 rounded font-mono font-medium">(auth)</code>, pengurutan rute deterministik, dan RouteGuard access control.
+            Explore the file-system based routing system for React. Supports dynamic parameters <code className="text-emerald-800 bg-emerald-100/60 px-1 py-0.5 rounded font-mono font-medium">[id]</code>, catch-all <code className="text-emerald-800 bg-emerald-100/60 px-1 py-0.5 rounded font-mono font-medium">[...slug]</code>, route grouping <code className="text-emerald-800 bg-emerald-100/60 px-1 py-0.5 rounded font-mono font-medium">(auth)</code>, deterministic route sorting, and RouteGuard access control.
           </p>
         </div>
       </div>
@@ -75,21 +75,21 @@ export function RakitRoutesPlayground() {
         <div className="space-y-8">
           <div className="space-y-3">
             <h3 className="text-base font-display font-semibold text-slate-900">
-              Konfigurasi routerMapper()
+              routerMapper() Configuration
             </h3>
             <PropsTable props={ROUTE_MAPPER_CONFIG_PROPS} />
           </div>
 
           <div className="space-y-3">
             <h3 className="text-base font-display font-semibold text-slate-900">
-              Props &lt;RouteGuard /&gt;
+              &lt;RouteGuard /&gt; Props
             </h3>
             <PropsTable props={ROUTE_GUARD_PROPS} />
           </div>
 
           <div className="space-y-3">
             <h3 className="text-base font-display font-semibold text-slate-900">
-              Options rakitRoutesPlugin()
+              rakitRoutesPlugin() Options
             </h3>
             <PropsTable props={VITE_PLUGIN_PROPS} />
           </div>

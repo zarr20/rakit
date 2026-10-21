@@ -34,7 +34,7 @@ export function DocsPaginationNav({ currentId }: DocsPaginationNavProps) {
         >
           <div className="flex items-center gap-1.5 text-xs text-slate-500 font-mono mb-1 group-hover:text-emerald-700 transition-colors">
             <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
-            <span>Sebelumnya</span>
+            <span>Previous</span>
           </div>
           <span className="font-semibold text-sm text-slate-900 group-hover:text-emerald-800 transition-colors">
             {prevItem.name}
@@ -52,7 +52,7 @@ export function DocsPaginationNav({ currentId }: DocsPaginationNavProps) {
           className="group flex flex-col p-4 rounded-xl border border-slate-200 bg-white hover:border-emerald-500/50 hover:shadow-xs transition-all text-right sm:col-start-2"
         >
           <div className="flex items-center justify-end gap-1.5 text-xs text-slate-500 font-mono mb-1 group-hover:text-emerald-700 transition-colors">
-            <span>Selanjutnya</span>
+            <span>Next</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </div>
           <span className="font-semibold text-sm text-slate-900 group-hover:text-emerald-800 transition-colors">
