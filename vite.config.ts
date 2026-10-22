@@ -15,7 +15,7 @@ export default defineConfig({
   resolve: {
     alias: [
       { find: '@', replacement: path.resolve(__dirname, './src') },
-      { find: /^@zarr20\/rakit-routes$/, replacement: '@zarr20/rakit-routes/client' },
+      { find: /^@zarr20\/rakit-routes(\/client)?$/, replacement: path.resolve(__dirname, './src/shared/rakit-routes/index.ts') },
       { find: 'node:path', replacement: path.resolve(__dirname, './src/shims/node-path.ts') },
       { find: 'node:fs', replacement: path.resolve(__dirname, './src/shims/node-fs.ts') },
     ],
