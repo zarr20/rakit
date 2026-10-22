@@ -22,10 +22,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '@zarr20/rakit-ui/styles.css': path.resolve(__dirname, '../rakit-ui/dist/rakit-ui.css'),
-      '@zarr20/rakit-ui': path.resolve(__dirname, '../rakit-ui/src/index.ts'),
-      '@zarr20/rakit-routes/client': path.resolve(__dirname, '../rakit-routes/src/client.ts'),
-      '@zarr20/rakit-routes': path.resolve(__dirname, '../rakit-routes/src/client.ts'),
     },
   },
   server: {
@@ -33,4 +29,3 @@ export default defineConfig({
     open: false,
   },
 });
-
