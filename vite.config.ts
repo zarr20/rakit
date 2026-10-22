@@ -19,6 +19,12 @@ export default defineConfig({
       },
     }),
   ],
+  optimizeDeps: {
+    // The local @zarr20/rakit-routes tarball is a Node/Vite plugin dependency.
+    // Vite should not prebundle it for the browser build because it imports
+    // Node builtins like fs/path directly.
+    exclude: ['@zarr20/rakit-routes'],
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
