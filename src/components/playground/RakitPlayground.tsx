@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { LivePlayground } from '@zarr20/rakit-ui';
 import type { RakitPlaygroundProps } from './playground.types';
 import { decodePlaygroundCode, encodePlaygroundCode } from './urlUtils';
-import * as RakitRoutes from '@zarr20/rakit-routes';
+import * as RakitRoutes from '@zarr20/rakit-routes/client';
 
 export function RakitPlayground({
   initialExample,
@@ -44,6 +44,7 @@ export function RakitPlayground({
     return {
       import: {
         '@zarr20/rakit-routes': RakitRoutes,
+        '@zarr20/rakit-routes/client': RakitRoutes,
       },
       ...RakitRoutes,
     };
